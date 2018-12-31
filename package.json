@@ -1,0 +1,15 @@
+{
+  "name": "test-android",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git@gitee.com:snowinszu/test-android.git"
+  },
+  "author": "",
+  "license": "ISC"
+}
