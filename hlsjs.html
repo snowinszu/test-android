@@ -11,7 +11,14 @@
 
     var video = document.getElementById('video');
     if(Hls.isSupported()) {
-        var hls = new Hls();
+        var hls = new Hls({
+            p2pConfig: {
+                logLevel: true,
+                live: false,        // set to true in live mode
+                // Other p2pConfig options provided by CDNBye
+                // https://docs.cdnbye.com/#/API
+            }
+        });
         hls.loadSource('https://video-dev.github.io/streams/x36xhzz/url_2/193039199_mp4_h264_aac_ld_7.m3u8');
         hls.attachMedia(video);
         hls.on(Hls.Events.MANIFEST_PARSED,function() {
