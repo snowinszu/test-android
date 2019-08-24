@@ -448,9 +448,9 @@ var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol
             d = 1732584193,
             h = -271733879,
             p = -1732584194,
-            v = 271733878;for (n = 0; n < e.length; n += 16) {
-          r = d, o = h, a = p, s = v, d = c(d, h, p, v, e[n], 7, -680876936), v = c(v, d, h, p, e[n + 1], 12, -389564586), p = c(p, v, d, h, e[n + 2], 17, 606105819), h = c(h, p, v, d, e[n + 3], 22, -1044525330), d = c(d, h, p, v, e[n + 4], 7, -176418897), v = c(v, d, h, p, e[n + 5], 12, 1200080426), p = c(p, v, d, h, e[n + 6], 17, -1473231341), h = c(h, p, v, d, e[n + 7], 22, -45705983), d = c(d, h, p, v, e[n + 8], 7, 1770035416), v = c(v, d, h, p, e[n + 9], 12, -1958414417), p = c(p, v, d, h, e[n + 10], 17, -42063), h = c(h, p, v, d, e[n + 11], 22, -1990404162), d = c(d, h, p, v, e[n + 12], 7, 1804603682), v = c(v, d, h, p, e[n + 13], 12, -40341101), p = c(p, v, d, h, e[n + 14], 17, -1502002290), h = c(h, p, v, d, e[n + 15], 22, 1236535329), d = u(d, h, p, v, e[n + 1], 5, -165796510), v = u(v, d, h, p, e[n + 6], 9, -1069501632), p = u(p, v, d, h, e[n + 11], 14, 643717713), h = u(h, p, v, d, e[n], 20, -373897302), d = u(d, h, p, v, e[n + 5], 5, -701558691), v = u(v, d, h, p, e[n + 10], 9, 38016083), p = u(p, v, d, h, e[n + 15], 14, -660478335), h = u(h, p, v, d, e[n + 4], 20, -405537848), d = u(d, h, p, v, e[n + 9], 5, 568446438), v = u(v, d, h, p, e[n + 14], 9, -1019803690), p = u(p, v, d, h, e[n + 3], 14, -187363961), h = u(h, p, v, d, e[n + 8], 20, 1163531501), d = u(d, h, p, v, e[n + 13], 5, -1444681467), v = u(v, d, h, p, e[n + 2], 9, -51403784), p = u(p, v, d, h, e[n + 7], 14, 1735328473), h = u(h, p, v, d, e[n + 12], 20, -1926607734), d = f(d, h, p, v, e[n + 5], 4, -378558), v = f(v, d, h, p, e[n + 8], 11, -2022574463), p = f(p, v, d, h, e[n + 11], 16, 1839030562), h = f(h, p, v, d, e[n + 14], 23, -35309556), d = f(d, h, p, v, e[n + 1], 4, -1530992060), v = f(v, d, h, p, e[n + 4], 11, 1272893353), p = f(p, v, d, h, e[n + 7], 16, -155497632), h = f(h, p, v, d, e[n + 10], 23, -1094730640), d = f(d, h, p, v, e[n + 13], 4, 681279174), v = f(v, d, h, p, e[n], 11, -358537222), p = f(p, v, d, h, e[n + 3], 16, -722521979), h = f(h, p, v, d, e[n + 6], 23, 76029189), d = f(d, h, p, v, e[n + 9], 4, -640364487), v = f(v, d, h, p, e[n + 12], 11, -421815835), p = f(p, v, d, h, e[n + 15], 16, 530742520), h = f(h, p, v, d, e[n + 2], 23, -995338651), d = l(d, h, p, v, e[n], 6, -198630844), v = l(v, d, h, p, e[n + 7], 10, 1126891415), p = l(p, v, d, h, e[n + 14], 15, -1416354905), h = l(h, p, v, d, e[n + 5], 21, -57434055), d = l(d, h, p, v, e[n + 12], 6, 1700485571), v = l(v, d, h, p, e[n + 3], 10, -1894986606), p = l(p, v, d, h, e[n + 10], 15, -1051523), h = l(h, p, v, d, e[n + 1], 21, -2054922799), d = l(d, h, p, v, e[n + 8], 6, 1873313359), v = l(v, d, h, p, e[n + 15], 10, -30611744), p = l(p, v, d, h, e[n + 6], 15, -1560198380), h = l(h, p, v, d, e[n + 13], 21, 1309151649), d = l(d, h, p, v, e[n + 4], 6, -145523070), v = l(v, d, h, p, e[n + 11], 10, -1120210379), p = l(p, v, d, h, e[n + 2], 15, 718787259), h = l(h, p, v, d, e[n + 9], 21, -343485551), d = i(d, r), h = i(h, o), p = i(p, a), v = i(v, s);
-        }return [d, h, p, v];
+            y = 271733878;for (n = 0; n < e.length; n += 16) {
+          r = d, o = h, a = p, s = y, d = c(d, h, p, y, e[n], 7, -680876936), y = c(y, d, h, p, e[n + 1], 12, -389564586), p = c(p, y, d, h, e[n + 2], 17, 606105819), h = c(h, p, y, d, e[n + 3], 22, -1044525330), d = c(d, h, p, y, e[n + 4], 7, -176418897), y = c(y, d, h, p, e[n + 5], 12, 1200080426), p = c(p, y, d, h, e[n + 6], 17, -1473231341), h = c(h, p, y, d, e[n + 7], 22, -45705983), d = c(d, h, p, y, e[n + 8], 7, 1770035416), y = c(y, d, h, p, e[n + 9], 12, -1958414417), p = c(p, y, d, h, e[n + 10], 17, -42063), h = c(h, p, y, d, e[n + 11], 22, -1990404162), d = c(d, h, p, y, e[n + 12], 7, 1804603682), y = c(y, d, h, p, e[n + 13], 12, -40341101), p = c(p, y, d, h, e[n + 14], 17, -1502002290), h = c(h, p, y, d, e[n + 15], 22, 1236535329), d = u(d, h, p, y, e[n + 1], 5, -165796510), y = u(y, d, h, p, e[n + 6], 9, -1069501632), p = u(p, y, d, h, e[n + 11], 14, 643717713), h = u(h, p, y, d, e[n], 20, -373897302), d = u(d, h, p, y, e[n + 5], 5, -701558691), y = u(y, d, h, p, e[n + 10], 9, 38016083), p = u(p, y, d, h, e[n + 15], 14, -660478335), h = u(h, p, y, d, e[n + 4], 20, -405537848), d = u(d, h, p, y, e[n + 9], 5, 568446438), y = u(y, d, h, p, e[n + 14], 9, -1019803690), p = u(p, y, d, h, e[n + 3], 14, -187363961), h = u(h, p, y, d, e[n + 8], 20, 1163531501), d = u(d, h, p, y, e[n + 13], 5, -1444681467), y = u(y, d, h, p, e[n + 2], 9, -51403784), p = u(p, y, d, h, e[n + 7], 14, 1735328473), h = u(h, p, y, d, e[n + 12], 20, -1926607734), d = f(d, h, p, y, e[n + 5], 4, -378558), y = f(y, d, h, p, e[n + 8], 11, -2022574463), p = f(p, y, d, h, e[n + 11], 16, 1839030562), h = f(h, p, y, d, e[n + 14], 23, -35309556), d = f(d, h, p, y, e[n + 1], 4, -1530992060), y = f(y, d, h, p, e[n + 4], 11, 1272893353), p = f(p, y, d, h, e[n + 7], 16, -155497632), h = f(h, p, y, d, e[n + 10], 23, -1094730640), d = f(d, h, p, y, e[n + 13], 4, 681279174), y = f(y, d, h, p, e[n], 11, -358537222), p = f(p, y, d, h, e[n + 3], 16, -722521979), h = f(h, p, y, d, e[n + 6], 23, 76029189), d = f(d, h, p, y, e[n + 9], 4, -640364487), y = f(y, d, h, p, e[n + 12], 11, -421815835), p = f(p, y, d, h, e[n + 15], 16, 530742520), h = f(h, p, y, d, e[n + 2], 23, -995338651), d = l(d, h, p, y, e[n], 6, -198630844), y = l(y, d, h, p, e[n + 7], 10, 1126891415), p = l(p, y, d, h, e[n + 14], 15, -1416354905), h = l(h, p, y, d, e[n + 5], 21, -57434055), d = l(d, h, p, y, e[n + 12], 6, 1700485571), y = l(y, d, h, p, e[n + 3], 10, -1894986606), p = l(p, y, d, h, e[n + 10], 15, -1051523), h = l(h, p, y, d, e[n + 1], 21, -2054922799), d = l(d, h, p, y, e[n + 8], 6, 1873313359), y = l(y, d, h, p, e[n + 15], 10, -30611744), p = l(p, y, d, h, e[n + 6], 15, -1560198380), h = l(h, p, y, d, e[n + 13], 21, 1309151649), d = l(d, h, p, y, e[n + 4], 6, -145523070), y = l(y, d, h, p, e[n + 11], 10, -1120210379), p = l(p, y, d, h, e[n + 2], 15, 718787259), h = l(h, p, y, d, e[n + 9], 21, -343485551), d = i(d, r), h = i(h, o), p = i(p, a), y = i(y, s);
+        }return [d, h, p, y];
       }function h(e) {
         var t,
             n = "",
@@ -464,9 +464,9 @@ var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol
         }var r = 8 * e.length;for (t = 0; t < r; t += 8) {
           n[t >> 5] |= (255 & e.charCodeAt(t / 8)) << t % 32;
         }return n;
-      }function v(e) {
+      }function y(e) {
         return h(d(p(e), 8 * e.length));
-      }function y(e, t) {
+      }function v(e, t) {
         var n,
             r,
             o = p(e),
@@ -483,16 +483,16 @@ var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol
         }return o;
       }function _(e) {
         return unescape(encodeURIComponent(e));
-      }function g(e) {
-        return v(_(e));
       }function x(e) {
-        return m(g(e));
-      }function b(e, t) {
-        return y(_(e), _(t));
+        return y(_(e));
+      }function b(e) {
+        return m(x(e));
+      }function g(e, t) {
+        return v(_(e), _(t));
       }function w(e, t) {
-        return m(b(e, t));
+        return m(g(e, t));
       }function R(e, t, n) {
-        return t ? n ? b(t, e) : w(t, e) : n ? g(e) : x(e);
+        return t ? n ? g(t, e) : w(t, e) : n ? x(e) : b(e);
       }void 0 !== (r = function () {
         return R;
       }.call(t, n, t, e)) && (e.exports = r);
@@ -559,13 +559,13 @@ var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol
   }, function (e, t, n) {
     "use strict";
     function r(e) {
-      if (e > g) throw new RangeError('The value "' + e + '" is invalid for option "size"');var t = new Uint8Array(e);return t.__proto__ = o.prototype, t;
+      if (e > x) throw new RangeError('The value "' + e + '" is invalid for option "size"');var t = new Uint8Array(e);return t.__proto__ = o.prototype, t;
     }function o(e, t, n) {
       if ("number" == typeof e) {
         if ("string" == typeof t) throw new TypeError('The "string" argument must be of type string. Received type number');return c(e);
       }return i(e, t, n);
     }function i(e, t, n) {
-      if ("string" == typeof e) return u(e, t);if (ArrayBuffer.isView(e)) return f(e);if (null == e) throw TypeError("The first argument must be one of type string, Buffer, ArrayBuffer, Array, or Array-like Object. Received type " + (void 0 === e ? "undefined" : _(e)));if (y(e, ArrayBuffer) || e && y(e.buffer, ArrayBuffer)) return l(e, t, n);if ("number" == typeof e) throw new TypeError('The "value" argument must not be of type number. Received type number');var r = e.valueOf && e.valueOf();if (null != r && r !== e) return o.from(r, t, n);var i = d(e);if (i) return i;if ("undefined" != typeof Symbol && null != Symbol.toPrimitive && "function" == typeof e[Symbol.toPrimitive]) return o.from(e[Symbol.toPrimitive]("string"), t, n);throw new TypeError("The first argument must be one of type string, Buffer, ArrayBuffer, Array, or Array-like Object. Received type " + (void 0 === e ? "undefined" : _(e)));
+      if ("string" == typeof e) return u(e, t);if (ArrayBuffer.isView(e)) return f(e);if (null == e) throw TypeError("The first argument must be one of type string, Buffer, ArrayBuffer, Array, or Array-like Object. Received type " + (void 0 === e ? "undefined" : _(e)));if (v(e, ArrayBuffer) || e && v(e.buffer, ArrayBuffer)) return l(e, t, n);if ("number" == typeof e) throw new TypeError('The "value" argument must not be of type number. Received type number');var r = e.valueOf && e.valueOf();if (null != r && r !== e) return o.from(r, t, n);var i = d(e);if (i) return i;if ("undefined" != typeof Symbol && null != Symbol.toPrimitive && "function" == typeof e[Symbol.toPrimitive]) return o.from(e[Symbol.toPrimitive]("string"), t, n);throw new TypeError("The first argument must be one of type string, Buffer, ArrayBuffer, Array, or Array-like Object. Received type " + (void 0 === e ? "undefined" : _(e)));
     }function a(e) {
       if ("number" != typeof e) throw new TypeError('"size" argument must be of type number');if (e < 0) throw new RangeError('The value "' + e + '" is invalid for option "size"');
     }function s(e, t, n) {
@@ -588,18 +588,18 @@ var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol
             n = r(t);return 0 === n.length ? n : (e.copy(n, 0, 0, t), n);
       }return void 0 !== e.length ? "number" != typeof e.length || m(e.length) ? r(0) : f(e) : "Buffer" === e.type && Array.isArray(e.data) ? f(e.data) : void 0;
     }function h(e) {
-      if (e >= g) throw new RangeError("Attempt to allocate Buffer larger than maximum size: 0x" + g.toString(16) + " bytes");return 0 | e;
+      if (e >= x) throw new RangeError("Attempt to allocate Buffer larger than maximum size: 0x" + x.toString(16) + " bytes");return 0 | e;
     }function p(e, t) {
-      if (o.isBuffer(e)) return e.length;if (ArrayBuffer.isView(e) || y(e, ArrayBuffer)) return e.byteLength;if ("string" != typeof e) throw new TypeError('The "string" argument must be one of type string, Buffer, or ArrayBuffer. Received type ' + (void 0 === e ? "undefined" : _(e)));var n = e.length,
+      if (o.isBuffer(e)) return e.length;if (ArrayBuffer.isView(e) || v(e, ArrayBuffer)) return e.byteLength;if ("string" != typeof e) throw new TypeError('The "string" argument must be one of type string, Buffer, or ArrayBuffer. Received type ' + (void 0 === e ? "undefined" : _(e)));var n = e.length,
           r = arguments.length > 2 && !0 === arguments[2];if (!r && 0 === n) return 0;for (var i = !1;;) {
         switch (t) {case "ascii":case "latin1":case "binary":
             return n;case "utf8":case "utf-8":
-            return v(e).length;case "ucs2":case "ucs-2":case "utf16le":case "utf-16le":
+            return y(e).length;case "ucs2":case "ucs-2":case "utf16le":case "utf-16le":
             return 2 * n;case "hex":
             return n >>> 1;default:
-            if (i) return r ? -1 : v(e).length;t = ("" + t).toLowerCase(), i = !0;}
+            if (i) return r ? -1 : y(e).length;t = ("" + t).toLowerCase(), i = !0;}
       }
-    }function v(e, t) {
+    }function y(e, t) {
       t = t || 1 / 0;for (var n, r = e.length, o = null, i = [], a = 0; a < r; ++a) {
         if ((n = e.charCodeAt(a)) > 55295 && n < 57344) {
           if (!o) {
@@ -621,7 +621,7 @@ var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol
           if (!(n < 1114112)) throw new Error("Invalid code point");if ((t -= 4) < 0) break;i.push(n >> 18 | 240, n >> 12 & 63 | 128, n >> 6 & 63 | 128, 63 & n | 128);
         }
       }return i;
-    }function y(e, t) {
+    }function v(e, t) {
       return e instanceof t || null != e && null != e.constructor && null != e.constructor.name && e.constructor.name === t.name;
     }function m(e) {
       return e !== e;
@@ -629,7 +629,7 @@ var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol
       return typeof e === "undefined" ? "undefined" : _typeof(e);
     } : function (e) {
       return e && "function" == typeof Symbol && e.constructor === Symbol && e !== Symbol.prototype ? "symbol" : typeof e === "undefined" ? "undefined" : _typeof(e);
-    };t.Buffer = o;var g = 2147483647;t.kMaxLength = g, o.TYPED_ARRAY_SUPPORT = function () {
+    };t.Buffer = o;var x = 2147483647;t.kMaxLength = x, o.TYPED_ARRAY_SUPPORT = function () {
       try {
         var e = new Uint8Array(1);return e.__proto__ = { __proto__: Uint8Array.prototype, foo: function foo() {
             return 42;
@@ -654,7 +654,7 @@ var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol
         t += e[n].length;
       }var r = o.allocUnsafe(t),
           i = 0;for (n = 0; n < e.length; ++n) {
-        var a = e[n];if (y(a, Uint8Array) && (a = o.from(a)), !o.isBuffer(a)) throw new TypeError('"list" argument must be an Array of Buffers');a.copy(r, i), i += a.length;
+        var a = e[n];if (v(a, Uint8Array) && (a = o.from(a)), !o.isBuffer(a)) throw new TypeError('"list" argument must be an Array of Buffers');a.copy(r, i), i += a.length;
       }return r;
     }, o.byteLength = p, o.prototype._isBuffer = !0, o.prototype.copy = function (e, t, n, r) {
       if (!o.isBuffer(e)) throw new TypeError("argument should be a Buffer");if (n || (n = 0), r || 0 === r || (r = this.length), t >= e.length && (t = e.length), t || (t = 0), r > 0 && r < n && (r = n), r === n) return 0;if (0 === e.length || 0 === this.length) return 0;if (t < 0) throw new RangeError("targetStart out of bounds");if (n < 0 || n >= this.length) throw new RangeError("Index out of range");if (r < 0) throw new RangeError("sourceEnd out of bounds");r > this.length && (r = this.length), e.length - t < r - n && (r = e.length - t + n);var i = r - n;if (this === e && "function" == typeof Uint8Array.prototype.copyWithin) this.copyWithin(t, n, r);else if (this === e && n < t && t < r) for (var a = i - 1; a >= 0; --a) {
@@ -689,19 +689,19 @@ var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol
       }function s(e, t, n, r) {
         var o = [];if (r) {
           for (var i = void 0, a = 0; a < n - 1; a++) {
-            i = e[u("0x6c")](a * t, (a + 1) * t), o.push(i);
-          }i = e[u("0x6c")](e[u("0x49")] - r, e.byteLength), o.push(i);
+            i = e[u("0x70")](a * t, (a + 1) * t), o[u("0x43")](i);
+          }i = e[u("0x70")](e[u("0x50")] - r, e[u("0x50")]), o[u("0x43")](i);
         } else for (var s = void 0, c = 0; c < n; c++) {
-          s = e.slice(c * t, (c + 1) * t), o[u("0x3a")](s);
+          s = e[u("0x70")](c * t, (c + 1) * t), o[u("0x43")](s);
         }return o;
-      }var c = ["aGFzT3duUHJvcGVydHk=", "Y2FsbA==", "ZW51bWVyYWJsZQ==", "Y29uZmlndXJhYmxl", "dmFsdWU=", "d3JpdGFibGU=", "a2V5", "Z2V0UHJvdG90eXBlT2Y=", "ZW5naW5l", "bG9nZ2Vy", "Y29uZmln", "cmVtb3RlUGVlcklk", "Y2hhbm5lbElk", "bXNnUXVldWU=", "bWlzcw==", "Yml0c2V0", "Y29ublRpbWVvdXQ=", "ZGMg", "ZW1pdA==", "ZGVmYXVsdA==", "cmN2ZFJlcVF1ZXVl", "Y2hva2Vk", "ZmV0Y2hlcg==", "dGltZXN0YW1w", "dmVyc2lvbg==", "X2RhdGFjaGFubmVs", "X2luaXQ=", "ZXJyb3I=", "RENfRVJST1I=", "c2lnbmFs", "RENfU0lHTkFM", "Y29ubmVjdGVk", "Y2xlYXJUaW1lb3V0", "c2hpZnQ=", "ZXZlbnQ=", "b25jZQ==", "Y29ubmVjdA==", "ZGF0YQ==", "c3RyaW5n", "cGFyc2U=", "RENfUE9ORw==", "X2hhbmRsZVBvbmdNc2c=", "RENfUElORw==", "X3ByZXBhcmVGb3JCaW5hcnk=", "c2VnX2lk", "RENfUElFQ0VfTk9UX0ZPVU5E", "ZG93bmxvYWROdW0=", "X2hhbmRsZVJlcXVlc3RNc2c=", "X2hhbmRsZVBpZWNlQWNr", "RENfQ0hPS0U=", "RENfVU5DSE9LRQ==", "RENfQ0xPU0U=", "YnVmQXJy", "cHVzaA==", "cmVtYWluQXR0YWNobWVudHM=", "RENfUElFQ0VfQUNL", "YnVmU04=", "c2VnSWQ=", "ZXhwZWN0ZWRTaXpl", "X2hhbmRsZUJpbmFyeURhdGE=", "c2VuZEpzb24=", "c3RyaW5naWZ5", "c2VuZA==", "ZGF0YWNoYW5uZWwg", "IHNlbmQgZGF0YSBmYWlsZWQsIGNsb3NlIGl0", "c2VuZEJpdEZpZWxk", "RENfQklURklFTEQ=", "c2VuZEJ1ZmZlcg==", "Ynl0ZUxlbmd0aA==", "cGFja2V0U2l6ZQ==", "Zmxvb3I=", "YXR0YWNobWVudHM=", "cmVxdWVzdERhdGFCeUlk", "cmVxdWVzdERhdGFCeVNO", "dXJnZW50", "Y2xvc2U=", "cmVjZWl2ZVNpZ25hbA==", "ZGVzdHJveQ==", "d2Fybg==", "Y2xlYXJJbnRlcnZhbA==", "YWRqdXN0U1JJbnRlcnZhbA==", "c3RhdHNlcg==", "cmVtb3ZlQWxsTGlzdGVuZXJz", "dXBsb2FkaW5n", "dW5zaGlmdA==", "RENfUkVRVUVTVA==", "Z2V0UmVxdWVzdEZyb21RdWV1ZQ==", "bGV2ZWw=", "Y29uY2F0", "cmVwb3J0RENUcmFmZmlj", "REMgcmVwb3J0IGZhaWxlZA==", "RENfUkVTUE9OU0U=", "aW5mbw==", "IGZyb20g", "bG9hZHRpbWVvdXQ=", "RENfVElNRU9VVA==", "cG9w", "ZGVidWc=", "aGFz", "cGVlciBhbHJlYWR5IGhhcyA=", "ZGVsYXlz", "aXNBdmFpbGFibGU=", "aXNBdmFpbGFibGVVcmdlbnRseQ==", "c2xpY2U=", "ZXhwb3J0cw==", "ZGVmaW5lUHJvcGVydHk=", "X19lc01vZHVsZQ==", "YXNzaWdu", "bGVuZ3Ro", "cHJvdG90eXBl"];!function (e, t) {
+      }var c = ["bG9nZ2Vy", "Y29uZmln", "cmVtb3RlUGVlcklk", "Y29ubmVjdGVk", "bXNnUXVldWU=", "bWlzcw==", "Yml0c2V0", "Y29ublRpbWVvdXQ=", "d2Fybg==", "Y2hhbm5lbElk", "IGNvbm5lY3Rpb24gdGltZW91dA==", "ZGVmYXVsdA==", "cmN2ZFJlcVF1ZXVl", "dXBsb2FkaW5n", "Y2hva2Vk", "ZGVsYXlz", "ZmV0Y2hlcg==", "dGltZXN0YW1w", "dmVyc2lvbg==", "aXNJbml0aWF0b3I=", "X2luaXQ=", "X2RhdGFjaGFubmVs", "ZXJyb3I=", "ZW1pdA==", "RENfRVJST1I=", "c2lnbmFs", "RENfU0lHTkFM", "aW5mbw==", "RENfT1BFTg==", "c2hpZnQ=", "ZXZlbnQ=", "b25jZQ==", "ZGF0YQ==", "c3RyaW5n", "cGFyc2U=", "RENfUE9ORw==", "X2hhbmRsZVBvbmdNc2c=", "RENfUElORw==", "c2VuZEpzb24=", "RENfUElFQ0U=", "X3ByZXBhcmVGb3JCaW5hcnk=", "c2VnX2lk", "c2l6ZQ==", "bGV2ZWw=", "RENfUElFQ0VfTk9UX0ZPVU5E", "ZG93bmxvYWROdW0=", "RENfUkVRVUVTVA==", "X2hhbmRsZVJlcXVlc3RNc2c=", "RENfUElFQ0VfQUNL", "X2hhbmRsZVBpZWNlQWNr", "RENfQ0xPU0U=", "YnVmQXJy", "cHVzaA==", "cmVtYWluQXR0YWNobWVudHM=", "YnVmU04=", "c2VnSWQ=", "ZXhwZWN0ZWRTaXpl", "X2hhbmRsZUJpbmFyeURhdGE=", "Y2xvc2U=", "c2VuZA==", "c3RyaW5naWZ5", "IHNlbmQgZGF0YSBmYWlsZWQsIGNsb3NlIGl0", "c2VuZEJpdEZpZWxk", "RENfQklURklFTEQ=", "c2VuZEJ1ZmZlcg==", "Ynl0ZUxlbmd0aA==", "Zmxvb3I=", "YXR0YWNobWVudHM=", "cmVxdWVzdERhdGFCeUlk", "cmVxdWVzdERhdGFCeVNO", "dXJnZW50", "cmVjZWl2ZVNpZ25hbA==", "ZGVzdHJveQ==", "YWRqdXN0U1JJbnRlcnZhbA==", "Y2xlYXJJbnRlcnZhbA==", "c3RhdHNlcg==", "Y2xlYXJUaW1lb3V0", "cmVtb3ZlQWxsTGlzdGVuZXJz", "dW5zaGlmdA==", "Z2V0UmVxdWVzdEZyb21RdWV1ZQ==", "Y29uY2F0", "cmVwb3J0RENUcmFmZmlj", "YnVmZmVy", "RENfUkVTUE9OU0U=", "ZGF0YWNoYW5uZWwgZmluaXNoIGRvd25sb2FkaW5nIA==", "IGZyb20g", "bG9hZHRpbWVvdXQ=", "ZGF0YWNoYW5uZWwgdGltZW91dCB3aGlsZSBkb3dubG9hZGluZyBmcm9tIA==", "RENfVElNRU9VVA==", "cG9w", "ZGVidWc=", "cmN2ZFJlcVF1ZXVlIHBvcCA=", "aGFz", "cGVlciBhbHJlYWR5IGhhcyA=", "bm93", "cGluZw==", "aXNBdmFpbGFibGVVcmdlbnRseQ==", "c2xpY2U=", "ZXhwb3J0cw==", "X19lc01vZHVsZQ==", "YXNzaWdu", "bGVuZ3Ro", "cHJvdG90eXBl", "aGFzT3duUHJvcGVydHk=", "Y2FsbA==", "ZW51bWVyYWJsZQ==", "Y29uZmlndXJhYmxl", "dmFsdWU=", "d3JpdGFibGU=", "ZGVmaW5lUHJvcGVydHk=", "a2V5", "VkVSU0lPTg==", "X19wcm90b19f", "ZW5naW5l"];!function (e, t) {
         !function (t) {
           for (; --t;) {
             e.push(e.shift());
           }
         }(++t);
-      }(c, 105);var u = function u(e, t) {
-        e -= 0;var n = c[e];void 0 === u.NtfcDt && (!function () {
+      }(c, 213);var u = function u(e, t) {
+        e -= 0;var n = c[e];void 0 === u.xaJYdO && (!function () {
           var e = function () {
             var e;try {
               e = Function('return (function() {}.constructor("return this")( ));')();
@@ -713,119 +713,121 @@ var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol
               n = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789+/=".indexOf(n);
             }return a;
           });
-        }(), u.QDqCoA = function (e) {
+        }(), u.XaKYbA = function (e) {
           for (var t = atob(e), n = [], r = 0, o = t.length; r < o; r++) {
             n += "%" + ("00" + t.charCodeAt(r).toString(16)).slice(-2);
           }return decodeURIComponent(n);
-        }, u.cbJpDh = {}, u.NtfcDt = !![]);var r = u.cbJpDh[e];return void 0 === r ? (n = u.QDqCoA(n), u.cbJpDh[e] = n) : n = r, n;
-      };Object[u("0x0")](t, u("0x1"), { value: !![] });var f = Object[u("0x2")] || function (e) {
-        for (var t = 1; t < arguments[u("0x3")]; t++) {
+        }, u.jFQqki = {}, u.xaJYdO = !![]);var r = u.jFQqki[e];return void 0 === r ? (n = u.XaKYbA(n), u.jFQqki[e] = n) : n = r, n;
+      };Object.defineProperty(t, u("0x0"), { value: !![] });var f = Object[u("0x1")] || function (e) {
+        for (var t = 1; t < arguments[u("0x2")]; t++) {
           var n = arguments[t];for (var r in n) {
-            Object[u("0x4")][u("0x5")][u("0x6")](n, r) && (e[r] = n[r]);
+            Object[u("0x3")][u("0x4")][u("0x5")](n, r) && (e[r] = n[r]);
           }
         }return e;
       },
           l = function () {
         function e(e, t) {
-          for (var n = 0; n < t[u("0x3")]; n++) {
-            var r = t[n];r[u("0x7")] = r[u("0x7")] || ![], r[u("0x8")] = !![], u("0x9") in r && (r[u("0xa")] = !![]), Object[u("0x0")](e, r[u("0xb")], r);
+          for (var n = 0; n < t[u("0x2")]; n++) {
+            var r = t[n];r[u("0x6")] = r.enumerable || ![], r[u("0x7")] = !![], u("0x8") in r && (r[u("0x9")] = !![]), Object[u("0xa")](e, r[u("0xb")], r);
           }
         }return function (t, n, r) {
-          return n && e(t[u("0x4")], n), r && e(t, r), t;
+          return n && e(t[u("0x3")], n), r && e(t, r), t;
         };
       }(),
           d = n(7),
           h = r(d),
           p = n(3),
-          v = r(p),
-          y = n(0),
-          m = r(y),
+          y = r(p),
+          v = n(0),
+          m = r(v),
           _ = n(4).Buffer,
-          g = function (e) {
+          x = function (e) {
         function t(e, n, r, a, s) {
-          o(this, t);var c = i(this, (t.__proto__ || Object[u("0xc")](t)).call(this));c[u("0xd")] = e, c.logger = e[u("0xe")], c[u("0xf")] = s, c[u("0x10")] = r, c[u("0x11")] = a ? n + "-" + r : r + "-" + n, c.connected = ![], c[u("0x12")] = [], c[u("0x13")] = 0, c[u("0x14")], c.bufArr = [], c[u("0x15")] = window.setTimeout(function () {
-            c[u("0xe")].warn(u("0x16") + c[u("0x11")] + " connection timeout"), c[u("0x17")](m[u("0x18")].DC_ERROR);
-          }, 2e4), c[u("0x19")] = [], c.uploading = ![], c[u("0x1a")] = ![], c.delays = [];var l = c[u("0xd")][u("0x1b")],
-              d = l[u("0x11")],
+          o(this, t);var c = i(this, (t[u("0xd")] || Object.getPrototypeOf(t)).call(this));c[u("0xe")] = e, c[u("0xf")] = e[u("0xf")], c[u("0x10")] = s, c[u("0x11")] = r, c.channelId = a ? n + "-" + r : r + "-" + n, c[u("0x12")] = ![], c[u("0x13")] = [], c[u("0x14")] = 0, c[u("0x15")], c.bufArr = [], c[u("0x16")] = window.setTimeout(function () {
+            c[u("0xf")][u("0x17")]("dc " + c[u("0x18")] + u("0x19")), c.emit(m[u("0x1a")].DC_ERROR);
+          }, 2e4), c[u("0x1b")] = [], c[u("0x1c")] = ![], c[u("0x1d")] = ![], c[u("0x1e")] = [];var l = c[u("0xe")][u("0x1f")],
+              d = l.channelId,
               p = l.id,
-              v = l[u("0x1c")],
-              y = l.v,
-              _ = c[u("0xd")][u("0x1d")];return c[u("0x1e")] = new h[u("0x18")](f({ initiator: a, channelName: c[u("0x11")], objectMode: !![], signInfo: { channelId: d, id: p, timestamp: v, version: _, v: y } }, c[u("0xf")].webRTCConfig)), c.isInitiator = a, c[u("0x1f")](c[u("0x1e")]), c.downloadNum = 0, c;
-        }return a(t, e), l(t, null, [{ key: "VERSION", get: function get() {
+              y = l[u("0x20")],
+              v = l.v,
+              _ = c[u("0xe")][u("0x21")];return c._datachannel = new h[u("0x1a")](f({ initiator: a, channelName: c[u("0x18")], objectMode: !![], signInfo: { channelId: d, id: p, timestamp: y, version: _, v: v } }, c.config.webRTCConfig)), c[u("0x22")] = a, c[u("0x23")](c[u("0x24")]), c.downloadNum = 0, c;
+        }return a(t, e), l(t, null, [{ key: u("0xc"), get: function get() {
             return "v2";
-          } }]), l(t, [{ key: u("0x1f"), value: function value(e) {
-            var t = this;e.on(u("0x20"), function (e) {
-              t.emit(m[u("0x18")][u("0x21")]);
-            }), e.on(u("0x22"), function (e) {
-              t[u("0x17")](m[u("0x18")][u("0x23")], e);
+          } }]), l(t, [{ key: "_init", value: function value(e) {
+            var t = this;e.on(u("0x25"), function (e) {
+              t[u("0x26")](m.default[u("0x27")]);
+            }), e.on(u("0x28"), function (e) {
+              t.emit(m[u("0x1a")][u("0x29")], e);
             });var n = function n() {
-              for (t[u("0xe")].info("datachannel CONNECTED to " + t[u("0x10")]), t[u("0x24")] = !![], window[u("0x25")](t[u("0x15")]), t[u("0x17")](m[u("0x18")].DC_OPEN); t[u("0x12")][u("0x3")] > 0;) {
-                var e = t.msgQueue[u("0x26")]();t[u("0x17")](e[u("0x27")], e);
+              for (t[u("0xf")][u("0x2a")]("datachannel CONNECTED to " + t.remotePeerId), t[u("0x12")] = !![], window.clearTimeout(t[u("0x16")]), t[u("0x26")](m[u("0x1a")][u("0x2b")]); t[u("0x13")][u("0x2")] > 0;) {
+                var e = t.msgQueue[u("0x2c")]();t.emit(e[u("0x2d")], e);
               }
-            };e[u("0x28")](u("0x29"), n), e.on(u("0x2a"), function (e) {
-              if ((typeof e === "undefined" ? "undefined" : _typeof(e)) === u("0x2b")) {
-                var n = JSON[u("0x2c")](e);if (!t.connected) return void t[u("0x12")].push(n);switch (n[u("0x27")]) {case m.default[u("0x2d")]:
-                    t[u("0x2e")]();break;case m[u("0x18")][u("0x2f")]:
-                    t.sendJson({ event: m[u("0x18")][u("0x2d")] });break;case m[u("0x18")].DC_PIECE:
-                    t[u("0x30")](n.attachments, n[u("0x31")], n.sn, n.size, n.level), t[u("0x17")](n.event, n);break;case m.default[u("0x32")]:
-                    t[u("0x33")]--, t[u("0x17")](n[u("0x27")], n);break;case m.default.DC_REQUEST:
-                    t[u("0x34")](n);break;case m[u("0x18")].DC_PIECE_ACK:
-                    t[u("0x35")](), t[u("0x17")](n[u("0x27")], n);break;case m[u("0x18")][u("0x36")]:
-                    t[u("0x1a")] = !![];break;case m.default[u("0x37")]:
-                    t.choked = ![];break;case m[u("0x18")].DC_CLOSE:
-                    t[u("0x17")](m[u("0x18")][u("0x38")]);break;default:
-                    t[u("0x17")](n.event, n);}
-              } else t[u("0x39")][u("0x3a")](e), 0 === --t[u("0x3b")] && (t[u("0x33")]--, t.sendJson({ event: m.default[u("0x3c")], sn: t[u("0x3d")], seg_id: t[u("0x3e")], size: t[u("0x3f")] }), t[u("0x40")]());
-            }), e[u("0x28")]("close", function () {
-              t.emit(m.default[u("0x38")]);
+            };e[u("0x2e")]("connect", n), e.on(u("0x2f"), function (e) {
+              if ((typeof e === "undefined" ? "undefined" : _typeof(e)) === u("0x30")) {
+                var n = JSON[u("0x31")](e);if (!t[u("0x12")]) return void t[u("0x13")].push(n);switch (n.event) {case m[u("0x1a")][u("0x32")]:
+                    t[u("0x33")]();break;case m[u("0x1a")][u("0x34")]:
+                    t[u("0x35")]({ event: m[u("0x1a")].DC_PONG });break;case m[u("0x1a")][u("0x36")]:
+                    t[u("0x37")](n.attachments, n[u("0x38")], n.sn, n[u("0x39")], n[u("0x3a")]), t.emit(n[u("0x2d")], n);break;case m.default[u("0x3b")]:
+                    t[u("0x3c")]--, t[u("0x26")](n[u("0x2d")], n);break;case m[u("0x1a")][u("0x3d")]:
+                    t[u("0x3e")](n);break;case m[u("0x1a")][u("0x3f")]:
+                    t[u("0x40")](), t.emit(n[u("0x2d")], n);break;case m[u("0x1a")].DC_CHOKE:
+                    t[u("0x1d")] = !![];break;case m[u("0x1a")].DC_UNCHOKE:
+                    t[u("0x1d")] = ![];break;case m.default[u("0x41")]:
+                    t[u("0x26")](m[u("0x1a")][u("0x41")]);break;default:
+                    t.emit(n[u("0x2d")], n);}
+              } else t[u("0x42")][u("0x43")](e), t.remainAttachments--, 0 === t[u("0x44")] && (t.downloadNum--, t.sendJson({ event: m[u("0x1a")][u("0x3f")], sn: t[u("0x45")], seg_id: t[u("0x46")], size: t[u("0x47")] }), t[u("0x48")]());
+            }), e[u("0x2e")](u("0x49"), function () {
+              t[u("0x26")](m[u("0x1a")][u("0x41")]);
             });
-          } }, { key: u("0x41"), value: function value(e) {
-            this.send(JSON[u("0x42")](e));
-          } }, { key: u("0x43"), value: function value(e) {
-            if (this[u("0x1e")] && this._datachannel[u("0x24")]) try {
-              this._datachannel[u("0x43")](e);
+          } }, { key: u("0x35"), value: function value(e) {
+            this[u("0x4a")](JSON[u("0x4b")](e));
+          } }, { key: "send", value: function value(e) {
+            if (this[u("0x24")] && this._datachannel.connected) try {
+              this[u("0x24")][u("0x4a")](e);
             } catch (e) {
-              this.logger.warn(u("0x44") + this[u("0x11")] + u("0x45")), this[u("0x17")](m[u("0x18")][u("0x21")]);
+              this[u("0xf")][u("0x17")]("datachannel " + this.channelId + u("0x4c")), this[u("0x26")](m[u("0x1a")][u("0x27")]);
             }
-          } }, { key: u("0x46"), value: function value(e) {
-            this[u("0x41")]({ event: m[u("0x18")][u("0x47")], field: e });
-          } }, { key: u("0x48"), value: function value(e, t, n, r) {
-            this.uploading = !![];var o = r[u("0x49")],
-                i = this[u("0xf")][u("0x4a")],
+          } }, { key: u("0x4d"), value: function value(e) {
+            this[u("0x35")]({ event: m[u("0x1a")][u("0x4e")], field: e });
+          } }, { key: u("0x4f"), value: function value(e, t, n, r) {
+            this.uploading = !![];var o = r[u("0x50")],
+                i = this[u("0x10")].packetSize,
                 a = 0,
-                c = 0;o % i == 0 ? c = o / i : (c = Math[u("0x4b")](o / i) + 1, a = o % i);var f = {};f.event = m.default.DC_PIECE, f[u("0x4c")] = c, f[u("0x31")] = n, f.sn = e, f.level = t, f.size = o, this[u("0x41")](f);for (var l = s(r, i, c, a), d = 0; d < l.length; d++) {
-              this.send(l[d]);
+                c = 0;o % i == 0 ? c = o / i : (c = Math[u("0x51")](o / i) + 1, a = o % i);var f = {};f[u("0x2d")] = m.default.DC_PIECE, f[u("0x52")] = c, f[u("0x38")] = n, f.sn = e, f[u("0x3a")] = t, f.size = o, this[u("0x35")](f);for (var l = s(r, i, c, a), d = 0; d < l.length; d++) {
+              this[u("0x4a")](l[d]);
             }
-          } }, { key: u("0x4d"), value: function value(e, t) {
-            var n = arguments[u("0x3")] > 2 && void 0 !== arguments[2] ? arguments[2] : ![];this[u("0x33")]++;var r = {};r[u("0x27")] = m.default.DC_REQUEST, r[u("0x31")] = e, r.sn = t, r.urgent = n, this.sendJson(r);
-          } }, { key: u("0x4e"), value: function value(e) {
-            var t = arguments.length > 1 && void 0 !== arguments[1] ? arguments[1] : ![];this[u("0x33")]++;var n = {};n[u("0x27")] = m.default.DC_REQUEST, n.sn = e, n[u("0x4f")] = t, this[u("0x41")](n);
-          } }, { key: u("0x50"), value: function value() {
-            this[u("0x17")](m[u("0x18")][u("0x38")]);
-          } }, { key: u("0x51"), value: function value(e) {
-            this[u("0x1e")][u("0x22")](e);
-          } }, { key: u("0x52"), value: function value() {
-            this[u("0xe")][u("0x53")]("destroy datachannel " + this[u("0x11")]), window[u("0x54")](this[u("0x55")]), window[u("0x54")](this[u("0x56")]), this.connTimeout && window.clearTimeout(this[u("0x15")]);var e = {};e[u("0x27")] = m.default.DC_CLOSE, this[u("0x41")](e), this[u("0x1e")][u("0x57")](), this[u("0x57")](), this[u("0x1e")][u("0x52")]();
-          } }, { key: u("0x34"), value: function value(e) {
-            this[u("0x58")] || this[u("0x19")][u("0x3")] > 0 ? e[u("0x4f")] ? this[u("0x19")][u("0x3a")](e.sn) : this.rcvdReqQueue[u("0x59")](e.sn) : this.emit(m[u("0x18")][u("0x5a")], e);
-          } }, { key: u("0x35"), value: function value() {
-            this.uploading = ![];var e = this[u("0x5b")]();e && this[u("0x17")](m[u("0x18")][u("0x5a")], { sn: e });
-          } }, { key: u("0x30"), value: function value(e, t, n, r, o) {
-            this[u("0x39")] = [], this[u("0x3b")] = e, this[u("0x3e")] = t, this[u("0x5c")] = o, this[u("0x3d")] = n, this[u("0x3f")] = r;
+          } }, { key: u("0x53"), value: function value(e, t) {
+            var n = arguments[u("0x2")] > 2 && void 0 !== arguments[2] ? arguments[2] : ![];this.downloadNum++;var r = {};r[u("0x2d")] = m.default.DC_REQUEST, r[u("0x38")] = e, r.sn = t, r.urgent = n, this[u("0x35")](r);
+          } }, { key: u("0x54"), value: function value(e) {
+            var t = arguments[u("0x2")] > 1 && void 0 !== arguments[1] ? arguments[1] : ![];this[u("0x3c")]++;var n = {};n[u("0x2d")] = m.default.DC_REQUEST, n.sn = e, n[u("0x55")] = t, this[u("0x35")](n);
+          } }, { key: u("0x49"), value: function value() {
+            this[u("0x26")](m.default[u("0x41")]);
+          } }, { key: u("0x56"), value: function value(e) {
+            this[u("0x24")][u("0x28")](e);
+          } }, { key: u("0x57"), value: function value() {
+            this[u("0xf")][u("0x17")]("destroy datachannel " + this[u("0x18")]), window.clearInterval(this[u("0x58")]), window[u("0x59")](this[u("0x5a")]), this.connTimeout && window[u("0x5b")](this[u("0x16")]);var e = {};e.event = m.default.DC_CLOSE, this.sendJson(e), this[u("0x24")][u("0x5c")](), this[u("0x5c")](), this[u("0x24")][u("0x57")]();
+          } }, { key: "_handleRequestMsg", value: function value(e) {
+            this.uploading || this[u("0x1b")][u("0x2")] > 0 ? e[u("0x55")] ? this[u("0x1b")][u("0x43")](e.sn) : this[u("0x1b")][u("0x5d")](e.sn) : this[u("0x26")](m.default[u("0x3d")], e);
           } }, { key: u("0x40"), value: function value() {
-            var e = _[u("0x5d")](this.bufArr);e[u("0x49")] == this[u("0x3f")] && (this.engine[u("0x1b")] ? this[u("0xd")][u("0x1b")][u("0x5e")](this[u("0x3f")]) : console[u("0x53")](u("0x5f")), this[u("0x17")](m[u("0x18")][u("0x60")], { seg_id: this.segId, sn: this.bufSN, data: e.buffer, level: this[u("0x5c")] })), this[u("0xe")][u("0x61")]("datachannel finish downloading " + this[u("0x3e")] + u("0x62") + this[u("0x10")]), this[u("0x3e")] = "", this[u("0x39")] = [], this[u("0x3f")] = -1;
-          } }, { key: u("0x63"), value: function value() {
-            this[u("0xe")][u("0x53")]("datachannel timeout while downloading from " + this[u("0x10")]), this[u("0x17")](m[u("0x18")][u("0x64")]);
-          } }, { key: u("0x5b"), value: function value() {
-            if (0 == this[u("0x19")][u("0x3")]) return null;var e = this.rcvdReqQueue[u("0x65")]();return this[u("0xe")][u("0x66")]("rcvdReqQueue pop " + e), this[u("0x14")][u("0x67")](e) ? (this[u("0xe")].info(u("0x68") + e), this[u("0x5b")]()) : e;
-          } }, { key: "_handlePongMsg", value: function value() {
-            var e = performance.now() - this.ping;this[u("0x69")][u("0x3a")](e);
-          } }, { key: u("0x6a"), get: function get() {
-            return this[u("0x33")] < 2 && this[u("0x1a")] === ![];
-          } }, { key: u("0x6b"), get: function get() {
-            return 0 === this[u("0x33")] && this[u("0x1a")] === ![];
+            this.uploading = ![];var e = this[u("0x5e")]();e && this[u("0x26")](m.default[u("0x3d")], { sn: e });
+          } }, { key: u("0x37"), value: function value(e, t, n, r, o) {
+            this[u("0x42")] = [], this[u("0x44")] = e, this.segId = t, this[u("0x3a")] = o, this[u("0x45")] = n, this[u("0x47")] = r;
+          } }, { key: u("0x48"), value: function value() {
+            var e = _[u("0x5f")](this[u("0x42")]);if (e[u("0x50")] == this[u("0x47")]) {
+              this.engine[u("0x1f")] ? this[u("0xe")][u("0x1f")][u("0x60")](this[u("0x47")]) : console[u("0x17")]("DC report failed");var t = new Uint8Array(e)[u("0x61")];this.emit(m[u("0x1a")][u("0x62")], { seg_id: this[u("0x46")], sn: this[u("0x45")], data: t, level: this[u("0x3a")] });
+            }this[u("0xf")][u("0x2a")](u("0x63") + this[u("0x46")] + u("0x64") + this[u("0x11")]), this[u("0x46")] = "", this[u("0x42")] = [], this[u("0x47")] = -1;
+          } }, { key: u("0x65"), value: function value() {
+            this[u("0xf")][u("0x17")](u("0x66") + this[u("0x11")]), this.emit(m[u("0x1a")][u("0x67")]);
+          } }, { key: u("0x5e"), value: function value() {
+            if (0 == this[u("0x1b")][u("0x2")]) return null;var e = this[u("0x1b")][u("0x68")]();return this.logger[u("0x69")](u("0x6a") + e), this[u("0x15")][u("0x6b")](e) ? (this.logger[u("0x2a")](u("0x6c") + e), this[u("0x5e")]()) : e;
+          } }, { key: u("0x33"), value: function value() {
+            var e = performance[u("0x6d")]() - this[u("0x6e")];this[u("0x1e")].push(e);
+          } }, { key: "isAvailable", get: function get() {
+            return this[u("0x3c")] < 2 && this[u("0x1d")] === ![];
+          } }, { key: u("0x6f"), get: function get() {
+            return 0 === this[u("0x3c")] && this.choked === ![];
           } }]), t;
-      }(v[u("0x18")]);t[u("0x18")] = g, e[u("0x6d")] = t[u("0x18")];
+      }(y.default);t.default = x, e[u("0x71")] = t[u("0x1a")];
     }).call(t, n(1)(e));
   }, function (e, t, n) {
     function r(e) {
@@ -852,14 +854,14 @@ var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol
       }), t.initiator && t._needsNegotiation();
     }function i(e, t) {
       var n = new Error(e);return n.code = t, n;
-    }function a() {}var s = ["c3ltYm9s", "Y29uc3RydWN0b3I=", "cHJvdG90eXBl", "ZnVuY3Rpb24=", "aXRlcmF0b3I="];!function (e, t) {
+    }function a() {}var s = ["Y29uc3RydWN0b3I=", "cHJvdG90eXBl", "c3ltYm9s", "ZnVuY3Rpb24=", "aXRlcmF0b3I="];!function (e, t) {
       !function (t) {
         for (; --t;) {
           e.push(e.shift());
         }
       }(++t);
-    }(s, 288);var c = function c(e, t) {
-      e -= 0;var n = s[e];void 0 === c.jOLAQX && (!function () {
+    }(s, 438);var c = function c(e, t) {
+      e -= 0;var n = s[e];void 0 === c.ZiXqwZ && (!function () {
         var e;try {
           var t = Function('return (function() {}.constructor("return this")( ));');e = t();
         } catch (t) {
@@ -869,16 +871,16 @@ var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol
             n = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789+/=".indexOf(n);
           }return a;
         });
-      }(), c.cEIFty = function (e) {
+      }(), c.oLNovH = function (e) {
         for (var t = atob(e), n = [], r = 0, o = t.length; r < o; r++) {
           n += "%" + ("00" + t.charCodeAt(r).toString(16)).slice(-2);
         }return decodeURIComponent(n);
-      }, c.eGmVUH = {}, c.jOLAQX = !![]);var r = c.eGmVUH[e];return void 0 === r ? (n = c.cEIFty(n), c.eGmVUH[e] = n) : n = r, n;
+      }, c.RYjwPw = {}, c.ZiXqwZ = !![]);var r = c.RYjwPw[e];return void 0 === r ? (n = c.oLNovH(n), c.RYjwPw[e] = n) : n = r, n;
     },
-        u = (typeof Symbol === "undefined" ? "undefined" : _typeof(Symbol)) === c("0x0") && _typeof(Symbol[c("0x1")]) === c("0x2") ? function (e) {
+        u = (typeof Symbol === "undefined" ? "undefined" : _typeof(Symbol)) === c("0x0") && "symbol" == _typeof(Symbol[c("0x1")]) ? function (e) {
       return typeof e === "undefined" ? "undefined" : _typeof(e);
     } : function (e) {
-      return e && (typeof Symbol === "undefined" ? "undefined" : _typeof(Symbol)) === c("0x0") && e[c("0x3")] === Symbol && e !== Symbol[c("0x4")] ? c("0x2") : typeof e === "undefined" ? "undefined" : _typeof(e);
+      return e && (typeof Symbol === "undefined" ? "undefined" : _typeof(Symbol)) === c("0x0") && e[c("0x2")] === Symbol && e !== Symbol[c("0x3")] ? c("0x4") : typeof e === "undefined" ? "undefined" : _typeof(e);
     },
         f = n(2),
         l = function (e) {
@@ -1065,18 +1067,18 @@ var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol
               }, e.bWbEuz = {}, e.ddzinM = !![]);var o = e.bWbEuz[t];return void 0 === o ? (r = e.qBHZHa(r), e.bWbEuz[t] = r) : r = o, r;
             },
                 p = t.s,
-                v = p.channelId,
-                y = p.id,
+                y = p.channelId,
+                v = p.id,
                 m = p.timestamp,
                 _ = p.version,
-                g = p.v,
-                x = function (e, t, n, r) {
+                x = p.v,
+                b = function (e, t, n, r) {
               var o = {};return o[h("0x0")] = function (e, t, n) {
                 return e(t, n);
               }, o[h("0x1")] = function (e, t) {
                 return e + t;
               }, o[h("0x2")] = h("0x3"), o.rmPxt(l.default, o[h("0x1")](o[h("0x1")](o[h("0x1")](e, t), n), o[h("0x2")]), r);
-            }(v, y, m, _);t[h("0x4")](x.substr(0, 8) === g ? h("0x5") : "");
+            }(y, v, m, _);t[h("0x4")](b.substr(0, 8) === x ? h("0x5") : "");
           }
         });
       }var t = this;!t.connected && !t._connecting && t._pcReady && t._channelReady && (t._connecting = !0, e());
@@ -1128,42 +1130,44 @@ var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol
       var r = window.location.hostname;return function (e, t, n, r) {
         return (0, l.default)(e + t + n, r);
       }(r, t, n, e).substr(0, 8);
-    }var a = ["X19lc01vZHVsZQ==", "YXNzaWdu", "bGVuZ3Ro", "cHJvdG90eXBl", "aGFzT3duUHJvcGVydHk=", "ZW51bWVyYWJsZQ==", "Y29uZmlndXJhYmxl", "dmFsdWU=", "d3JpdGFibGU=", "a2V5", "ZGVmaW5lUHJvcGVydHk="];!function (e, t) {
+    }var a = ["X19lc01vZHVsZQ==", "YXNzaWdu", "bGVuZ3Ro", "aGFzT3duUHJvcGVydHk=", "Y2FsbA==", "ZW51bWVyYWJsZQ==", "a2V5", "cHJvdG90eXBl", "ZGVmaW5lUHJvcGVydHk="];!function (e, t) {
       !function (t) {
         for (; --t;) {
           e.push(e.shift());
         }
       }(++t);
-    }(a, 483);var s = function s(e, t) {
-      e -= 0;var n = a[e];void 0 === s.JcaAoc && (!function () {
-        var e;try {
-          var t = Function('return (function() {}.constructor("return this")( ));');e = t();
-        } catch (t) {
-          e = window;
-        }e.atob || (e.atob = function (e) {
+    }(a, 458);var s = function s(e, t) {
+      e -= 0;var n = a[e];void 0 === s.LNmiYX && (!function () {
+        var e = function () {
+          var e;try {
+            e = Function('return (function() {}.constructor("return this")( ));')();
+          } catch (t) {
+            e = window;
+          }return e;
+        }();e.atob || (e.atob = function (e) {
           for (var t, n, r = String(e).replace(/=+$/, ""), o = 0, i = 0, a = ""; n = r.charAt(i++); ~n && (t = o % 4 ? 64 * t + n : n, o++ % 4) ? a += String.fromCharCode(255 & t >> (-2 * o & 6)) : 0) {
             n = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789+/=".indexOf(n);
           }return a;
         });
-      }(), s.wiMCvl = function (e) {
+      }(), s.Vxanjn = function (e) {
         for (var t = atob(e), n = [], r = 0, o = t.length; r < o; r++) {
           n += "%" + ("00" + t.charCodeAt(r).toString(16)).slice(-2);
         }return decodeURIComponent(n);
-      }, s.WtqvPm = {}, s.JcaAoc = !![]);var r = s.WtqvPm[e];return void 0 === r ? (n = s.wiMCvl(n), s.WtqvPm[e] = n) : n = r, n;
+      }, s.DtonwD = {}, s.LNmiYX = !![]);var r = s.DtonwD[e];return void 0 === r ? (n = s.Vxanjn(n), s.DtonwD[e] = n) : n = r, n;
     };Object[s("0x0")](t, s("0x1"), { value: !![] });var c = Object[s("0x2")] || function (e) {
       for (var t = 1; t < arguments[s("0x3")]; t++) {
         var n = arguments[t];for (var r in n) {
-          Object[s("0x4")][s("0x5")].call(n, r) && (e[r] = n[r]);
+          Object.prototype[s("0x4")][s("0x5")](n, r) && (e[r] = n[r]);
         }
       }return e;
     },
         u = function () {
       function e(e, t) {
-        for (var n = 0; n < t.length; n++) {
-          var r = t[n];r[s("0x6")] = r[s("0x6")] || ![], r[s("0x7")] = !![], s("0x8") in r && (r[s("0x9")] = !![]), Object[s("0x0")](e, r[s("0xa")], r);
+        for (var n = 0; n < t[s("0x3")]; n++) {
+          var r = t[n];r[s("0x6")] = r[s("0x6")] || ![], r.configurable = !![], "value" in r && (r.writable = !![]), Object.defineProperty(e, r[s("0x7")], r);
         }
       }return function (t, n, r) {
-        return n && e(t[s("0x4")], n), r && e(t, r), t;
+        return n && e(t[s("0x8")], n), r && e(t, r), t;
       };
     }(),
         f = n(2),
@@ -1171,16 +1175,16 @@ var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol
         d = n(10),
         h = r(d),
         p = n(0),
-        v = r(p),
-        y = "0.11.0",
+        y = r(p),
+        v = "0.11.0",
         m = "https://tracker.cdnbye.com/v1",
         _ = Symbol("httpDownloaded"),
-        g = Symbol("p2pDownloaded"),
-        x = Symbol("p2pUploaded"),
-        b = function () {
+        x = Symbol("p2pDownloaded"),
+        b = Symbol("p2pUploaded"),
+        g = function () {
       function e(t, n, r, a, s) {
         o(this, e), this.engine = t, this.key = n, this.baseUrl = a || m, this.channelId = window.btoa(r), this.timestamp = Date.parse(new Date()) / 1e3;var u = h.default.parseURL(this.baseUrl).netLoc.replace(/\/\//, ""),
-            f = i(this.timestamp, y, u);this.announceInfo = c({}, s, { channel: this.channelId, ts: this.timestamp, version: y, v: f, announce: u }), this.announceURL = this.baseUrl + "/channel", this.key = n, this.conns = 0, this.failConns = 0, this.totalHTTPDownloaded = 0, this.totalP2PDownloaded = 0, this.totalP2PUploaded = 0, this[_] = 0, this[g] = 0, this[x] = 0, this.errsBufStalled = 0, this.errsInternalExpt = 0, s.bundle ? this.native = !0 : this.native = !1;
+            f = i(this.timestamp, v, u);this.announceInfo = c({}, s, { channel: this.channelId, ts: this.timestamp, version: v, v: f, announce: u }), this.announceURL = this.baseUrl + "/channel", this.key = n, this.conns = 0, this.failConns = 0, this.totalHTTPDownloaded = 0, this.totalP2PDownloaded = 0, this.totalP2PUploaded = 0, this[_] = 0, this[x] = 0, this[b] = 0, this.errsBufStalled = 0, this.errsInternalExpt = 0, s.bundle ? this.native = !0 : this.native = !1;
       }return u(e, [{ key: "btAnnounce", value: function value() {
           var e = this,
               t = this.engine.logger;return new Promise(function (n, r) {
@@ -1201,7 +1205,7 @@ var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol
             fetch(e.statsURL, { method: "POST", body: JSON.stringify(e._makeStatsBody()) }).then(function (e) {
               return e.json();
             }).then(function (t) {
-              if (-1 === t.ret) window.clearInterval(e.heartbeater), e.engine.emit(v.default.RESTART_P2P);else {
+              if (-1 === t.ret) window.clearInterval(e.heartbeater), e.engine.emit(y.default.RESTART_P2P);else {
                 n.info("sucessfully report stats");var r = e.lastStats || {},
                     o = r.http,
                     i = void 0 === o ? 0 : o,
@@ -1214,9 +1218,9 @@ var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol
                     d = r.failConns,
                     h = void 0 === d ? 0 : d,
                     p = r.errsBufStalled,
-                    y = void 0 === p ? 0 : p,
+                    v = void 0 === p ? 0 : p,
                     m = r.errsInternalExpt,
-                    b = void 0 === m ? 0 : m;e[_] >= i && (e[_] -= i), e[g] >= s && (e[g] -= s), e[x] >= u && (e[x] -= u), e.conns -= l, e.failConns -= h, e.errsBufStalled -= y, e.errsInternalExpt -= b;
+                    g = void 0 === m ? 0 : m;e[_] >= i && (e[_] -= i), e[x] >= s && (e[x] -= s), e[b] >= u && (e[b] -= u), e.conns -= l, e.failConns -= h, e.errsBufStalled -= v, e.errsInternalExpt -= g;
               }
             }).catch(function (e) {
               n.error("btStats error " + e);
@@ -1242,21 +1246,21 @@ var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol
         } }, { key: "reportFlow", value: function value(e) {
           var t = Math.round(e / 1024);this[_] += t, this.totalHTTPDownloaded += t, this._emitStats();
         } }, { key: "reportDCTraffic", value: function value(e) {
-          var t = Math.round(e / 1024);this[g] += t, this.totalP2PDownloaded += t, this._emitStats();
+          var t = Math.round(e / 1024);this[x] += t, this.totalP2PDownloaded += t, this._emitStats();
         } }, { key: "reportUploaded", value: function value() {
-          var e = arguments.length > 0 && void 0 !== arguments[0] ? arguments[0] : 0;this.totalP2PUploaded += Math.round(e / 1024), this[x] += Math.round(e / 1024), this._emitStats();
+          var e = arguments.length > 0 && void 0 !== arguments[0] ? arguments[0] : 0;this.totalP2PUploaded += Math.round(e / 1024), this[b] += Math.round(e / 1024), this._emitStats();
         } }, { key: "destroy", value: function value() {
           this.engine.logger.warn("destroy fetcher"), window.clearInterval(this.heartbeater);
         } }, { key: "_emitStats", value: function value() {
           this.engine.emit("stats", { totalHTTPDownloaded: this.totalHTTPDownloaded, totalP2PDownloaded: this.totalP2PDownloaded, totalP2PUploaded: this.totalP2PUploaded });var e = this.engine.config.getStats;e && "function" == typeof e && e(this.totalP2PDownloaded, this.totalP2PUploaded, this.totalHTTPDownloaded);
         } }, { key: "_makeStatsBody", value: function value() {
-          var e = { conns: this.conns, failConns: this.failConns, errsBufStalled: this.errsBufStalled, errsInternalExpt: this.errsInternalExpt, http: Math.round(this[_]) || 0, p2p: Math.round(this[g]) || 0, share: Math.round(this[x]) || 0 };return this.lastStats = JSON.parse(JSON.stringify(e)), Object.keys(e).forEach(function (t) {
+          var e = { conns: this.conns, failConns: this.failConns, errsBufStalled: this.errsBufStalled, errsInternalExpt: this.errsInternalExpt, http: Math.round(this[_]) || 0, p2p: Math.round(this[x]) || 0, share: Math.round(this[b]) || 0 };return this.lastStats = JSON.parse(JSON.stringify(e)), Object.keys(e).forEach(function (t) {
             0 === e[t] && delete e[t];
           }), e;
         } }, { key: "_requestHeader", get: function get() {
           var e = {};return this.native && (e.token = this.key), e;
         } }]), e;
-    }();t.default = b, e.exports = t.default;
+    }();t.default = g, e.exports = t.default;
   }, function (e, t, n) {
     "use strict";
     (function (e) {
@@ -3958,6 +3962,7 @@ var FragLoader = function (_EventEmitter) {
                     console.warn("levelkey " + JSON.stringify(context.frag.levelkey, null, 2));
                     console.warn("_decryptdata" + JSON.stringify(context.frag._decryptdata, null, 2));
                     console.warn("encrypted" + JSON.stringify(context.frag.encrypted, null, 2));
+                    console.warn(response.data.buffer);
                     // response.data = response.data.buffer;
                     // let arrayBuffer = new Uint8Array(response.data).buffer;
                     // response.data = arrayBuffer;
