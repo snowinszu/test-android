@@ -3913,6 +3913,9 @@ var FragLoader = function (_EventEmitter) {
                     console.warn(response);
                     console.warn(stats);
                     console.warn(context);
+                    console.warn("decryptdata " + JSON.stringify(context.frag.decryptdata, null, 2));
+                    console.warn("levelkey " + JSON.stringify(context.frag.levelkey, null, 2));
+                    console.warn("_decryptdata" + JSON.stringify(context.frag._decryptdata, null, 2));
                     callbacks.onSuccess(response, stats, context);
                 }, 10);
             } else if (this.p2pEnabled && this.scheduler.hasAndSetTargetPeer(frag.sn)) {
@@ -3946,7 +3949,9 @@ var FragLoader = function (_EventEmitter) {
                     console.warn(response);
                     console.warn(stats);
                     console.warn(context);
-
+                    console.warn("decryptdata " + JSON.stringify(context.frag.decryptdata, null, 2));
+                    console.warn("levelkey " + JSON.stringify(context.frag.levelkey, null, 2));
+                    console.warn("_decryptdata" + JSON.stringify(context.frag._decryptdata, null, 2));
                     _onSuccess(response, stats, context);
                 };
             } else {
@@ -3971,8 +3976,10 @@ var FragLoader = function (_EventEmitter) {
                     console.warn(array[2]);
                     console.warn(response);
                     console.warn(stats);
-                    console.warn(context);
                     _onSuccess2(response, stats, context);
+                    console.warn("decryptdata " + JSON.stringify(context.frag.decryptdata, null, 2));
+                    console.warn("levelkey " + JSON.stringify(context.frag.levelkey, null, 2));
+                    console.warn("_decryptdata" + JSON.stringify(context.frag._decryptdata, null, 2));
                 };
             }
 
