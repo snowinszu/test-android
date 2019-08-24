@@ -483,18 +483,18 @@ var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol
         }return o;
       }function _(e) {
         return unescape(encodeURIComponent(e));
-      }function x(e) {
+      }function g(e) {
         return v(_(e));
-      }function b(e) {
-        return m(x(e));
-      }function g(e, t) {
+      }function x(e) {
+        return m(g(e));
+      }function b(e, t) {
         return y(_(e), _(t));
       }function w(e, t) {
-        return m(g(e, t));
-      }function C(e, t, n) {
-        return t ? n ? g(t, e) : w(t, e) : n ? x(e) : b(e);
+        return m(b(e, t));
+      }function R(e, t, n) {
+        return t ? n ? b(t, e) : w(t, e) : n ? g(e) : x(e);
       }void 0 !== (r = function () {
-        return C;
+        return R;
       }.call(t, n, t, e)) && (e.exports = r);
     }();
   }, function (e, t, n) {
@@ -559,7 +559,7 @@ var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol
   }, function (e, t, n) {
     "use strict";
     function r(e) {
-      if (e > x) throw new RangeError('The value "' + e + '" is invalid for option "size"');var t = new Uint8Array(e);return t.__proto__ = o.prototype, t;
+      if (e > g) throw new RangeError('The value "' + e + '" is invalid for option "size"');var t = new Uint8Array(e);return t.__proto__ = o.prototype, t;
     }function o(e, t, n) {
       if ("number" == typeof e) {
         if ("string" == typeof t) throw new TypeError('The "string" argument must be of type string. Received type number');return c(e);
@@ -588,7 +588,7 @@ var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol
             n = r(t);return 0 === n.length ? n : (e.copy(n, 0, 0, t), n);
       }return void 0 !== e.length ? "number" != typeof e.length || m(e.length) ? r(0) : f(e) : "Buffer" === e.type && Array.isArray(e.data) ? f(e.data) : void 0;
     }function h(e) {
-      if (e >= x) throw new RangeError("Attempt to allocate Buffer larger than maximum size: 0x" + x.toString(16) + " bytes");return 0 | e;
+      if (e >= g) throw new RangeError("Attempt to allocate Buffer larger than maximum size: 0x" + g.toString(16) + " bytes");return 0 | e;
     }function p(e, t) {
       if (o.isBuffer(e)) return e.length;if (ArrayBuffer.isView(e) || y(e, ArrayBuffer)) return e.byteLength;if ("string" != typeof e) throw new TypeError('The "string" argument must be one of type string, Buffer, or ArrayBuffer. Received type ' + (void 0 === e ? "undefined" : _(e)));var n = e.length,
           r = arguments.length > 2 && !0 === arguments[2];if (!r && 0 === n) return 0;for (var i = !1;;) {
@@ -629,7 +629,7 @@ var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol
       return typeof e === "undefined" ? "undefined" : _typeof(e);
     } : function (e) {
       return e && "function" == typeof Symbol && e.constructor === Symbol && e !== Symbol.prototype ? "symbol" : typeof e === "undefined" ? "undefined" : _typeof(e);
-    };t.Buffer = o;var x = 2147483647;t.kMaxLength = x, o.TYPED_ARRAY_SUPPORT = function () {
+    };t.Buffer = o;var g = 2147483647;t.kMaxLength = g, o.TYPED_ARRAY_SUPPORT = function () {
       try {
         var e = new Uint8Array(1);return e.__proto__ = { __proto__: Uint8Array.prototype, foo: function foo() {
             return 42;
@@ -689,44 +689,46 @@ var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol
       }function s(e, t, n, r) {
         var o = [];if (r) {
           for (var i = void 0, a = 0; a < n - 1; a++) {
-            i = e[u("0x65")](a * t, (a + 1) * t), o[u("0x3c")](i);
-          }i = e[u("0x65")](e[u("0x4b")] - r, e[u("0x4b")]), o[u("0x3c")](i);
+            i = e[u("0x6c")](a * t, (a + 1) * t), o.push(i);
+          }i = e[u("0x6c")](e[u("0x49")] - r, e.byteLength), o.push(i);
         } else for (var s = void 0, c = 0; c < n; c++) {
-          s = e[u("0x65")](c * t, (c + 1) * t), o[u("0x3c")](s);
+          s = e.slice(c * t, (c + 1) * t), o[u("0x3a")](s);
         }return o;
-      }var c = ["X3ByZXBhcmVGb3JCaW5hcnk=", "YXR0YWNobWVudHM=", "c2VnX2lk", "c2l6ZQ==", "bGV2ZWw=", "RENfUElFQ0VfTk9UX0ZPVU5E", "RENfUkVRVUVTVA==", "X2hhbmRsZVJlcXVlc3RNc2c=", "X2hhbmRsZVBpZWNlQWNr", "RENfVU5DSE9LRQ==", "RENfQ0xPU0U=", "cHVzaA==", "cmVtYWluQXR0YWNobWVudHM=", "c2VuZEpzb24=", "YnVmU04=", "c2VnSWQ=", "ZXhwZWN0ZWRTaXpl", "X2hhbmRsZUJpbmFyeURhdGE=", "c2VuZA==", "c3RyaW5naWZ5", "d2Fybg==", "ZGF0YWNoYW5uZWwg", "c2VuZEJpdEZpZWxk", "RENfQklURklFTEQ=", "c2VuZEJ1ZmZlcg==", "dXBsb2FkaW5n", "Ynl0ZUxlbmd0aA==", "Zmxvb3I=", "dXJnZW50", "Y2xvc2U=", "ZGVzdHJveQ==", "ZGVzdHJveSBkYXRhY2hhbm5lbCA=", "YWRqdXN0U1JJbnRlcnZhbA==", "Y2xlYXJJbnRlcnZhbA==", "Y2xlYXJUaW1lb3V0", "cmVtb3ZlQWxsTGlzdGVuZXJz", "dW5zaGlmdA==", "Z2V0UmVxdWVzdEZyb21RdWV1ZQ==", "Y29uY2F0", "YnVmQXJy", "cmVwb3J0RENUcmFmZmlj", "ZGF0YWNoYW5uZWwgZmluaXNoIGRvd25sb2FkaW5nIA==", "IGZyb20g", "ZGF0YWNoYW5uZWwgdGltZW91dCB3aGlsZSBkb3dubG9hZGluZyBmcm9tIA==", "RENfVElNRU9VVA==", "cG9w", "ZGVidWc=", "cmN2ZFJlcVF1ZXVlIHBvcCA=", "aGFz", "cGVlciBhbHJlYWR5IGhhcyA=", "bm93", "aXNBdmFpbGFibGVVcmdlbnRseQ==", "c2xpY2U=", "ZXhwb3J0cw==", "ZGVmaW5lUHJvcGVydHk=", "X19lc01vZHVsZQ==", "YXNzaWdu", "bGVuZ3Ro", "cHJvdG90eXBl", "Y2FsbA==", "ZW51bWVyYWJsZQ==", "a2V5", "VkVSU0lPTg==", "X19wcm90b19f", "Z2V0UHJvdG90eXBlT2Y=", "ZW5naW5l", "bG9nZ2Vy", "Y29uZmln", "cmVtb3RlUGVlcklk", "Y2hhbm5lbElk", "Y29ubmVjdGVk", "bXNnUXVldWU=", "bWlzcw==", "Yml0c2V0", "Y29ublRpbWVvdXQ=", "c2V0VGltZW91dA==", "ZGMg", "IGNvbm5lY3Rpb24gdGltZW91dA==", "ZW1pdA==", "ZGVmYXVsdA==", "cmN2ZFJlcVF1ZXVl", "Y2hva2Vk", "ZGVsYXlz", "ZmV0Y2hlcg==", "dGltZXN0YW1w", "dmVyc2lvbg==", "X2RhdGFjaGFubmVs", "d2ViUlRDQ29uZmln", "aXNJbml0aWF0b3I=", "X2luaXQ=", "ZG93bmxvYWROdW0=", "ZXJyb3I=", "RENfRVJST1I=", "c2lnbmFs", "RENfU0lHTkFM", "aW5mbw==", "ZXZlbnQ=", "b25jZQ==", "Y29ubmVjdA==", "RENfUE9ORw==", "X2hhbmRsZVBvbmdNc2c=", "RENfUElORw==", "RENfUElFQ0U="];!function (e, t) {
+      }var c = ["aGFzT3duUHJvcGVydHk=", "Y2FsbA==", "ZW51bWVyYWJsZQ==", "Y29uZmlndXJhYmxl", "dmFsdWU=", "d3JpdGFibGU=", "a2V5", "Z2V0UHJvdG90eXBlT2Y=", "ZW5naW5l", "bG9nZ2Vy", "Y29uZmln", "cmVtb3RlUGVlcklk", "Y2hhbm5lbElk", "bXNnUXVldWU=", "bWlzcw==", "Yml0c2V0", "Y29ublRpbWVvdXQ=", "ZGMg", "ZW1pdA==", "ZGVmYXVsdA==", "cmN2ZFJlcVF1ZXVl", "Y2hva2Vk", "ZmV0Y2hlcg==", "dGltZXN0YW1w", "dmVyc2lvbg==", "X2RhdGFjaGFubmVs", "X2luaXQ=", "ZXJyb3I=", "RENfRVJST1I=", "c2lnbmFs", "RENfU0lHTkFM", "Y29ubmVjdGVk", "Y2xlYXJUaW1lb3V0", "c2hpZnQ=", "ZXZlbnQ=", "b25jZQ==", "Y29ubmVjdA==", "ZGF0YQ==", "c3RyaW5n", "cGFyc2U=", "RENfUE9ORw==", "X2hhbmRsZVBvbmdNc2c=", "RENfUElORw==", "X3ByZXBhcmVGb3JCaW5hcnk=", "c2VnX2lk", "RENfUElFQ0VfTk9UX0ZPVU5E", "ZG93bmxvYWROdW0=", "X2hhbmRsZVJlcXVlc3RNc2c=", "X2hhbmRsZVBpZWNlQWNr", "RENfQ0hPS0U=", "RENfVU5DSE9LRQ==", "RENfQ0xPU0U=", "YnVmQXJy", "cHVzaA==", "cmVtYWluQXR0YWNobWVudHM=", "RENfUElFQ0VfQUNL", "YnVmU04=", "c2VnSWQ=", "ZXhwZWN0ZWRTaXpl", "X2hhbmRsZUJpbmFyeURhdGE=", "c2VuZEpzb24=", "c3RyaW5naWZ5", "c2VuZA==", "ZGF0YWNoYW5uZWwg", "IHNlbmQgZGF0YSBmYWlsZWQsIGNsb3NlIGl0", "c2VuZEJpdEZpZWxk", "RENfQklURklFTEQ=", "c2VuZEJ1ZmZlcg==", "Ynl0ZUxlbmd0aA==", "cGFja2V0U2l6ZQ==", "Zmxvb3I=", "YXR0YWNobWVudHM=", "cmVxdWVzdERhdGFCeUlk", "cmVxdWVzdERhdGFCeVNO", "dXJnZW50", "Y2xvc2U=", "cmVjZWl2ZVNpZ25hbA==", "ZGVzdHJveQ==", "d2Fybg==", "Y2xlYXJJbnRlcnZhbA==", "YWRqdXN0U1JJbnRlcnZhbA==", "c3RhdHNlcg==", "cmVtb3ZlQWxsTGlzdGVuZXJz", "dXBsb2FkaW5n", "dW5zaGlmdA==", "RENfUkVRVUVTVA==", "Z2V0UmVxdWVzdEZyb21RdWV1ZQ==", "bGV2ZWw=", "Y29uY2F0", "cmVwb3J0RENUcmFmZmlj", "REMgcmVwb3J0IGZhaWxlZA==", "RENfUkVTUE9OU0U=", "aW5mbw==", "IGZyb20g", "bG9hZHRpbWVvdXQ=", "RENfVElNRU9VVA==", "cG9w", "ZGVidWc=", "aGFz", "cGVlciBhbHJlYWR5IGhhcyA=", "ZGVsYXlz", "aXNBdmFpbGFibGU=", "aXNBdmFpbGFibGVVcmdlbnRseQ==", "c2xpY2U=", "ZXhwb3J0cw==", "ZGVmaW5lUHJvcGVydHk=", "X19lc01vZHVsZQ==", "YXNzaWdu", "bGVuZ3Ro", "cHJvdG90eXBl"];!function (e, t) {
         !function (t) {
           for (; --t;) {
             e.push(e.shift());
           }
         }(++t);
-      }(c, 260);var u = function u(e, t) {
-        e -= 0;var n = c[e];void 0 === u.wEuYmi && (!function () {
-          var e;try {
-            var t = Function('return (function() {}.constructor("return this")( ));');e = t();
-          } catch (t) {
-            e = window;
-          }e.atob || (e.atob = function (e) {
+      }(c, 105);var u = function u(e, t) {
+        e -= 0;var n = c[e];void 0 === u.NtfcDt && (!function () {
+          var e = function () {
+            var e;try {
+              e = Function('return (function() {}.constructor("return this")( ));')();
+            } catch (t) {
+              e = window;
+            }return e;
+          }();e.atob || (e.atob = function (e) {
             for (var t, n, r = String(e).replace(/=+$/, ""), o = 0, i = 0, a = ""; n = r.charAt(i++); ~n && (t = o % 4 ? 64 * t + n : n, o++ % 4) ? a += String.fromCharCode(255 & t >> (-2 * o & 6)) : 0) {
               n = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789+/=".indexOf(n);
             }return a;
           });
-        }(), u.YzDsup = function (e) {
+        }(), u.QDqCoA = function (e) {
           for (var t = atob(e), n = [], r = 0, o = t.length; r < o; r++) {
             n += "%" + ("00" + t.charCodeAt(r).toString(16)).slice(-2);
           }return decodeURIComponent(n);
-        }, u.dGKQux = {}, u.wEuYmi = !![]);var r = u.dGKQux[e];return void 0 === r ? (n = u.YzDsup(n), u.dGKQux[e] = n) : n = r, n;
+        }, u.cbJpDh = {}, u.NtfcDt = !![]);var r = u.cbJpDh[e];return void 0 === r ? (n = u.QDqCoA(n), u.cbJpDh[e] = n) : n = r, n;
       };Object[u("0x0")](t, u("0x1"), { value: !![] });var f = Object[u("0x2")] || function (e) {
         for (var t = 1; t < arguments[u("0x3")]; t++) {
           var n = arguments[t];for (var r in n) {
-            Object[u("0x4")].hasOwnProperty[u("0x5")](n, r) && (e[r] = n[r]);
+            Object[u("0x4")][u("0x5")][u("0x6")](n, r) && (e[r] = n[r]);
           }
         }return e;
       },
           l = function () {
         function e(e, t) {
           for (var n = 0; n < t[u("0x3")]; n++) {
-            var r = t[n];r.enumerable = r[u("0x6")] || ![], r.configurable = !![], "value" in r && (r.writable = !![]), Object[u("0x0")](e, r[u("0x7")], r);
+            var r = t[n];r[u("0x7")] = r[u("0x7")] || ![], r[u("0x8")] = !![], u("0x9") in r && (r[u("0xa")] = !![]), Object[u("0x0")](e, r[u("0xb")], r);
           }
         }return function (t, n, r) {
           return n && e(t[u("0x4")], n), r && e(t, r), t;
@@ -739,91 +741,91 @@ var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol
           y = n(0),
           m = r(y),
           _ = n(4).Buffer,
-          x = function (e) {
+          g = function (e) {
         function t(e, n, r, a, s) {
-          o(this, t);var c = i(this, (t[u("0x9")] || Object[u("0xa")](t))[u("0x5")](this));c[u("0xb")] = e, c[u("0xc")] = e.logger, c[u("0xd")] = s, c[u("0xe")] = r, c[u("0xf")] = a ? n + "-" + r : r + "-" + n, c[u("0x10")] = ![], c[u("0x11")] = [], c[u("0x12")] = 0, c[u("0x13")], c.bufArr = [], c[u("0x14")] = window[u("0x15")](function () {
-            c[u("0xc")].warn(u("0x16") + c[u("0xf")] + u("0x17")), c[u("0x18")](m[u("0x19")].DC_ERROR);
-          }, 2e4), c[u("0x1a")] = [], c.uploading = ![], c[u("0x1b")] = ![], c[u("0x1c")] = [];var l = c[u("0xb")][u("0x1d")],
-              d = l[u("0xf")],
+          o(this, t);var c = i(this, (t.__proto__ || Object[u("0xc")](t)).call(this));c[u("0xd")] = e, c.logger = e[u("0xe")], c[u("0xf")] = s, c[u("0x10")] = r, c[u("0x11")] = a ? n + "-" + r : r + "-" + n, c.connected = ![], c[u("0x12")] = [], c[u("0x13")] = 0, c[u("0x14")], c.bufArr = [], c[u("0x15")] = window.setTimeout(function () {
+            c[u("0xe")].warn(u("0x16") + c[u("0x11")] + " connection timeout"), c[u("0x17")](m[u("0x18")].DC_ERROR);
+          }, 2e4), c[u("0x19")] = [], c.uploading = ![], c[u("0x1a")] = ![], c.delays = [];var l = c[u("0xd")][u("0x1b")],
+              d = l[u("0x11")],
               p = l.id,
-              v = l[u("0x1e")],
+              v = l[u("0x1c")],
               y = l.v,
-              _ = c[u("0xb")][u("0x1f")];return c[u("0x20")] = new h[u("0x19")](f({ initiator: a, channelName: c[u("0xf")], objectMode: !![], signInfo: { channelId: d, id: p, timestamp: v, version: _, v: y } }, c[u("0xd")][u("0x21")])), c[u("0x22")] = a, c[u("0x23")](c[u("0x20")]), c[u("0x24")] = 0, c;
-        }return a(t, e), l(t, null, [{ key: u("0x8"), get: function get() {
+              _ = c[u("0xd")][u("0x1d")];return c[u("0x1e")] = new h[u("0x18")](f({ initiator: a, channelName: c[u("0x11")], objectMode: !![], signInfo: { channelId: d, id: p, timestamp: v, version: _, v: y } }, c[u("0xf")].webRTCConfig)), c.isInitiator = a, c[u("0x1f")](c[u("0x1e")]), c.downloadNum = 0, c;
+        }return a(t, e), l(t, null, [{ key: "VERSION", get: function get() {
             return "v2";
-          } }]), l(t, [{ key: "_init", value: function value(e) {
-            var t = this;e.on(u("0x25"), function (e) {
-              t[u("0x18")](m[u("0x19")][u("0x26")]);
-            }), e.on(u("0x27"), function (e) {
-              t.emit(m[u("0x19")][u("0x28")], e);
+          } }]), l(t, [{ key: u("0x1f"), value: function value(e) {
+            var t = this;e.on(u("0x20"), function (e) {
+              t.emit(m[u("0x18")][u("0x21")]);
+            }), e.on(u("0x22"), function (e) {
+              t[u("0x17")](m[u("0x18")][u("0x23")], e);
             });var n = function n() {
-              for (t[u("0xc")][u("0x29")]("datachannel CONNECTED to " + t.remotePeerId), t[u("0x10")] = !![], window.clearTimeout(t[u("0x14")]), t[u("0x18")](m.default.DC_OPEN); t[u("0x11")][u("0x3")] > 0;) {
-                var e = t.msgQueue.shift();t.emit(e[u("0x2a")], e);
+              for (t[u("0xe")].info("datachannel CONNECTED to " + t[u("0x10")]), t[u("0x24")] = !![], window[u("0x25")](t[u("0x15")]), t[u("0x17")](m[u("0x18")].DC_OPEN); t[u("0x12")][u("0x3")] > 0;) {
+                var e = t.msgQueue[u("0x26")]();t[u("0x17")](e[u("0x27")], e);
               }
-            };e[u("0x2b")](u("0x2c"), n), e.on("data", function (e) {
-              if ("string" == typeof e) {
-                var n = JSON.parse(e);if (!t.connected) return void t[u("0x11")].push(n);switch (n[u("0x2a")]) {case m[u("0x19")][u("0x2d")]:
-                    t[u("0x2e")]();break;case m[u("0x19")][u("0x2f")]:
-                    t.sendJson({ event: m[u("0x19")][u("0x2d")] });break;case m[u("0x19")][u("0x30")]:
-                    t[u("0x31")](n[u("0x32")], n[u("0x33")], n.sn, n[u("0x34")], n[u("0x35")]), t.emit(n[u("0x2a")], n);break;case m[u("0x19")][u("0x36")]:
-                    t[u("0x24")]--, t[u("0x18")](n[u("0x2a")], n);break;case m[u("0x19")][u("0x37")]:
-                    t[u("0x38")](n);break;case m[u("0x19")].DC_PIECE_ACK:
-                    t[u("0x39")](), t[u("0x18")](n.event, n);break;case m[u("0x19")].DC_CHOKE:
-                    t[u("0x1b")] = !![];break;case m[u("0x19")][u("0x3a")]:
-                    t[u("0x1b")] = ![];break;case m[u("0x19")][u("0x3b")]:
-                    t[u("0x18")](m[u("0x19")].DC_CLOSE);break;default:
-                    t[u("0x18")](n[u("0x2a")], n);}
-              } else t.bufArr[u("0x3c")](e), 0 === --t[u("0x3d")] && (t.downloadNum--, t[u("0x3e")]({ event: m[u("0x19")].DC_PIECE_ACK, sn: t[u("0x3f")], seg_id: t[u("0x40")], size: t[u("0x41")] }), t[u("0x42")]());
-            }), e.once("close", function () {
-              t[u("0x18")](m.default[u("0x3b")]);
+            };e[u("0x28")](u("0x29"), n), e.on(u("0x2a"), function (e) {
+              if ((typeof e === "undefined" ? "undefined" : _typeof(e)) === u("0x2b")) {
+                var n = JSON[u("0x2c")](e);if (!t.connected) return void t[u("0x12")].push(n);switch (n[u("0x27")]) {case m.default[u("0x2d")]:
+                    t[u("0x2e")]();break;case m[u("0x18")][u("0x2f")]:
+                    t.sendJson({ event: m[u("0x18")][u("0x2d")] });break;case m[u("0x18")].DC_PIECE:
+                    t[u("0x30")](n.attachments, n[u("0x31")], n.sn, n.size, n.level), t[u("0x17")](n.event, n);break;case m.default[u("0x32")]:
+                    t[u("0x33")]--, t[u("0x17")](n[u("0x27")], n);break;case m.default.DC_REQUEST:
+                    t[u("0x34")](n);break;case m[u("0x18")].DC_PIECE_ACK:
+                    t[u("0x35")](), t[u("0x17")](n[u("0x27")], n);break;case m[u("0x18")][u("0x36")]:
+                    t[u("0x1a")] = !![];break;case m.default[u("0x37")]:
+                    t.choked = ![];break;case m[u("0x18")].DC_CLOSE:
+                    t[u("0x17")](m[u("0x18")][u("0x38")]);break;default:
+                    t[u("0x17")](n.event, n);}
+              } else t[u("0x39")][u("0x3a")](e), 0 === --t[u("0x3b")] && (t[u("0x33")]--, t.sendJson({ event: m.default[u("0x3c")], sn: t[u("0x3d")], seg_id: t[u("0x3e")], size: t[u("0x3f")] }), t[u("0x40")]());
+            }), e[u("0x28")]("close", function () {
+              t.emit(m.default[u("0x38")]);
             });
-          } }, { key: u("0x3e"), value: function value(e) {
-            this[u("0x43")](JSON[u("0x44")](e));
-          } }, { key: "send", value: function value(e) {
-            if (this[u("0x20")] && this[u("0x20")][u("0x10")]) try {
-              this[u("0x20")][u("0x43")](e);
+          } }, { key: u("0x41"), value: function value(e) {
+            this.send(JSON[u("0x42")](e));
+          } }, { key: u("0x43"), value: function value(e) {
+            if (this[u("0x1e")] && this._datachannel[u("0x24")]) try {
+              this._datachannel[u("0x43")](e);
             } catch (e) {
-              this[u("0xc")][u("0x45")](u("0x46") + this[u("0xf")] + " send data failed, close it"), this[u("0x18")](m[u("0x19")][u("0x26")]);
+              this.logger.warn(u("0x44") + this[u("0x11")] + u("0x45")), this[u("0x17")](m[u("0x18")][u("0x21")]);
             }
-          } }, { key: u("0x47"), value: function value(e) {
-            this[u("0x3e")]({ event: m[u("0x19")][u("0x48")], field: e });
-          } }, { key: u("0x49"), value: function value(e, t, n, r) {
-            this[u("0x4a")] = !![];var o = r[u("0x4b")],
-                i = this.config.packetSize,
+          } }, { key: u("0x46"), value: function value(e) {
+            this[u("0x41")]({ event: m[u("0x18")][u("0x47")], field: e });
+          } }, { key: u("0x48"), value: function value(e, t, n, r) {
+            this.uploading = !![];var o = r[u("0x49")],
+                i = this[u("0xf")][u("0x4a")],
                 a = 0,
-                c = 0;o % i == 0 ? c = o / i : (c = Math[u("0x4c")](o / i) + 1, a = o % i);var f = {};f.event = m.default.DC_PIECE, f[u("0x32")] = c, f[u("0x33")] = n, f.sn = e, f.level = t, f[u("0x34")] = o, this[u("0x3e")](f);for (var l = s(r, i, c, a), d = 0; d < l[u("0x3")]; d++) {
+                c = 0;o % i == 0 ? c = o / i : (c = Math[u("0x4b")](o / i) + 1, a = o % i);var f = {};f.event = m.default.DC_PIECE, f[u("0x4c")] = c, f[u("0x31")] = n, f.sn = e, f.level = t, f.size = o, this[u("0x41")](f);for (var l = s(r, i, c, a), d = 0; d < l.length; d++) {
               this.send(l[d]);
             }
-          } }, { key: "requestDataById", value: function value(e, t) {
-            var n = arguments[u("0x3")] > 2 && void 0 !== arguments[2] ? arguments[2] : ![];this.downloadNum++;var r = {};r[u("0x2a")] = m.default.DC_REQUEST, r.seg_id = e, r.sn = t, r[u("0x4d")] = n, this[u("0x3e")](r);
-          } }, { key: "requestDataBySN", value: function value(e) {
-            var t = arguments[u("0x3")] > 1 && void 0 !== arguments[1] ? arguments[1] : ![];this.downloadNum++;var n = {};n.event = m.default.DC_REQUEST, n.sn = e, n[u("0x4d")] = t, this[u("0x3e")](n);
-          } }, { key: u("0x4e"), value: function value() {
-            this[u("0x18")](m[u("0x19")].DC_CLOSE);
-          } }, { key: "receiveSignal", value: function value(e) {
-            this[u("0x20")][u("0x27")](e);
-          } }, { key: u("0x4f"), value: function value() {
-            this[u("0xc")][u("0x45")](u("0x50") + this[u("0xf")]), window.clearInterval(this[u("0x51")]), window[u("0x52")](this.statser), this.connTimeout && window[u("0x53")](this[u("0x14")]);var e = {};e.event = m.default.DC_CLOSE, this[u("0x3e")](e), this._datachannel[u("0x54")](), this.removeAllListeners(), this[u("0x20")][u("0x4f")]();
-          } }, { key: u("0x38"), value: function value(e) {
-            this[u("0x4a")] || this[u("0x1a")][u("0x3")] > 0 ? e[u("0x4d")] ? this[u("0x1a")][u("0x3c")](e.sn) : this[u("0x1a")][u("0x55")](e.sn) : this[u("0x18")](m[u("0x19")][u("0x37")], e);
-          } }, { key: "_handlePieceAck", value: function value() {
-            this.uploading = ![];var e = this[u("0x56")]();e && this[u("0x18")](m[u("0x19")][u("0x37")], { sn: e });
-          } }, { key: u("0x31"), value: function value(e, t, n, r, o) {
-            this.bufArr = [], this.remainAttachments = e, this[u("0x40")] = t, this[u("0x35")] = o, this[u("0x3f")] = n, this[u("0x41")] = r;
-          } }, { key: "_handleBinaryData", value: function value() {
-            var e = _[u("0x57")](this[u("0x58")]);e.byteLength == this[u("0x41")] && (this.engine[u("0x1d")] ? this[u("0xb")][u("0x1d")][u("0x59")](this.expectedSize) : console[u("0x45")]("DC report failed"), this[u("0x18")](m[u("0x19")].DC_RESPONSE, { seg_id: this[u("0x40")], sn: this.bufSN, data: e, level: this[u("0x35")] })), this.logger[u("0x29")](u("0x5a") + this[u("0x40")] + u("0x5b") + this[u("0xe")]), this[u("0x40")] = "", this[u("0x58")] = [], this[u("0x41")] = -1;
-          } }, { key: "loadtimeout", value: function value() {
-            this.logger[u("0x45")](u("0x5c") + this.remotePeerId), this[u("0x18")](m[u("0x19")][u("0x5d")]);
-          } }, { key: "getRequestFromQueue", value: function value() {
-            if (0 == this.rcvdReqQueue[u("0x3")]) return null;var e = this.rcvdReqQueue[u("0x5e")]();return this[u("0xc")][u("0x5f")](u("0x60") + e), this[u("0x13")][u("0x61")](e) ? (this[u("0xc")][u("0x29")](u("0x62") + e), this[u("0x56")]()) : e;
-          } }, { key: u("0x2e"), value: function value() {
-            var e = performance[u("0x63")]() - this.ping;this[u("0x1c")][u("0x3c")](e);
-          } }, { key: "isAvailable", get: function get() {
-            return this[u("0x24")] < 2 && this[u("0x1b")] === ![];
-          } }, { key: u("0x64"), get: function get() {
-            return 0 === this[u("0x24")] && this[u("0x1b")] === ![];
+          } }, { key: u("0x4d"), value: function value(e, t) {
+            var n = arguments[u("0x3")] > 2 && void 0 !== arguments[2] ? arguments[2] : ![];this[u("0x33")]++;var r = {};r[u("0x27")] = m.default.DC_REQUEST, r[u("0x31")] = e, r.sn = t, r.urgent = n, this.sendJson(r);
+          } }, { key: u("0x4e"), value: function value(e) {
+            var t = arguments.length > 1 && void 0 !== arguments[1] ? arguments[1] : ![];this[u("0x33")]++;var n = {};n[u("0x27")] = m.default.DC_REQUEST, n.sn = e, n[u("0x4f")] = t, this[u("0x41")](n);
+          } }, { key: u("0x50"), value: function value() {
+            this[u("0x17")](m[u("0x18")][u("0x38")]);
+          } }, { key: u("0x51"), value: function value(e) {
+            this[u("0x1e")][u("0x22")](e);
+          } }, { key: u("0x52"), value: function value() {
+            this[u("0xe")][u("0x53")]("destroy datachannel " + this[u("0x11")]), window[u("0x54")](this[u("0x55")]), window[u("0x54")](this[u("0x56")]), this.connTimeout && window.clearTimeout(this[u("0x15")]);var e = {};e[u("0x27")] = m.default.DC_CLOSE, this[u("0x41")](e), this[u("0x1e")][u("0x57")](), this[u("0x57")](), this[u("0x1e")][u("0x52")]();
+          } }, { key: u("0x34"), value: function value(e) {
+            this[u("0x58")] || this[u("0x19")][u("0x3")] > 0 ? e[u("0x4f")] ? this[u("0x19")][u("0x3a")](e.sn) : this.rcvdReqQueue[u("0x59")](e.sn) : this.emit(m[u("0x18")][u("0x5a")], e);
+          } }, { key: u("0x35"), value: function value() {
+            this.uploading = ![];var e = this[u("0x5b")]();e && this[u("0x17")](m[u("0x18")][u("0x5a")], { sn: e });
+          } }, { key: u("0x30"), value: function value(e, t, n, r, o) {
+            this[u("0x39")] = [], this[u("0x3b")] = e, this[u("0x3e")] = t, this[u("0x5c")] = o, this[u("0x3d")] = n, this[u("0x3f")] = r;
+          } }, { key: u("0x40"), value: function value() {
+            var e = _[u("0x5d")](this.bufArr);e[u("0x49")] == this[u("0x3f")] && (this.engine[u("0x1b")] ? this[u("0xd")][u("0x1b")][u("0x5e")](this[u("0x3f")]) : console[u("0x53")](u("0x5f")), this[u("0x17")](m[u("0x18")][u("0x60")], { seg_id: this.segId, sn: this.bufSN, data: e.buffer, level: this[u("0x5c")] })), this[u("0xe")][u("0x61")]("datachannel finish downloading " + this[u("0x3e")] + u("0x62") + this[u("0x10")]), this[u("0x3e")] = "", this[u("0x39")] = [], this[u("0x3f")] = -1;
+          } }, { key: u("0x63"), value: function value() {
+            this[u("0xe")][u("0x53")]("datachannel timeout while downloading from " + this[u("0x10")]), this[u("0x17")](m[u("0x18")][u("0x64")]);
+          } }, { key: u("0x5b"), value: function value() {
+            if (0 == this[u("0x19")][u("0x3")]) return null;var e = this.rcvdReqQueue[u("0x65")]();return this[u("0xe")][u("0x66")]("rcvdReqQueue pop " + e), this[u("0x14")][u("0x67")](e) ? (this[u("0xe")].info(u("0x68") + e), this[u("0x5b")]()) : e;
+          } }, { key: "_handlePongMsg", value: function value() {
+            var e = performance.now() - this.ping;this[u("0x69")][u("0x3a")](e);
+          } }, { key: u("0x6a"), get: function get() {
+            return this[u("0x33")] < 2 && this[u("0x1a")] === ![];
+          } }, { key: u("0x6b"), get: function get() {
+            return 0 === this[u("0x33")] && this[u("0x1a")] === ![];
           } }]), t;
-      }(v[u("0x19")]);t[u("0x19")] = x, e[u("0x66")] = t[u("0x19")];
+      }(v[u("0x18")]);t[u("0x18")] = g, e[u("0x6d")] = t[u("0x18")];
     }).call(t, n(1)(e));
   }, function (e, t, n) {
     function r(e) {
@@ -850,14 +852,14 @@ var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol
       }), t.initiator && t._needsNegotiation();
     }function i(e, t) {
       var n = new Error(e);return n.code = t, n;
-    }function a() {}var s = ["Y29uc3RydWN0b3I=", "cHJvdG90eXBl", "ZnVuY3Rpb24=", "aXRlcmF0b3I=", "c3ltYm9s"];!function (e, t) {
+    }function a() {}var s = ["c3ltYm9s", "Y29uc3RydWN0b3I=", "cHJvdG90eXBl", "ZnVuY3Rpb24=", "aXRlcmF0b3I="];!function (e, t) {
       !function (t) {
         for (; --t;) {
           e.push(e.shift());
         }
       }(++t);
-    }(s, 492);var c = function c(e, t) {
-      e -= 0;var n = s[e];void 0 === c.WEImSn && (!function () {
+    }(s, 288);var c = function c(e, t) {
+      e -= 0;var n = s[e];void 0 === c.jOLAQX && (!function () {
         var e;try {
           var t = Function('return (function() {}.constructor("return this")( ));');e = t();
         } catch (t) {
@@ -867,16 +869,16 @@ var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol
             n = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789+/=".indexOf(n);
           }return a;
         });
-      }(), c.DqMFEW = function (e) {
+      }(), c.cEIFty = function (e) {
         for (var t = atob(e), n = [], r = 0, o = t.length; r < o; r++) {
           n += "%" + ("00" + t.charCodeAt(r).toString(16)).slice(-2);
         }return decodeURIComponent(n);
-      }, c.AxBvkW = {}, c.WEImSn = !![]);var r = c.AxBvkW[e];return void 0 === r ? (n = c.DqMFEW(n), c.AxBvkW[e] = n) : n = r, n;
+      }, c.eGmVUH = {}, c.jOLAQX = !![]);var r = c.eGmVUH[e];return void 0 === r ? (n = c.cEIFty(n), c.eGmVUH[e] = n) : n = r, n;
     },
         u = (typeof Symbol === "undefined" ? "undefined" : _typeof(Symbol)) === c("0x0") && _typeof(Symbol[c("0x1")]) === c("0x2") ? function (e) {
       return typeof e === "undefined" ? "undefined" : _typeof(e);
     } : function (e) {
-      return e && (typeof Symbol === "undefined" ? "undefined" : _typeof(Symbol)) === c("0x0") && e[c("0x3")] === Symbol && e !== Symbol[c("0x4")] ? "symbol" : typeof e === "undefined" ? "undefined" : _typeof(e);
+      return e && (typeof Symbol === "undefined" ? "undefined" : _typeof(Symbol)) === c("0x0") && e[c("0x3")] === Symbol && e !== Symbol[c("0x4")] ? c("0x2") : typeof e === "undefined" ? "undefined" : _typeof(e);
     },
         f = n(2),
         l = function (e) {
@@ -1067,14 +1069,14 @@ var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol
                 y = p.id,
                 m = p.timestamp,
                 _ = p.version,
-                x = p.v,
-                b = function (e, t, n, r) {
+                g = p.v,
+                x = function (e, t, n, r) {
               var o = {};return o[h("0x0")] = function (e, t, n) {
                 return e(t, n);
               }, o[h("0x1")] = function (e, t) {
                 return e + t;
               }, o[h("0x2")] = h("0x3"), o.rmPxt(l.default, o[h("0x1")](o[h("0x1")](o[h("0x1")](e, t), n), o[h("0x2")]), r);
-            }(v, y, m, _);t[h("0x4")](b.substr(0, 8) === x ? h("0x5") : "");
+            }(v, y, m, _);t[h("0x4")](x.substr(0, 8) === g ? h("0x5") : "");
           }
         });
       }var t = this;!t.connected && !t._connecting && t._pcReady && t._channelReady && (t._connecting = !0, e());
@@ -1126,41 +1128,39 @@ var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol
       var r = window.location.hostname;return function (e, t, n, r) {
         return (0, l.default)(e + t + n, r);
       }(r, t, n, e).substr(0, 8);
-    }var a = ["YXNzaWdu", "bGVuZ3Ro", "cHJvdG90eXBl", "aGFzT3duUHJvcGVydHk=", "Y2FsbA==", "ZW51bWVyYWJsZQ==", "Y29uZmlndXJhYmxl", "dmFsdWU=", "d3JpdGFibGU=", "a2V5", "ZGVmaW5lUHJvcGVydHk=", "X19lc01vZHVsZQ=="];!function (e, t) {
+    }var a = ["X19lc01vZHVsZQ==", "YXNzaWdu", "bGVuZ3Ro", "cHJvdG90eXBl", "aGFzT3duUHJvcGVydHk=", "ZW51bWVyYWJsZQ==", "Y29uZmlndXJhYmxl", "dmFsdWU=", "d3JpdGFibGU=", "a2V5", "ZGVmaW5lUHJvcGVydHk="];!function (e, t) {
       !function (t) {
         for (; --t;) {
           e.push(e.shift());
         }
       }(++t);
-    }(a, 442);var s = function s(e, t) {
-      e -= 0;var n = a[e];void 0 === s.MXNDln && (!function () {
-        var e = function () {
-          var e;try {
-            e = Function('return (function() {}.constructor("return this")( ));')();
-          } catch (t) {
-            e = window;
-          }return e;
-        }();e.atob || (e.atob = function (e) {
+    }(a, 483);var s = function s(e, t) {
+      e -= 0;var n = a[e];void 0 === s.JcaAoc && (!function () {
+        var e;try {
+          var t = Function('return (function() {}.constructor("return this")( ));');e = t();
+        } catch (t) {
+          e = window;
+        }e.atob || (e.atob = function (e) {
           for (var t, n, r = String(e).replace(/=+$/, ""), o = 0, i = 0, a = ""; n = r.charAt(i++); ~n && (t = o % 4 ? 64 * t + n : n, o++ % 4) ? a += String.fromCharCode(255 & t >> (-2 * o & 6)) : 0) {
             n = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789+/=".indexOf(n);
           }return a;
         });
-      }(), s.GAfnZS = function (e) {
+      }(), s.wiMCvl = function (e) {
         for (var t = atob(e), n = [], r = 0, o = t.length; r < o; r++) {
           n += "%" + ("00" + t.charCodeAt(r).toString(16)).slice(-2);
         }return decodeURIComponent(n);
-      }, s.uXTAsZ = {}, s.MXNDln = !![]);var r = s.uXTAsZ[e];return void 0 === r ? (n = s.GAfnZS(n), s.uXTAsZ[e] = n) : n = r, n;
+      }, s.WtqvPm = {}, s.JcaAoc = !![]);var r = s.WtqvPm[e];return void 0 === r ? (n = s.wiMCvl(n), s.WtqvPm[e] = n) : n = r, n;
     };Object[s("0x0")](t, s("0x1"), { value: !![] });var c = Object[s("0x2")] || function (e) {
       for (var t = 1; t < arguments[s("0x3")]; t++) {
         var n = arguments[t];for (var r in n) {
-          Object[s("0x4")][s("0x5")][s("0x6")](n, r) && (e[r] = n[r]);
+          Object[s("0x4")][s("0x5")].call(n, r) && (e[r] = n[r]);
         }
       }return e;
     },
         u = function () {
       function e(e, t) {
-        for (var n = 0; n < t[s("0x3")]; n++) {
-          var r = t[n];r[s("0x7")] = r[s("0x7")] || ![], r[s("0x8")] = !![], s("0x9") in r && (r[s("0xa")] = !![]), Object[s("0x0")](e, r[s("0xb")], r);
+        for (var n = 0; n < t.length; n++) {
+          var r = t[n];r[s("0x6")] = r[s("0x6")] || ![], r[s("0x7")] = !![], s("0x8") in r && (r[s("0x9")] = !![]), Object[s("0x0")](e, r[s("0xa")], r);
         }
       }return function (t, n, r) {
         return n && e(t[s("0x4")], n), r && e(t, r), t;
@@ -1175,12 +1175,12 @@ var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol
         y = "0.11.0",
         m = "https://tracker.cdnbye.com/v1",
         _ = Symbol("httpDownloaded"),
-        x = Symbol("p2pDownloaded"),
-        b = Symbol("p2pUploaded"),
-        g = function () {
+        g = Symbol("p2pDownloaded"),
+        x = Symbol("p2pUploaded"),
+        b = function () {
       function e(t, n, r, a, s) {
         o(this, e), this.engine = t, this.key = n, this.baseUrl = a || m, this.channelId = window.btoa(r), this.timestamp = Date.parse(new Date()) / 1e3;var u = h.default.parseURL(this.baseUrl).netLoc.replace(/\/\//, ""),
-            f = i(this.timestamp, y, u);this.announceInfo = c({}, s, { channel: this.channelId, ts: this.timestamp, version: y, v: f, announce: u }), this.announceURL = this.baseUrl + "/channel", this.key = n, this.conns = 0, this.failConns = 0, this.totalHTTPDownloaded = 0, this.totalP2PDownloaded = 0, this.totalP2PUploaded = 0, this[_] = 0, this[x] = 0, this[b] = 0, this.errsBufStalled = 0, this.errsInternalExpt = 0, s.bundle ? this.native = !0 : this.native = !1;
+            f = i(this.timestamp, y, u);this.announceInfo = c({}, s, { channel: this.channelId, ts: this.timestamp, version: y, v: f, announce: u }), this.announceURL = this.baseUrl + "/channel", this.key = n, this.conns = 0, this.failConns = 0, this.totalHTTPDownloaded = 0, this.totalP2PDownloaded = 0, this.totalP2PUploaded = 0, this[_] = 0, this[g] = 0, this[x] = 0, this.errsBufStalled = 0, this.errsInternalExpt = 0, s.bundle ? this.native = !0 : this.native = !1;
       }return u(e, [{ key: "btAnnounce", value: function value() {
           var e = this,
               t = this.engine.logger;return new Promise(function (n, r) {
@@ -1216,7 +1216,7 @@ var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol
                     p = r.errsBufStalled,
                     y = void 0 === p ? 0 : p,
                     m = r.errsInternalExpt,
-                    g = void 0 === m ? 0 : m;e[_] >= i && (e[_] -= i), e[x] >= s && (e[x] -= s), e[b] >= u && (e[b] -= u), e.conns -= l, e.failConns -= h, e.errsBufStalled -= y, e.errsInternalExpt -= g;
+                    b = void 0 === m ? 0 : m;e[_] >= i && (e[_] -= i), e[g] >= s && (e[g] -= s), e[x] >= u && (e[x] -= u), e.conns -= l, e.failConns -= h, e.errsBufStalled -= y, e.errsInternalExpt -= b;
               }
             }).catch(function (e) {
               n.error("btStats error " + e);
@@ -1242,21 +1242,21 @@ var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol
         } }, { key: "reportFlow", value: function value(e) {
           var t = Math.round(e / 1024);this[_] += t, this.totalHTTPDownloaded += t, this._emitStats();
         } }, { key: "reportDCTraffic", value: function value(e) {
-          var t = Math.round(e / 1024);this[x] += t, this.totalP2PDownloaded += t, this._emitStats();
+          var t = Math.round(e / 1024);this[g] += t, this.totalP2PDownloaded += t, this._emitStats();
         } }, { key: "reportUploaded", value: function value() {
-          var e = arguments.length > 0 && void 0 !== arguments[0] ? arguments[0] : 0;this.totalP2PUploaded += Math.round(e / 1024), this[b] += Math.round(e / 1024), this._emitStats();
+          var e = arguments.length > 0 && void 0 !== arguments[0] ? arguments[0] : 0;this.totalP2PUploaded += Math.round(e / 1024), this[x] += Math.round(e / 1024), this._emitStats();
         } }, { key: "destroy", value: function value() {
           this.engine.logger.warn("destroy fetcher"), window.clearInterval(this.heartbeater);
         } }, { key: "_emitStats", value: function value() {
           this.engine.emit("stats", { totalHTTPDownloaded: this.totalHTTPDownloaded, totalP2PDownloaded: this.totalP2PDownloaded, totalP2PUploaded: this.totalP2PUploaded });var e = this.engine.config.getStats;e && "function" == typeof e && e(this.totalP2PDownloaded, this.totalP2PUploaded, this.totalHTTPDownloaded);
         } }, { key: "_makeStatsBody", value: function value() {
-          var e = { conns: this.conns, failConns: this.failConns, errsBufStalled: this.errsBufStalled, errsInternalExpt: this.errsInternalExpt, http: Math.round(this[_]) || 0, p2p: Math.round(this[x]) || 0, share: Math.round(this[b]) || 0 };return this.lastStats = JSON.parse(JSON.stringify(e)), Object.keys(e).forEach(function (t) {
+          var e = { conns: this.conns, failConns: this.failConns, errsBufStalled: this.errsBufStalled, errsInternalExpt: this.errsInternalExpt, http: Math.round(this[_]) || 0, p2p: Math.round(this[g]) || 0, share: Math.round(this[x]) || 0 };return this.lastStats = JSON.parse(JSON.stringify(e)), Object.keys(e).forEach(function (t) {
             0 === e[t] && delete e[t];
           }), e;
         } }, { key: "_requestHeader", get: function get() {
           var e = {};return this.native && (e.token = this.key), e;
         } }]), e;
-    }();t.default = g, e.exports = t.default;
+    }();t.default = b, e.exports = t.default;
   }, function (e, t, n) {
     "use strict";
     (function (e) {
@@ -3947,10 +3947,10 @@ var FragLoader = function (_EventEmitter) {
                     console.warn(array[0]);
                     console.warn(array[1]);
                     console.warn(array[2]);
-                    delete response.level;
-                    delete response.seg_id;
-                    delete response.sn;
-                    response.url = context.url;
+                    // delete response.level;
+                    // delete response.seg_id;
+                    // delete response.sn;
+                    // response.url = context.url;
                     console.warn(response);
                     console.warn(stats);
                     console.warn(context);
@@ -3959,8 +3959,8 @@ var FragLoader = function (_EventEmitter) {
                     console.warn("_decryptdata" + JSON.stringify(context.frag._decryptdata, null, 2));
                     console.warn("encrypted" + JSON.stringify(context.frag.encrypted, null, 2));
                     // response.data = response.data.buffer;
-                    var arrayBuffer = new Uint8Array(response.data).buffer;
-                    response.data = arrayBuffer;
+                    // let arrayBuffer = new Uint8Array(response.data).buffer;
+                    // response.data = arrayBuffer;
                     _onSuccess(response, stats, context);
                 };
             } else {
