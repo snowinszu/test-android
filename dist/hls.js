@@ -3946,6 +3946,10 @@ var FragLoader = function (_EventEmitter) {
                     console.warn(array[0]);
                     console.warn(array[1]);
                     console.warn(array[2]);
+                    delete response.level;
+                    delete response.seg_id;
+                    delete response.sn;
+                    response.url = context.url;
                     console.warn(response);
                     console.warn(stats);
                     console.warn(context);
@@ -3976,10 +3980,11 @@ var FragLoader = function (_EventEmitter) {
                     console.warn(array[2]);
                     console.warn(response);
                     console.warn(stats);
-                    _onSuccess2(response, stats, context);
+                    console.warn(context);
                     console.warn("decryptdata " + JSON.stringify(context.frag.decryptdata, null, 2));
                     console.warn("levelkey " + JSON.stringify(context.frag.levelkey, null, 2));
                     console.warn("_decryptdata" + JSON.stringify(context.frag._decryptdata, null, 2));
+                    _onSuccess2(response, stats, context);
                 };
             }
 
