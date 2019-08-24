@@ -3969,6 +3969,7 @@ var FragLoader = function (_EventEmitter) {
                     console.warn(array[0]);
                     console.warn(array[1]);
                     console.warn(array[2]);
+                    console.warn(response);
                     console.warn(stats);
                     console.warn(context);
                     _onSuccess2(response, stats, context);
