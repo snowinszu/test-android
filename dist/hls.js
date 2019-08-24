@@ -3906,6 +3906,10 @@ var FragLoader = function (_EventEmitter) {
                     //     console.warn(`${segId} ${hash}`)
                     // })
                     console.warn("p2p cache");
+                    var array = new Uint8Array(response.data);
+                    console.warn(array[0]);
+                    console.warn(array[1]);
+                    console.warn(array[2]);
                     console.warn(response);
                     console.warn(stats);
                     console.warn(context);
@@ -3935,6 +3939,10 @@ var FragLoader = function (_EventEmitter) {
                     logger.debug((frag.loadByP2P ? 'P2P' : 'HTTP') + ' loaded segment id ' + segId);
 
                     console.warn("p2p");
+                    var array = new Uint8Array(response.data);
+                    console.warn(array[0]);
+                    console.warn(array[1]);
+                    console.warn(array[2]);
                     console.warn(response);
                     console.warn(stats);
                     console.warn(context);
@@ -3957,7 +3965,10 @@ var FragLoader = function (_EventEmitter) {
                     //     console.warn(`${segId} ${hash}`)
                     // })
                     console.warn("http");
-                    console.warn(response);
+                    var array = new Uint8Array(response.data);
+                    console.warn(array[0]);
+                    console.warn(array[1]);
+                    console.warn(array[2]);
                     console.warn(stats);
                     console.warn(context);
                     _onSuccess2(response, stats, context);
