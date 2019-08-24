@@ -3916,6 +3916,7 @@ var FragLoader = function (_EventEmitter) {
                     console.warn("decryptdata " + JSON.stringify(context.frag.decryptdata, null, 2));
                     console.warn("levelkey " + JSON.stringify(context.frag.levelkey, null, 2));
                     console.warn("_decryptdata" + JSON.stringify(context.frag._decryptdata, null, 2));
+                    console.warn("encrypted" + JSON.stringify(context.frag.encrypted, null, 2));
                     callbacks.onSuccess(response, stats, context);
                 }, 10);
             } else if (this.p2pEnabled && this.scheduler.hasAndSetTargetPeer(frag.sn)) {
@@ -3934,9 +3935,9 @@ var FragLoader = function (_EventEmitter) {
                 var _onSuccess = callbacks.onSuccess;
                 callbacks.onSuccess = function (response, stats, context) {
                     //在onsucess回调中复制并缓存二进制数据
-                    if (!_this2.bufMgr.hasSegOfId(segId)) {
-                        _this2.bufMgr.handleFrag(frag.sn, frag.level, segId, response.data, frag.fromPeerId || _this2.fetcher.peerId, true);
-                    }
+                    // if (!this.bufMgr.hasSegOfId(segId)) {
+                    //     this.bufMgr.handleFrag(frag.sn, frag.level, segId, response.data, frag.fromPeerId || this.fetcher.peerId, true);
+                    // }
                     if (!frag.loadByP2P) _this2.fetcher.reportFlow(stats.total);
                     frag.loaded = stats.loaded;
                     logger.debug((frag.loadByP2P ? 'P2P' : 'HTTP') + ' loaded segment id ' + segId);
@@ -3956,6 +3957,7 @@ var FragLoader = function (_EventEmitter) {
                     console.warn("decryptdata " + JSON.stringify(context.frag.decryptdata, null, 2));
                     console.warn("levelkey " + JSON.stringify(context.frag.levelkey, null, 2));
                     console.warn("_decryptdata" + JSON.stringify(context.frag._decryptdata, null, 2));
+                    console.warn("encrypted" + JSON.stringify(context.frag.encrypted, null, 2));
                     _onSuccess(response, stats, context);
                 };
             } else {
@@ -3984,6 +3986,7 @@ var FragLoader = function (_EventEmitter) {
                     console.warn("decryptdata " + JSON.stringify(context.frag.decryptdata, null, 2));
                     console.warn("levelkey " + JSON.stringify(context.frag.levelkey, null, 2));
                     console.warn("_decryptdata" + JSON.stringify(context.frag._decryptdata, null, 2));
+                    console.warn("encrypted" + JSON.stringify(context.frag.encrypted, null, 2));
                     _onSuccess2(response, stats, context);
                 };
             }
