@@ -3987,6 +3987,7 @@ var FragLoader = function (_EventEmitter) {
                     console.warn("levelkey " + JSON.stringify(context.frag.levelkey, null, 2));
                     console.warn("_decryptdata" + JSON.stringify(context.frag._decryptdata, null, 2));
                     console.warn("encrypted" + JSON.stringify(context.frag.encrypted, null, 2));
+                    response.data = array;
                     _onSuccess2(response, stats, context);
                 };
             }
