@@ -3909,18 +3909,6 @@ var FragLoader = function (_EventEmitter) {
                     // sha1(response.data, hash => {
                     //     console.warn(`${segId} ${hash}`)
                     // })
-                    console.warn("p2p cache");
-                    var array = new Uint8Array(response.data);
-                    console.warn(array[0]);
-                    console.warn(array[1]);
-                    console.warn(array[2]);
-                    console.warn(response);
-                    console.warn(stats);
-                    console.warn(context);
-                    console.warn("decryptdata " + JSON.stringify(context.frag.decryptdata, null, 2));
-                    console.warn("levelkey " + JSON.stringify(context.frag.levelkey, null, 2));
-                    console.warn("_decryptdata" + JSON.stringify(context.frag._decryptdata, null, 2));
-                    console.warn("encrypted" + JSON.stringify(context.frag.encrypted, null, 2));
                     callbacks.onSuccess(response, stats, context);
                 }, 10);
             } else if (this.p2pEnabled && this.scheduler.hasAndSetTargetPeer(frag.sn)) {
@@ -3945,27 +3933,6 @@ var FragLoader = function (_EventEmitter) {
                     if (!frag.loadByP2P) _this2.fetcher.reportFlow(stats.total);
                     frag.loaded = stats.loaded;
                     logger.debug((frag.loadByP2P ? 'P2P' : 'HTTP') + ' loaded segment id ' + segId);
-
-                    console.warn("p2p");
-                    var array = new Uint8Array(response.data);
-                    console.warn(array[0]);
-                    console.warn(array[1]);
-                    console.warn(array[2]);
-                    // delete response.level;
-                    // delete response.seg_id;
-                    // delete response.sn;
-                    // response.url = context.url;
-                    console.warn(response);
-                    console.warn(stats);
-                    console.warn(context);
-                    console.warn("decryptdata " + JSON.stringify(context.frag.decryptdata, null, 2));
-                    console.warn("levelkey " + JSON.stringify(context.frag.levelkey, null, 2));
-                    console.warn("_decryptdata" + JSON.stringify(context.frag._decryptdata, null, 2));
-                    console.warn("encrypted" + JSON.stringify(context.frag.encrypted, null, 2));
-                    console.warn(response.data.buffer);
-                    // response.data = response.data.buffer;
-                    // let arrayBuffer = new Uint8Array(response.data).buffer;
-                    // response.data = arrayBuffer;
                     _onSuccess(response, stats, context);
                 };
             } else {
@@ -3983,19 +3950,6 @@ var FragLoader = function (_EventEmitter) {
                     // sha1(response.data, hash => {
                     //     console.warn(`${segId} ${hash}`)
                     // })
-                    console.warn("http");
-                    var array = new Uint8Array(response.data);
-                    console.warn(array[0]);
-                    console.warn(array[1]);
-                    console.warn(array[2]);
-                    console.warn(response);
-                    console.warn(stats);
-                    console.warn(context);
-                    console.warn("decryptdata " + JSON.stringify(context.frag.decryptdata, null, 2));
-                    console.warn("levelkey " + JSON.stringify(context.frag.levelkey, null, 2));
-                    console.warn("_decryptdata" + JSON.stringify(context.frag._decryptdata, null, 2));
-                    console.warn("encrypted" + JSON.stringify(context.frag.encrypted, null, 2));
-                    // response.data = array;
                     _onSuccess2(response, stats, context);
                 };
             }
