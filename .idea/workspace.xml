@@ -2,7 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="83abb475-70c7-47dc-8d11-f848b500cd28" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ckplayer.html" beforeDir="false" afterPath="$PROJECT_DIR$/ckplayer.html" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/.tmp/" />
     <ignored path="$PROJECT_DIR$/temp/" />
@@ -42,13 +42,13 @@
       </usages-collector>
       <usages-collector id="statistics.file.extensions.edit">
         <counts>
-          <entry key="html" value="159" />
+          <entry key="html" value="163" />
           <entry key="json" value="1" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.edit">
         <counts>
-          <entry key="HTML" value="159" />
+          <entry key="HTML" value="163" />
           <entry key="JSON" value="1" />
         </counts>
       </usages-collector>
@@ -65,23 +65,14 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="false">
+      <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/ckplayer.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="528">
-              <caret line="24" column="62" selection-start-line="24" selection-start-column="62" selection-end-line="24" selection-end-column="62" />
+            <state relative-caret-position="318">
+              <caret line="41" lean-forward="true" selection-end-line="55" selection-end-column="7" />
               <folding>
                 <element signature="n#style#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
               </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/ckplayer/hls/hls.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="175">
-              <caret line="23" column="36" selection-start-line="23" selection-start-column="36" selection-end-line="23" selection-end-column="36" />
             </state>
           </provider>
         </entry>
@@ -174,13 +165,13 @@
         <option value="$PROJECT_DIR$/package.json" />
         <option value="$PROJECT_DIR$/native.html" />
         <option value="$PROJECT_DIR$/temp.html" />
-        <option value="$PROJECT_DIR$/ckplayer.html" />
         <option value="$PROJECT_DIR$/p2p-ckplayer.html" />
         <option value="$PROJECT_DIR$/hlsjs.html" />
         <option value="$PROJECT_DIR$/p2p-dplayer.html" />
         <option value="$PROJECT_DIR$/dplayer.html" />
         <option value="$PROJECT_DIR$/engine.html" />
         <option value="$PROJECT_DIR$/quick-start.html" />
+        <option value="$PROJECT_DIR$/ckplayer.html" />
       </list>
     </option>
   </component>
@@ -219,19 +210,6 @@
               <item name="test-android" type="b2602c69:ProjectViewProjectNode" />
               <item name="test-android" type="462c0819:PsiDirectoryNode" />
               <item name="ckplayer" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="test-android" type="b2602c69:ProjectViewProjectNode" />
-              <item name="test-android" type="462c0819:PsiDirectoryNode" />
-              <item name="ckplayer" type="462c0819:PsiDirectoryNode" />
-              <item name="hls" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="test-android" type="b2602c69:ProjectViewProjectNode" />
-              <item name="test-android" type="462c0819:PsiDirectoryNode" />
-              <item name="ckplayer" type="462c0819:PsiDirectoryNode" />
-              <item name="hls" type="462c0819:PsiDirectoryNode" />
-              <item name="hls.js" type="620a8d5e:NestingTreeNode" />
             </path>
             <path>
               <item name="test-android" type="b2602c69:ProjectViewProjectNode" />
@@ -308,23 +286,23 @@
       <workItem from="1566309915347" duration="1393000" />
       <workItem from="1566568635834" duration="615000" />
       <workItem from="1566614707321" duration="4861000" />
-      <workItem from="1567153040780" duration="315000" />
+      <workItem from="1567153040780" duration="1488000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="22317000" />
+    <option name="totallyTimeSpent" value="23490000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-1920" y="0" width="1920" height="1080" extended-state="6" />
     <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="0" sideWeight="0.4871795" visible="true" weight="0.20644139" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" sideWeight="0.6336088" visible="true" weight="0.20644139" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
-      <window_info id="npm" order="2" sideWeight="0.51282054" side_tool="true" visible="true" weight="0.20644139" />
+      <window_info id="npm" order="2" sideWeight="0.36639118" side_tool="true" visible="true" weight="0.20644139" />
       <window_info id="Favorites" order="3" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" />
-      <window_info anchor="bottom" id="Run" order="2" weight="0.32820514" />
+      <window_info anchor="bottom" id="Run" order="2" visible="true" weight="0.25538462" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
@@ -429,20 +407,20 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/ckplayer.html">
+    <entry file="file://$PROJECT_DIR$/ckplayer/hls/hls.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="528">
-          <caret line="24" column="62" selection-start-line="24" selection-start-column="62" selection-end-line="24" selection-end-column="62" />
-          <folding>
-            <element signature="n#style#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
-          </folding>
+        <state relative-caret-position="506">
+          <caret line="23" column="36" selection-start-line="23" selection-start-column="36" selection-end-line="23" selection-end-column="36" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/ckplayer/hls/hls.js">
+    <entry file="file://$PROJECT_DIR$/ckplayer.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="175">
-          <caret line="23" column="36" selection-start-line="23" selection-start-column="36" selection-end-line="23" selection-end-column="36" />
+        <state relative-caret-position="318">
+          <caret line="41" lean-forward="true" selection-end-line="55" selection-end-column="7" />
+          <folding>
+            <element signature="n#style#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
