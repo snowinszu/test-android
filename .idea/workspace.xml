@@ -27,7 +27,7 @@
       <usages-collector id="statistics.file.extensions.open">
         <counts>
           <entry key="html" value="12" />
-          <entry key="js" value="20" />
+          <entry key="js" value="21" />
           <entry key="json" value="1" />
         </counts>
       </usages-collector>
@@ -35,7 +35,7 @@
         <counts>
           <entry key="HTML" value="12" />
           <entry key="JSON" value="1" />
-          <entry key="JavaScript" value="20" />
+          <entry key="JavaScript" value="21" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.extensions.edit">
@@ -59,7 +59,7 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/ckplayer.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="320">
+            <state relative-caret-position="435">
               <caret line="23" column="55" selection-start-line="23" selection-start-column="55" selection-end-line="23" selection-end-column="55" />
               <folding>
                 <element signature="n#style#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
@@ -336,24 +336,23 @@
       <workItem from="1566309915347" duration="1393000" />
       <workItem from="1566568635834" duration="615000" />
       <workItem from="1566614707321" duration="4861000" />
-      <workItem from="1567153040780" duration="7388000" />
+      <workItem from="1567153040780" duration="7431000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="29390000" />
+    <option name="totallyTimeSpent" value="29433000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-1920" y="0" width="1920" height="1080" extended-state="0" />
-    <editor active="true" />
     <layout>
       <window_info content_ui="combo" id="Project" order="0" sideWeight="0.6336088" visible="true" weight="0.20644139" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
-      <window_info active="true" id="npm" order="2" sideWeight="0.36639118" side_tool="true" visible="true" weight="0.20644139" />
+      <window_info id="npm" order="2" sideWeight="0.36639118" side_tool="true" visible="true" weight="0.20644139" />
       <window_info id="Favorites" order="3" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" />
-      <window_info anchor="bottom" id="Run" order="2" visible="true" weight="0.25538462" />
+      <window_info active="true" anchor="bottom" id="Run" order="2" visible="true" weight="0.25538462" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
@@ -521,7 +520,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/ckplayer.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="320">
+        <state relative-caret-position="435">
           <caret line="23" column="55" selection-start-line="23" selection-start-column="55" selection-end-line="23" selection-end-column="55" />
           <folding>
             <element signature="n#style#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />

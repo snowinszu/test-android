@@ -8182,7 +8182,7 @@ function ckplayerConfig() {
             判断是否是UC浏览器
         */
         isUCBrowser: function() {
-            if (navigator.userAgent.indexOf('UBrowser') > -1) {
+            if (navigator.userAgent.indexOf('UBrowser') > -1 || navigator.userAgent.indexOf('UCBrowser') > -1) {
                 return true;
             }
             return false;
