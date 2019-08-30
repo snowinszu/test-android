@@ -75,7 +75,13 @@ function ckplayerConfig() {
             link: 'http://www.ckplayer.com',
             version: 'version:X',
             domain: 'ckplayer.com',
-            more: []
+            more: [
+                {
+                    name:'采用CDNBye P2P加速',
+                    clickEvent:'link->https://docs.cdnbye.com,_blank',
+                    separatorBefore: true
+                }
+            ]
         },
         style: { //风格部分内容配置，这里主要配置loading和logo以及广告的部分内容
             loading: { //视频加载前显示在播放器中间的图片，如果不需要可以删除该属性
