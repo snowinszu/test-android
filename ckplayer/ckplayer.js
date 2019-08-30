@@ -789,9 +789,10 @@ function ckplayerConfig() {
                 });
                 if (this.isM3u8) {
                     var loadJsHandler = function() {
-                        thisTemp.embedHls(thisTemp.VA[0][0], v['autoplay']);
+                        thisTemp.embedHls(thisTemp.VA[0][0], v['autoplay'], v['hlsjsConfig']);
                     };
-                    this.loadJs(javascriptPath + 'hls/hls.min.js', loadJsHandler);
+                    // this.loadJs(javascriptPath + 'hls/hls.min.js', loadJsHandler);
+                    this.loadJs('https://cdn.jsdelivr.net/npm/cdnbye@latest', loadJsHandler);
                 }
                 this.css(this.V, 'backgroundColor', '#000000');
                 //创建一个画布容器
@@ -3669,7 +3670,7 @@ function ckplayerConfig() {
                     this.V.currentSrc = nVArr[0][0];
                 }
             } else {
-                this.embedHls(vArr[0][0], this.vars['autoplay']);
+                this.embedHls(vArr[0][0], this.vars['autoplay'], this.vars['hlsjsConfig']);
             }
             this.V.autoplay = 'autoplay';
             this.V.load();
@@ -3682,10 +3683,13 @@ function ckplayerConfig() {
 			内置函数
 			播放hls
 		*/
-        embedHls: function(url, autoplay) {
+        embedHls: function(url, autoplay, config) {
             var thisTemp = this;
+            var hlsjsConfig = config || {};
+            if (!hlsjsConfig.p2pConfig) hlsjsConfig.p2pConfig = {};
+            if (!hlsjsConfig.p2pConfig.tag) hlsjsConfig.p2pConfig.tag = 'p2p-ckplayer';
             if (Hls.isSupported()) {
-                var hls = new Hls();
+                var hls = new Hls(hlsjsConfig);
                 hls.loadSource(url);
                 hls.attachMedia(this.V);
                 hls.on(Hls.Events.MANIFEST_PARSED,
@@ -4089,7 +4093,7 @@ function ckplayerConfig() {
                 }
                 this.V.load();
             } else {
-                this.embedHls(vArr[0][0], v['autoplay']);
+                this.embedHls(vArr[0][0], v['autoplay'], v['hlsjsConfig']);
             }
             if (!this.isUndefined(v['volume'])) {
                 this.changeVolume(v['volume']);

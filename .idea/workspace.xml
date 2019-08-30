@@ -2,7 +2,6 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="83abb475-70c7-47dc-8d11-f848b500cd28" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/ckhome.html" beforeDir="false" afterPath="$PROJECT_DIR$/ckhome.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/ckplayer/ckplayer.js" beforeDir="false" afterPath="$PROJECT_DIR$/ckplayer/ckplayer.js" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/.tmp/" />
@@ -44,6 +43,7 @@
       <usages-collector id="statistics.file.extensions.edit">
         <counts>
           <entry key="html" value="164" />
+          <entry key="js" value="7" />
           <entry key="json" value="1" />
         </counts>
       </usages-collector>
@@ -51,6 +51,7 @@
         <counts>
           <entry key="HTML" value="164" />
           <entry key="JSON" value="1" />
+          <entry key="JavaScript" value="7" />
         </counts>
       </usages-collector>
     </session>
@@ -69,10 +70,10 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/ckhome.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="242">
+            <state relative-caret-position="219">
               <caret line="21" column="63" lean-forward="true" selection-start-line="21" selection-start-column="63" selection-end-line="21" selection-end-column="63" />
               <folding>
                 <element signature="e#6122#6126#0" expanded="true" />
@@ -110,11 +111,11 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="false">
+      <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/ckplayer/ckplayer.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="275">
-              <caret line="3682" column="17" selection-start-line="3682" selection-start-column="14" selection-end-line="3682" selection-end-column="17" />
+            <state relative-caret-position="255">
+              <caret line="4095" column="71" selection-start-line="4095" selection-start-column="71" selection-end-line="4095" selection-end-column="71" />
               <folding>
                 <element signature="n#!!doc" expanded="true" />
                 <element signature="n#style#0;n#a#0;n#p#1;n#!!top" expanded="true" />
@@ -201,8 +202,10 @@
     <findStrings>
       <find>stats</find>
       <find>top.</find>
-      <find>m3u8</find>
       <find>hls</find>
+      <find>thisTemp</find>
+      <find>m3u8</find>
+      <find>embedHls</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
@@ -222,8 +225,8 @@
         <option value="$PROJECT_DIR$/engine.html" />
         <option value="$PROJECT_DIR$/quick-start.html" />
         <option value="$PROJECT_DIR$/ckplayer.html" />
-        <option value="$PROJECT_DIR$/ckplayer/ckplayer.js" />
         <option value="$PROJECT_DIR$/ckhome.html" />
+        <option value="$PROJECT_DIR$/ckplayer/ckplayer.js" />
       </list>
     </option>
   </component>
@@ -240,7 +243,7 @@
       <path value="$PROJECT_DIR$/package.json" />
     </packageJsonPaths>
   </component>
-  <component name="ProjectFrameBounds" extendedState="6" fullScreen="true">
+  <component name="ProjectFrameBounds" fullScreen="true">
     <option name="x" value="-1920" />
     <option name="y" value="23" />
     <option name="width" value="1920" />
@@ -339,15 +342,15 @@
       <workItem from="1566309915347" duration="1393000" />
       <workItem from="1566568635834" duration="615000" />
       <workItem from="1566614707321" duration="4861000" />
-      <workItem from="1567153040780" duration="2952000" />
+      <workItem from="1567153040780" duration="3439000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="24954000" />
+    <option name="totallyTimeSpent" value="25441000" />
   </component>
   <component name="ToolWindowManager">
-    <frame x="-1920" y="0" width="1920" height="1080" extended-state="6" />
+    <frame x="-1920" y="0" width="1920" height="1080" extended-state="0" />
     <editor active="true" />
     <layout>
       <window_info active="true" content_ui="combo" id="Project" order="0" sideWeight="0.6336088" visible="true" weight="0.20644139" />
@@ -468,19 +471,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/ckplayer/ckplayer.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="275">
-          <caret line="3682" column="17" selection-start-line="3682" selection-start-column="14" selection-end-line="3682" selection-end-column="17" />
-          <folding>
-            <element signature="n#!!doc" expanded="true" />
-            <element signature="n#style#0;n#a#0;n#p#1;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#img#0;n#a#0;n#div#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#img#0;n#div#0;n#!!top" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/ckplayer.html">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="549">
@@ -493,7 +483,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/ckhome.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="242">
+        <state relative-caret-position="219">
           <caret line="21" column="63" lean-forward="true" selection-start-line="21" selection-start-column="63" selection-end-line="21" selection-end-column="63" />
           <folding>
             <element signature="e#6122#6126#0" expanded="true" />
@@ -526,6 +516,19 @@
             <element signature="e#6710#6714#0" expanded="true" />
             <element signature="e#7395#7401#0" expanded="true" />
             <element signature="n#style#0;n#span#0;n#div#0;n#div#5;n#body#0;n#html#0;n#!!top" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/ckplayer/ckplayer.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="255">
+          <caret line="4095" column="71" selection-start-line="4095" selection-start-column="71" selection-end-line="4095" selection-end-column="71" />
+          <folding>
+            <element signature="n#!!doc" expanded="true" />
+            <element signature="n#style#0;n#a#0;n#p#1;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#img#0;n#a#0;n#div#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#img#0;n#div#0;n#!!top" expanded="true" />
           </folding>
         </state>
       </provider>
