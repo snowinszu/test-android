@@ -6,7 +6,7 @@
 </head>
 <body>
 <script>
-    const isQQBrowser = /MQQBrowser/i.test(navigator.userAgent) && !/ QQ/i.test(navigator.userAgent);
+    const isQQBrowser = /MQQBrowser/i.test(navigator.userAgent) && !/\sQQ/i.test(navigator.userAgent);
     if (isQQBrowser) {
         alert('QQ浏览器')
     }
