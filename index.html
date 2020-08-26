@@ -1,120 +1,57 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Test Android</title>
-</head>
-<body>
+<meta charset="UTF-8">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/dplayer@1.25.0/dist/DPlayer.min.css">
+<style type="text/css">
+    body,html{width:100%;height:100%;background:#000;padding:0;margin:0;overflow-x:hidden;overflow-y:hidden}
+    *{margin:0;border:0;padding:0;text-decoration:none}
+    #stats{position:fixed;top:5px;left:10px;font-size:12px;color:#fdfdfd;z-index:2147483647;text-shadow:1px 1px 1px #000, 1px 1px 1px #000}
+    #dplayer{position:inherit}
+</style>
+<div id="dplayer"></div>
+<div id="stats"></div>
+<script src="https://cdn.jsdelivr.net/npm/cdnbye@latest"></script>
+<script src="https://cdn.jsdelivr.net/npm/dplayer@1.25.0"></script>
 <script>
-    const isQQBrowser = /MQQBrowser/i.test(navigator.userAgent) && !/\sQQ/i.test(navigator.userAgent);
-    if (isQQBrowser) {
-        alert('QQ浏览器')
+    var _peerId = '', _peerNum = 0, _totalP2PDownloaded = 0, _totalP2PUploaded = 0;
+    var type = 'normal';
+    if(Hls.isSupported() && Hls.WEBRTC_SUPPORT) {
+        type = 'customHls';
     }
-    // var os = {
-    //     //网络类型 wifi 4g 3g 2g unknown or ''
-    //     getNetType: function () {
-    //         return ((new RegExp('nettype\\/(\\w*)').exec(_getUA()) || [, ''])[1]).toLowerCase();
-    //     },
-    //     //获取设备类型
-    //     getPlatform: function () {
-    //         if (os.isAndroid()) {
-    //             return 'android';
-    //         } else if (os.isIOS()) {
-    //             return 'iOS';
-    //         } else {
-    //             return 'PC';
-    //         }
-    //     },
-    //     isX5: function () {
-    //         return this.isAndroid() && /\s(TBS|X5Core)\/[\w\.\-]+/i.test(_getUA());
-    //     },
-    //     isPC: function () {
-    //         return !_toNum(_platform('os ')) && !_toNum(_platform('android[/ ]'));
-    //     },
-    //     isIOS: function () {
-    //         return _toNum(_platform('os '));
-    //     },
-    //     isAndroid: function () {
-    //         return _toNum(_platform('android[/ ]'));
-    //     },
-    //     isSafari: function () {
-    //         return this.isIOS() && /^((?!chrome|android).)*safari/i.test(_getUA());
-    //     },
-    // };
-    //
-    // function _getUA() {
-    //     return navigator.userAgent.toLowerCase();
-    // }
-    //
-    // function _platform(os) {
-    //     var ver = ('' + (new RegExp(os + '(\\d+((\\.|_)\\d+)*)').exec(_getUA()) || [, 0])[1]);
-    //     // undefined < 3 === false, but null < 3 === true
-    //     return ver || undefined;
-    // }
-    //
-    // function _toNum(str) {
-    //     return parseFloat((str || "").replace(/\_/g, '.')) || 0;
-    // }
-    //
-    // // module.exports = os;
-    //
-    // var browser={
-    //     versions:function(){
-    //         var u = navigator.userAgent, app = navigator.appVersion;
-    //         return {
-    //             trident: u.indexOf('Trident') > -1, //IE内核
-    //             presto: u.indexOf('Presto') > -1, //opera内核
-    //             webKit: u.indexOf('AppleWebKit') > -1, //苹果、谷歌内核
-    //             gecko: u.indexOf('Gecko') > -1 && u.indexOf('KHTML') == -1,//火狐内核
-    //             mobile: !!u.match(/AppleWebKit.*Mobile.*/), //是否为移动终端
-    //             ios: !!u.match(/\(i[^;]+;( U;)? CPU.+Mac OS X/), //ios终端
-    //             android: u.indexOf('Android') > -1 || u.indexOf('Adr') > -1, //android终端
-    //             iPhone: u.indexOf('iPhone') > -1 , //是否为iPhone或者QQHD浏览器
-    //             iPad: u.indexOf('iPad') > -1, //是否iPad
-    //             webApp: u.indexOf('Safari') == -1, //是否web应该程序，没有头部与底部
-    //             weixin: u.indexOf('MicroMessenger') > -1, //是否微信 （2015-01-22新增）
-    //             qq: u.match(/\sQQ/i) == " qq" //是否QQ
-    //         };
-    //     }(),
-    //     language:(navigator.browserLanguage || navigator.language).toLowerCase()
-    // }
-    //
-    // //判断是否android浏览器
-    // if(browser.versions.android && !browser.versions.weixin){
-    //     alert('这是android浏览器')
-    // }
-    //
-    // //判断是否ios浏览器
-    // if(browser.versions.ios && !browser.versions.weixin){
-    //     alert('这是IOS浏览器')
-    // }
-    // //判断是否微信浏览器
-    // if(browser.versions.weixin){
-    //     alert('这是微信浏览器')
-    // }
-    //
-    // if (browser.versions.webKit) {
-    //     alert('webKit')
-    // }
-    // if (browser.versions.trident) {
-    //     alert('trident')
-    // }
-    // if (browser.versions.presto) {
-    //     alert('presto')
-    // }
-    // if (browser.versions.gecko) {
-    //     alert('gecko')
-    // }
-    // if (browser.versions.webApp) {
-    //     alert('webApp')
-    // }
-    //
-    // if(!browser.versions.android && !browser.versions.ios && !browser.versions.weixin){
-    //     alert('非andriod和ios 以及微信浏览器')
-    // }
-    //
-    // console.log(navigator.userAgent)
-    // alert(navigator.userAgent)
+    const dp = new DPlayer({
+        container: document.getElementById('dplayer'),
+        autoplay: true,
+        video: {
+            url: 'https://hair.jingpin88.com/20171028/IZKTDlRz/index.m3u8',
+            type: type,
+            customType: {
+                'customHls': function (video, player) {
+                    const hls = new Hls({
+                        debug: false,
+                        // Other hlsjsConfig options provided by hls.js
+                        p2pConfig: {
+                            live: false,        // 如果是直播设为true
+                            // Other p2pConfig options provided by CDNBye
+                        }
+                    });
+                    hls.loadSource(video.src);
+                    hls.attachMedia(video);
+                    hls.p2pEngine.on('stats', function (stats) {
+                        _totalP2PDownloaded = stats.totalP2PDownloaded;
+                        _totalP2PUploaded = stats.totalP2PUploaded;
+                        updateStats();
+                    }).on('peerId', function (peerId) {
+                        _peerId = peerId;
+                    }).on('peers', function (peers) {
+                        _peerNum = peers.length;
+                        updateStats();
+                    });
+                }
+            }
+        }
+    });
+
+    function updateStats() {
+        var text = 'P2P正在为您加速' + (_totalP2PDownloaded/1024).toFixed(2)
+            + 'MB 已分享' + (_totalP2PUploaded/1024).toFixed(2) + 'MB' + ' 连接节点' + _peerNum + '个';
+        document.getElementById('stats').innerText = text
+    }
 </script>
-</body>
-</html>
