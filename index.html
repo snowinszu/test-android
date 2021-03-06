@@ -24,7 +24,7 @@
 
     function getNetType() {
         let netType = ((new RegExp('nettype\\/(\\w*)').exec(_getUA()) || [, ''])[1]).toLowerCase();
-        if (!netType) {
+        if (!netType && navigator.connection) {
             /*
                 "bluetooth",
                 "cellular",
