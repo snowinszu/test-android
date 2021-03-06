@@ -6,6 +6,7 @@
 </head>
 <script src="https://cdn.jsdelivr.net/npm/cdnbye@latest"></script>
 <body>
+<h3 id="h3"></h3>
 <script>
     // const isQQBrowser = /MQQBrowser/i.test(navigator.userAgent) && !/\sQQ/i.test(navigator.userAgent);
     // if (isQQBrowser) {
@@ -20,6 +21,8 @@
     // if (Hls.WEBRTC_SUPPORT) {
     //     alert('支持WebRTC')
     // }
+
+    document.getElementById('h3').innerText = navigator.connection.type
 
     alert(navigator.connection.type)
 
