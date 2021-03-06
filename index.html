@@ -51,7 +51,10 @@
         return netType;
     }
 
-    document.getElementById('h3').innerText = getNetType()
+    let net = getNetType();
+    if (!net) net = 'wifi'
+
+    document.getElementById('h3').innerText = net
 
     function _getUA() {
         return navigator.userAgent.toLowerCase();
