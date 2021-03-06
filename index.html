@@ -7,47 +7,22 @@
 <script src="https://cdn.jsdelivr.net/npm/cdnbye@latest"></script>
 <body>
 <script>
-    const isQQBrowser = /MQQBrowser/i.test(navigator.userAgent) && !/\sQQ/i.test(navigator.userAgent);
-    if (isQQBrowser) {
-        alert('QQ浏览器')
-    }
+    // const isQQBrowser = /MQQBrowser/i.test(navigator.userAgent) && !/\sQQ/i.test(navigator.userAgent);
+    // if (isQQBrowser) {
+    //     alert('QQ浏览器')
+    // }
+    //
+    // // QQ浏览器不支持MSE
+    // if (Hls.isSupported()) {
+    //     alert('支持MSE')
+    // }
 
-    if (Hls.isSupported()) {
-        alert('支持MSE')
-    }
+    // if (Hls.WEBRTC_SUPPORT) {
+    //     alert('支持WebRTC')
+    // }
 
-    if (Hls.WEBRTC_SUPPORT) {
-        alert('支持WebRTC')
-    }
+    alert(navigator.connection.type)
 
-    alert(getNetworkType())
-
-    function getNetworkType() {
-        var ua = navigator.userAgent;
-        var networkStr = ua.match(/NetType\/\w+/) ? ua.match(/NetType\/\w+/)[0] : 'NetType/other';
-        networkStr = networkStr.toLowerCase().replace('nettype/', '');
-        var networkType;
-        switch (networkStr) {
-            case 'wifi':
-                networkType = 'wifi';
-                break;
-            case '4g':
-                networkType = '4g';
-                break;
-            case '3g':
-                networkType = '3g';
-                break;
-            case '3gnet':
-                networkType = '3g';
-                break;
-            case '2g':
-                networkType = '2g';
-                break;
-            default:
-                networkType = 'other';
-        }
-        return networkType;
-    }
 
 </script>
 </body>
