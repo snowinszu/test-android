@@ -22,9 +22,40 @@
     //     alert('支持WebRTC')
     // }
 
-    document.getElementById('h3').innerText = navigator.connection.type
+    function getNetType() {
+        let netType = ((new RegExp('nettype\\/(\\w*)').exec(_getUA()) || [, ''])[1]).toLowerCase();
+        if (!netType) {
+            /*
+                "bluetooth",
+                "cellular",
+                "ethernet",
+                "mixed",
+                "none",
+                "other",
+                "unknown",
+                "wifi",
+                "wimax"
+             */
+            const type = navigator.connection.type;
+            switch (type) {
+                case 'ethernet':
+                    netType = 'ethernet';
+                    break;
+                case 'cellular':
+                    netType = '4g';
+                    break;
+                default:
+                    netType = 'wifi'
+            }
+        }
+        return netType;
+    }
 
-    alert(navigator.connection.type)
+    document.getElementById('h3').innerText = getNetType()
+
+    function _getUA() {
+        return navigator.userAgent.toLowerCase();
+    }
 
 
 </script>
