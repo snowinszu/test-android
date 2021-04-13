@@ -8,19 +8,60 @@
 <body>
 <h3 id="h3"></h3>
 <script>
-    // const isQQBrowser = /MQQBrowser/i.test(navigator.userAgent) && !/\sQQ/i.test(navigator.userAgent);
-    // if (isQQBrowser) {
-    //     alert('QQ浏览器')
-    // }
+    const isQQBrowser = /MQQBrowser/i.test(navigator.userAgent) && !/\sQQ/i.test(navigator.userAgent);
+    if (isQQBrowser) {
+        alert('QQ浏览器')
+    }
     //
     // // QQ浏览器不支持MSE
-    // if (Hls.isSupported()) {
-    //     alert('支持MSE')
-    // }
+    if (isMSESupported()) {
+        alert('支持MSE')
+    }
 
-    // if (Hls.WEBRTC_SUPPORT) {
-    //     alert('支持WebRTC')
-    // }
+    if (isWebRTCSupported()) {
+        alert('支持WebRTC')
+    }
+
+    function isMSESupported () {
+        const mediaSource = getMediaSource();
+        const sourceBuffer = window.SourceBuffer || window.WebKitSourceBuffer;
+        const isTypeSupported = mediaSource &&
+            typeof mediaSource.isTypeSupported === 'function' &&
+            mediaSource.isTypeSupported('video/mp4; codecs="avc1.42E01E,mp4a.40.2"');
+
+        // if SourceBuffer is exposed ensure its API is valid
+        // safari and old version of Chrome doe not expose SourceBuffer globally so checking SourceBuffer.prototype is impossible
+        const sourceBufferValidAPI = !sourceBuffer ||
+            (sourceBuffer.prototype &&
+                typeof sourceBuffer.prototype.appendBuffer === 'function' &&
+                typeof sourceBuffer.prototype.remove === 'function');
+        return !!isTypeSupported && !!sourceBufferValidAPI;
+    }
+
+    function isWebRTCSupported() {
+        const browserRTC = getBrowserRTC();
+        return (browserRTC && (browserRTC.RTCPeerConnection.prototype.createDataChannel !== undefined));
+    }
+
+    function getBrowserRTC () {
+        if (typeof window === 'undefined') return null
+        var wrtc = {
+            RTCPeerConnection: window.RTCPeerConnection || window.mozRTCPeerConnection ||
+                window.webkitRTCPeerConnection,
+            RTCSessionDescription: window.RTCSessionDescription ||
+                window.mozRTCSessionDescription || window.webkitRTCSessionDescription,
+            RTCIceCandidate: window.RTCIceCandidate || window.mozRTCIceCandidate ||
+                window.webkitRTCIceCandidate
+        }
+        if (!wrtc.RTCPeerConnection) return null
+        return wrtc
+    }
+
+    function getMediaSource () {
+        if (typeof window !== 'undefined') {
+            return window.MediaSource || window.WebKitMediaSource;
+        }
+    }
 
     function getNetType() {
         let netType = ((new RegExp('nettype\\/(\\w*)').exec(_getUA()) || [, ''])[1]).toLowerCase();

@@ -30,7 +30,7 @@
       <usages-collector id="statistics.file.extensions.open">
         <counts>
           <entry key="html" value="16" />
-          <entry key="js" value="27" />
+          <entry key="js" value="28" />
           <entry key="json" value="1" />
         </counts>
       </usages-collector>
@@ -38,7 +38,7 @@
         <counts>
           <entry key="HTML" value="16" />
           <entry key="JSON" value="1" />
-          <entry key="JavaScript" value="27" />
+          <entry key="JavaScript" value="28" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.extensions.edit">
@@ -206,7 +206,7 @@
       <path value="$PROJECT_DIR$/package.json" />
     </packageJsonPaths>
   </component>
-  <component name="ProjectFrameBounds" extendedState="6" fullScreen="true">
+  <component name="ProjectFrameBounds" fullScreen="true">
     <option name="width" value="1440" />
     <option name="height" value="900" />
   </component>
@@ -313,16 +313,15 @@
       <workItem from="1615061890247" duration="1735000" />
       <workItem from="1615619456631" duration="1284000" />
       <workItem from="1618221292300" duration="509000" />
-      <workItem from="1618328864857" duration="1024000" />
+      <workItem from="1618328864857" duration="1281000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="43255000" />
+    <option name="totallyTimeSpent" value="43512000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="0" width="1440" height="900" extended-state="0" />
-    <editor active="true" />
     <layout>
       <window_info content_ui="combo" id="Project" order="0" sideWeight="0.6148936" visible="true" weight="0.20509194" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
