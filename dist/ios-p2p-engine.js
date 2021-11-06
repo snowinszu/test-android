@@ -5946,7 +5946,7 @@ var EngineBase = function (_EventEmitter) {
         key: 'isSupported',
         value: function isSupported() {
             var browserRTC = (0, _toolFuns.getBrowserRTC)();
-            return browserRTC && browserRTC.RTCPeerConnection.prototype.createDataChannel !== undefined;
+            return !!(browserRTC && browserRTC.RTCPeerConnection.prototype.createDataChannel !== undefined);
         }
     }]);
 
@@ -6339,7 +6339,7 @@ var IosScheduler = function (_BtScheduler) {
             var id = segId;
             if (this.sequential) id = sn;
             if (this.bitset.has(id)) return; // 防止重复广播
-            console.warn('notifyAllPeers ' + sn + ' ' + segId);
+            // console.warn(`notifyAllPeers ${sn} ${segId}`);
             var _iteratorNormalCompletion2 = true;
             var _didIteratorError2 = false;
             var _iteratorError2 = undefined;
@@ -6649,7 +6649,7 @@ var P2PEngineIOS = function (_EngineBase) {
 
         window.p2pEngineIOSInited = true;
         _this.config = Object.assign({}, _config.defaultP2PConfig, config);
-        // this.swSupported = platform.isLocalHost() || location.protocol.startsWith('https');
+        _this.swSupported = _utils.platform.isLocalHost() || location.protocol.startsWith('https');
         _this.mseSupported = false;
         _this.levels = [];
         _this.currentLevelIndex = 0;
@@ -6680,7 +6680,7 @@ var P2PEngineIOS = function (_EngineBase) {
         _this.p2pEnabled = !(_this.config.p2pEnabled === false || (0, _toolFuns.getQueryParam)('_p2p') === '0');
 
         if (!'serviceWorker' in navigator) {
-            // this.swSupported = false;
+            _this.swSupported = false;
             console.warn('service worker is not supported');
             _this.p2pEnabled = false;
         }
@@ -6774,23 +6774,25 @@ var P2PEngineIOS = function (_EngineBase) {
             }
         });
 
-        navigator.serviceWorker.onmessage = function (event) {
-            var _event$data = event.data,
-                action = _event$data.action,
-                data = _event$data.data;
+        if (_this.swSupported) {
+            navigator.serviceWorker.onmessage = function (event) {
+                var _event$data = event.data,
+                    action = _event$data.action,
+                    data = _event$data.data;
 
-            console.warn('engine onmessage action ' + action);
-            var sender = event.ports[0];
-            switch (action) {
-                case _events2.default.SW_PLAYLIST:
-                    _this.handlePlaylist(data, sender);
-                    break;
-                default:
-                    if (_this.config.scheduler) {
-                        _this.config.scheduler.notifySWMessage(action, data, sender);
-                    }
-            }
-        };
+                console.warn('engine onmessage action ' + action);
+                var sender = event.ports[0];
+                switch (action) {
+                    case _events2.default.SW_PLAYLIST:
+                        _this.handlePlaylist(data, sender);
+                        break;
+                    default:
+                        if (_this.config.scheduler) {
+                            _this.config.scheduler.notifySWMessage(action, data, sender);
+                        }
+                }
+            };
+        }
         return _this;
     }
 

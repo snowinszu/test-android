@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+<script src="//cdn.jsdelivr.net/npm/vconsole@latest"></script>
 <script src="./dist/ios-p2p-engine.js"></script>
 <head>
     <meta charset="UTF-8">
@@ -14,6 +15,8 @@
     <tbody ></tbody>
 </table>
 <script>
+    var vConsole = new VConsole();
+
     var url = getQueryParam('url');
     if (!url) {
         url = 'https://wowza.peer5.com/live/smil:bbb_abr.smil/chunklist_b591000.m3u8'
