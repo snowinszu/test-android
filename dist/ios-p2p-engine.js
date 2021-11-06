@@ -6679,7 +6679,7 @@ var P2PEngineIOS = function (_EngineBase) {
 
         _this.p2pEnabled = !(_this.config.p2pEnabled === false || (0, _toolFuns.getQueryParam)('_p2p') === '0');
 
-        if (!'serviceWorker' in navigator) {
+        if (!P2PEngineIOS.isSeviceWorkerSupported()) {
             _this.swSupported = false;
             console.warn('service worker is not supported');
             _this.p2pEnabled = false;
@@ -6888,6 +6888,9 @@ var P2PEngineIOS = function (_EngineBase) {
     }, {
         key: 'registerServiceWorker',
         value: function registerServiceWorker() {
+            if (!P2PEngineIOS.isSeviceWorkerSupported()) {
+                return Promise.reject('sw is not supported');
+            }
             if (!this.p2pEnabled) {
                 return Promise.reject('p2p is disable');
             }
