@@ -1,12 +1,81 @@
-
-<!--<script src="https://cdn.jsdelivr.net/npm/hls.js@latest"></script>-->
-<!-- Or if you want a more recent canary version -->
-<!-- <script src="https://cdn.jsdelivr.net/npm/hls.js@canary"></script> -->
+<!DOCTYPE html>
+<html lang="en">
+<script src="./dist/ios-p2p-engine.js"></script>
+<head>
+    <meta charset="UTF-8">
+    <title>native playback</title>
+</head>
 <video id="video" controls></video>
+<p id="version"></p>
+<h3>download info:</h3>
+<p id="info"></p>
+<p id="serverConnected"></p>
+<table id="table-body">
+    <tbody ></tbody>
+</table>
 <script>
-    var video = document.getElementById('video');
-    video.src = 'https://video-dev.github.io/streams/x36xhzz/x36xhzz.m3u8';
-    video.addEventListener('loadedmetadata',function() {
-        video.play();
+    var url = getQueryParam('url');
+    if (!url) {
+        url = 'https://wowza.peer5.com/live/smil:bbb_abr.smil/chunklist_b591000.m3u8'
+        // url = 'https://video.cdnbye.com/0cf6732evodtransgzp1257070836/e0d4b12e5285890803440736872/v.f100220.m3u8'
+    }
+    var video = document.getElementById('video')
+    video.src = url
+    video.play()
+
+    // setTimeout(() => {
+    //     video.src = 'https://video.cdnbye.com/0cf6732evodtransgzp1257070836/e0d4b12e5285890803440736872/v.f100220.m3u8'
+    //     video.play()
+    // }, 10000)
+
+    document.querySelector('#version').innerText = `SDK version: ${P2PEngineIOS.version} MSE: ${P2PEngineIOS.isMSESupported()} WebRTC: ${P2PEngineIOS.isWebRTCSupported()} SW: ${P2PEngineIOS.isSeviceWorkerSupported()}`;
+    function addToTable(url, downloaded, source, fromPeerId) {
+        var fromPeer = fromPeerId ? `from ${fromPeerId}` : ``;
+        var infoStr = `download ${url}(size:${downloaded}B) by ${source} ${fromPeer}`;
+        document.querySelector('#table-body tbody').innerHTML +=
+            `<tr style="text-align: center">
+                    <td>${infoStr}</td>
+                </tr>`
+    }
+
+    var ios = new P2PEngineIOS({
+        // announce: "http://127.0.0.1/v1",
+        // useHttpRange: true,
+        // 测试环境
+        announce: "http://tracker.p2pengine.net:7066/v1",
+        logLevel: 'debug',
+        // p2pEnabled: false,
+        trickleICE: true,
+        // nativePlaybackOnly: true,
+    })
+
+    ios.registerServiceWorker().then(function (registration) {
+        console.info('ServiceWorker registration successful with scope: ', registration.scope);
+    }).catch((err) => {
+        console.info('ServiceWorker registration failed ', err)
+    })
+
+    ios.on('FRAG_LOADED', (url, frag, byP2p) => {
+        // console.warn(`FRAG_LOADED ${url}`)
+        var source = 'HTTP';
+        if (byP2p) {
+            source = 'P2P';
+        }
+        addToTable(frag.relurl, frag.loaded, source, frag.fromPeerId);
     });
+    ios.on('stats', function ({totalHTTPDownloaded=0, totalP2PDownloaded=0, totalP2PUploaded=0}) {
+        var total = totalHTTPDownloaded + totalP2PDownloaded;
+        document.querySelector('#info').innerText = `p2p ratio: ${Math.round(totalP2PDownloaded/total*100)}%, saved traffic: ${totalP2PDownloaded}KB, uploaded data: ${totalP2PUploaded}KB`;
+    });
+    ios.on('serverConnected', function (connected) {
+        document.querySelector('#serverConnected').innerText = `connected: ${connected}`;
+    })
+
+    function getQueryParam(name) {
+        var reg = new RegExp("(^|&)" + name + "=([^&]*)(&|$)");
+        var r = window.location.search.substr(1).match(reg);
+        if (r != null && r[2] !== '') return r[2].toString();
+        return '';
+    }
+
 </script>
