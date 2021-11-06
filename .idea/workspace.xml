@@ -30,7 +30,7 @@
       <usages-collector id="statistics.file.extensions.open">
         <counts>
           <entry key="html" value="16" />
-          <entry key="js" value="33" />
+          <entry key="js" value="34" />
           <entry key="json" value="1" />
         </counts>
       </usages-collector>
@@ -38,7 +38,7 @@
         <counts>
           <entry key="HTML" value="16" />
           <entry key="JSON" value="1" />
-          <entry key="JavaScript" value="33" />
+          <entry key="JavaScript" value="34" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.extensions.edit">
@@ -82,10 +82,10 @@
           <provider selected="true" editor-type-id="text-editor" />
         </entry>
       </file>
-      <file pinned="false" current-in-tab="false">
+      <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/hlsjs.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="198">
+            <state relative-caret-position="-190">
               <caret line="9" column="34" selection-start-line="9" selection-start-column="34" selection-end-line="9" selection-end-column="34" />
             </state>
           </provider>
@@ -127,7 +127,7 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/native.html">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="396">
@@ -309,20 +309,20 @@
       <workItem from="1615619456631" duration="1284000" />
       <workItem from="1618221292300" duration="509000" />
       <workItem from="1618328864857" duration="2673000" />
-      <workItem from="1636200399436" duration="1974000" />
+      <workItem from="1636200399436" duration="2452000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="46878000" />
+    <option name="totallyTimeSpent" value="47356000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="1680" y="0" width="1920" height="1080" extended-state="0" />
     <editor active="true" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" sideWeight="0.6424242" visible="true" weight="0.17898627" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" sideWeight="0.6424242" visible="true" weight="0.17898627" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
-      <window_info active="true" id="npm" order="2" sideWeight="0.35757574" side_tool="true" visible="true" weight="0.17898627" />
+      <window_info id="npm" order="2" sideWeight="0.35757574" side_tool="true" visible="true" weight="0.17898627" />
       <window_info id="Favorites" order="3" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" />
@@ -427,13 +427,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/hlsjs.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="198">
-          <caret line="9" column="34" selection-start-line="9" selection-start-column="34" selection-end-line="9" selection-end-column="34" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/dplayer.html">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="440">
@@ -489,6 +482,13 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="396">
           <caret line="18" selection-start-line="18" selection-end-line="18" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/hlsjs.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-190">
+          <caret line="9" column="34" selection-start-line="9" selection-start-column="34" selection-end-line="9" selection-end-column="34" />
         </state>
       </provider>
     </entry>
