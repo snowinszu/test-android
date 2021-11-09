@@ -55,37 +55,32 @@
     var url = 'https://video.cdnbye.com/0cf6732evodtransgzp1257070836/e0d4b12e5285890803440736872/v.f100220.m3u8';
     // var url = 'http://v.live.hndt.com/video/20200317/9411f6c1f11b44888294d47d73107641/cloudv-transfer/555555555po0q1sn5556526553738q1r_73ac26e878d047498fa906ef9e913036_0_4.m3u8';
 
-    hls = start(url);
+    start(url);
     function start(url) {
-
         var video = document.getElementById('video');
-        video.muted = true
-        var hls = new Hls({
-            maxBufferSize: 0,
-            maxBufferLength: 5,
-            maxMaxBufferLength: 10,
-            // debug: true,
-            // "lowLatencyMode": true,
-        });
-        hls.loadSource(url);
-        hls.attachMedia(video);
-        hls.on(Hls.Events.MANIFEST_PARSED,function(event, data) {
-            video.play();
-        });
-        return hls
+        if(Hls.isSupported()) {
+            var hls = new Hls({
+                maxBufferSize: 0,
+                maxBufferLength: 5,
+                maxMaxBufferLength: 10,
+                // debug: true,
+                // "lowLatencyMode": true,
+            });
+            hls.loadSource(url);
+            hls.attachMedia(video);
+            hls.on(Hls.Events.MANIFEST_PARSED,function(event, data) {
+                video.play();
+            });
+        } else if (video.canPlayType('application/vnd.apple.mpegurl')) {
+            video.src = url;
+        }
+
     }
 
     // setTimeout(() => {
     //     stop(hls)
     //     hls = start('https://video.cdnbye.com/0cf6732evodtransgzp1257070836/e0d4b12e5285890803440736872/v.f100220.m3u8')
     // }, 10000)
-
-    function stop(hls) {
-        hls.stopLoad()
-        hls.detachMedia()
-        hls.destroy()
-        hls = null
-    }
 
     document.querySelector('#version').innerText = `SDK version: ${P2PEngineIOS.version} MSE: ${P2PEngineIOS.isMSESupported()} WebRTC: ${P2PEngineIOS.isWebRTCSupported()} SW: ${P2PEngineIOS.isSeviceWorkerSupported()}`;
     function addToTable(url, downloaded, source, fromPeerId) {
