@@ -3,7 +3,7 @@
 <script src="//cdn.jsdelivr.net/npm/vconsole@latest"></script>
 <script src="https://cdn.jsdelivr.net/npm/hls.js@latest"></script>
 <!--<script src="https://cdn.jsdelivr.net/npm/cdnbye@latest"></script>-->
-<script src="./dist/ios-p2p-engine.js"></script>
+<script src="./dist/ios-p2p-engine.min.js"></script>
 <head>
     <meta charset="UTF-8">
     <title>iOS</title>
@@ -47,12 +47,12 @@
         document.querySelector('#info').innerText = `p2p ratio: ${Math.round(totalP2PDownloaded/total*100)}%, saved traffic: ${totalP2PDownloaded}KB, uploaded data: ${totalP2PUploaded}KB`;
     });
 
-    var url = 'https://wowza.peer5.com/live/smil:bbb_abr.smil/chunklist_b591000.m3u8';
+    // var url = 'https://wowza.peer5.com/live/smil:bbb_abr.smil/chunklist_b591000.m3u8';
     // var url = 'https://storage.googleapis.com/wvtemp/rkuroiwa/hls_single_segment/sintel_1080p_single_segment.m3u8';  // range mp4
     // var url = 'https://global.bongobd.com/vod/vod/S/D/SDVFt8B4EE7/SDVFt8B4EE7_720p.m3u8';  // range ts
     // var url = 'https://wowza.peer5.com/live/smil:bbb_abr.smil/playlist.m3u8';
     // var url = 'https://test-streams.mux.dev/x36xhzz/x36xhzz.m3u8';
-    // var url = 'https://video.cdnbye.com/0cf6732evodtransgzp1257070836/e0d4b12e5285890803440736872/v.f100220.m3u8';
+    var url = 'https://video.cdnbye.com/0cf6732evodtransgzp1257070836/e0d4b12e5285890803440736872/v.f100220.m3u8';
     // var url = 'http://v.live.hndt.com/video/20200317/9411f6c1f11b44888294d47d73107641/cloudv-transfer/555555555po0q1sn5556526553738q1r_73ac26e878d047498fa906ef9e913036_0_4.m3u8';
 
     hls = start(url);
