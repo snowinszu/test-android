@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>CDNBye Clappr Demo</title>
+    <!-- Clappr Builds -->
+    <script src="//cdn.jsdelivr.net/npm/@clappr/player@0.4.0/dist/clappr.min.js"></script>
+    <!-- Hlsjs P2PEngine -->
+    <!--<script src="//cdn.jsdelivr.net/npm/cdnbye@latest/dist/hlsjs-p2p-engine.min.js"></script>-->
+    <!-- iOS web P2PEngine -->
+    <!--<script src="https://cdn.jsdelivr.net/npm/swarmcloud-hls-sw@latest"></script>-->
+    <script src="./dist/ios-p2p-engine.js"></script>
+    <!-- CDNBye Clappr Plugin -->
+    <!--<script src="//cdn.jsdelivr.net/npm/cdnbye@latest/dist/clappr-plugin.min.js"></script>-->
+</head>
+<body>
+<div id="player"></div>
+<p id="version"></p>
+<h3>download info:</h3>
+<p id="info"></p>
+<p id="serverConnected"></p>
+<table id="table-body">
+    <tbody ></tbody>
+</table>
+<script>
+    var player = new Clappr.Player(
+        {
+            source: "https://wowza.peer5.com/live/smil:bbb_abr.smil/chunklist_b591000.m3u8",
+            parentId: "#player",
+            autoPlay: true,
+            // plugins: [CDNByeClapprPlugin],
+            playback: {
+                hlsjsConfig: {
+                    maxBufferSize: 0,          // Highly recommended setting in live mode
+                    maxBufferLength: 10,       // Highly recommended setting in live mode
+                    liveSyncDurationCount: 10, // Highly recommended setting in live mode
+                    // Other hlsjsConfig options provided by hls.js
+                    p2pConfig: {
+                        live: true,        // 如果是点播设为false
+                        // Other p2pConfig options provided by CDNBye
+                    }
+                }
+            }
+        });
+
+    var ios = new P2PEngineIOS({
+        logLevel: 'debug',
+        // nativePlaybackOnly: true,    // key step: only enabled when MSE is not supported
+        // p2pEnabled: false,
+    })
+
+    ios.registerServiceWorker().then(function (registration) {
+        console.info('ServiceWorker registration successful with scope: ', registration.scope);
+    }).catch((err) => {
+        console.info('ServiceWorker registration failed ', err)
+    })
+
+    ios.on('FRAG_LOADED', (url, frag, byP2p) => {
+        // console.warn(`FRAG_LOADED ${url}`)
+        var source = 'HTTP';
+        if (byP2p) {
+            source = 'P2P';
+        }
+        addToTable(frag.relurl, frag.loaded, source, frag.fromPeerId);
+    });
+    ios.on('stats', function ({totalHTTPDownloaded=0, totalP2PDownloaded=0, totalP2PUploaded=0}) {
+        var total = totalHTTPDownloaded + totalP2PDownloaded;
+        document.querySelector('#info').innerText = `p2p ratio: ${Math.round(totalP2PDownloaded/total*100)}%, saved traffic: ${totalP2PDownloaded}KB, uploaded data: ${totalP2PUploaded}KB`;
+    });
+    ios.on('serverConnected', function (connected) {
+        document.querySelector('#serverConnected').innerText = `connected: ${connected}`;
+    })
+
+    document.querySelector('#version').innerText = `SDK version: ${P2PEngineIOS.version} MSE: ${P2PEngineIOS.isMSESupported()} WebRTC: ${P2PEngineIOS.isWebRTCSupported()} SW: ${P2PEngineIOS.isSeviceWorkerSupported()}`;
+    function addToTable(url, downloaded, source, fromPeerId) {
+        var fromPeer = fromPeerId ? `from ${fromPeerId}` : ``;
+        var infoStr = `download ${url}(size:${downloaded}B) by ${source} ${fromPeer}`;
+        document.querySelector('#table-body tbody').innerHTML +=
+            `<tr style="text-align: center">
+                    <td>${infoStr}</td>
+                </tr>`
+    }
+
+</script>
+</body>
+</html>
