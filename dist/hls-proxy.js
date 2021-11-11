@@ -890,6 +890,10 @@ function handleMediaRequest(request) {
     if (rangeStart === 0 && rangeEnd === rangeStart) {
         return requestFromNetwork();
     }
+    // 忽略 "0-"
+    if (!rangeStart && !rangeEnd) {
+        range = undefined;
+    }
     if (windowClient) {
         return msgClient.sendMessageToClient(windowClient, {
             action: _events2.default.SW_GET_MEDIA,
