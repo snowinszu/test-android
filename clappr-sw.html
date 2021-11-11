@@ -3,6 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <title>CDNBye Clappr Demo</title>
+    <script src="//cdn.jsdelivr.net/npm/vconsole@latest"></script>
     <!-- Clappr Builds -->
     <script src="//cdn.jsdelivr.net/npm/@clappr/player@0.4.0/dist/clappr.min.js"></script>
     <!-- Hlsjs P2PEngine -->
@@ -23,6 +24,7 @@
     <tbody ></tbody>
 </table>
 <script>
+    var vConsole = new VConsole();
     var player = new Clappr.Player(
         {
             source: "https://wowza.peer5.com/live/smil:bbb_abr.smil/chunklist_b591000.m3u8",
