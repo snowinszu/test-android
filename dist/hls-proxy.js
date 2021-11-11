@@ -1,1 +1,2500 @@
-!function(e,t){"object"==typeof exports&&"object"==typeof module?module.exports=t():"function"==typeof define&&define.amd?define([],t):"object"==typeof exports?exports.HlsProxy=t():e.HlsProxy=t()}("undefined"!=typeof self?self:this,function(){return function(e){function t(n){if(r[n])return r[n].exports;var o=r[n]={i:n,l:!1,exports:{}};return e[n].call(o.exports,o,o.exports,t),o.l=!0,o.exports}var r={};return t.m=e,t.c=r,t.d=function(e,r,n){t.o(e,r)||Object.defineProperty(e,r,{configurable:!1,enumerable:!0,get:n})},t.n=function(e){var r=e&&e.__esModule?function(){return e.default}:function(){return e};return t.d(r,"a",r),r},t.o=function(e,t){return Object.prototype.hasOwnProperty.call(e,t)},t.p="/src/",t(t.s=3)}([function(e,t,r){"use strict";e.exports=r(4)},function(e,t,r){"use strict";e.exports=function(e){return e.webpackPolyfill||(e.deprecate=function(){},e.paths=[],e.children||(e.children=[]),Object.defineProperty(e,"loaded",{enumerable:!0,get:function(){return e.l}}),Object.defineProperty(e,"id",{enumerable:!0,get:function(){return e.i}}),e.webpackPolyfill=1),e}},function(e,t,r){"use strict";function n(e){if(e>b)throw new RangeError('The value "'+e+'" is invalid for option "size"');var t=new Uint8Array(e);return t.__proto__=o.prototype,t}function o(e,t,r){if("number"==typeof e){if("string"==typeof t)throw new TypeError('The "string" argument must be of type string. Received type number');return s(e)}return i(e,t,r)}function i(e,t,r){if("string"==typeof e)return f(e,t);if(ArrayBuffer.isView(e))return c(e);if(null==e)throw TypeError("The first argument must be one of type string, Buffer, ArrayBuffer, Array, or Array-like Object. Received type "+(void 0===e?"undefined":m(e)));if(g(e,ArrayBuffer)||e&&g(e.buffer,ArrayBuffer))return l(e,t,r);if("number"==typeof e)throw new TypeError('The "value" argument must not be of type number. Received type number');var n=e.valueOf&&e.valueOf();if(null!=n&&n!==e)return o.from(n,t,r);var i=h(e);if(i)return i;if("undefined"!=typeof Symbol&&null!=Symbol.toPrimitive&&"function"==typeof e[Symbol.toPrimitive])return o.from(e[Symbol.toPrimitive]("string"),t,r);throw new TypeError("The first argument must be one of type string, Buffer, ArrayBuffer, Array, or Array-like Object. Received type "+(void 0===e?"undefined":m(e)))}function a(e){if("number"!=typeof e)throw new TypeError('"size" argument must be of type number');if(e<0)throw new RangeError('The value "'+e+'" is invalid for option "size"')}function u(e,t,r){return a(e),e<=0?n(e):void 0!==t?"string"==typeof r?n(e).fill(t,r):n(e).fill(t):n(e)}function s(e){return a(e),n(e<0?0:0|p(e))}function f(e,t){if("string"==typeof t&&""!==t||(t="utf8"),!o.isEncoding(t))throw new TypeError("Unknown encoding: "+t);var r=0|d(e,t),i=n(r),a=i.write(e,t);return a!==r&&(i=i.slice(0,a)),i}function c(e){for(var t=e.length<0?0:0|p(e.length),r=n(t),o=0;o<t;o+=1)r[o]=255&e[o];return r}function l(e,t,r){if(t<0||e.byteLength<t)throw new RangeError('"offset" is outside of buffer bounds');if(e.byteLength<t+(r||0))throw new RangeError('"length" is outside of buffer bounds');var n;return n=void 0===t&&void 0===r?new Uint8Array(e):void 0===r?new Uint8Array(e,t):new Uint8Array(e,t,r),n.__proto__=o.prototype,n}function h(e){if(o.isBuffer(e)){var t=0|p(e.length),r=n(t);return 0===r.length?r:(e.copy(r,0,0,t),r)}return void 0!==e.length?"number"!=typeof e.length||v(e.length)?n(0):c(e):"Buffer"===e.type&&Array.isArray(e.data)?c(e.data):void 0}function p(e){if(e>=b)throw new RangeError("Attempt to allocate Buffer larger than maximum size: 0x"+b.toString(16)+" bytes");return 0|e}function d(e,t){if(o.isBuffer(e))return e.length;if(ArrayBuffer.isView(e)||g(e,ArrayBuffer))return e.byteLength;if("string"!=typeof e)throw new TypeError('The "string" argument must be one of type string, Buffer, or ArrayBuffer. Received type '+(void 0===e?"undefined":m(e)));var r=e.length,n=arguments.length>2&&!0===arguments[2];if(!n&&0===r)return 0;for(var i=!1;;)switch(t){case"ascii":case"latin1":case"binary":return r;case"utf8":case"utf-8":return y(e).length;case"ucs2":case"ucs-2":case"utf16le":case"utf-16le":return 2*r;case"hex":return r>>>1;default:if(i)return n?-1:y(e).length;t=(""+t).toLowerCase(),i=!0}}function y(e,t){t=t||1/0;for(var r,n=e.length,o=null,i=[],a=0;a<n;++a){if((r=e.charCodeAt(a))>55295&&r<57344){if(!o){if(r>56319){(t-=3)>-1&&i.push(239,191,189);continue}if(a+1===n){(t-=3)>-1&&i.push(239,191,189);continue}o=r;continue}if(r<56320){(t-=3)>-1&&i.push(239,191,189),o=r;continue}r=65536+(o-55296<<10|r-56320)}else o&&(t-=3)>-1&&i.push(239,191,189);if(o=null,r<128){if((t-=1)<0)break;i.push(r)}else if(r<2048){if((t-=2)<0)break;i.push(r>>6|192,63&r|128)}else if(r<65536){if((t-=3)<0)break;i.push(r>>12|224,r>>6&63|128,63&r|128)}else{if(!(r<1114112))throw new Error("Invalid code point");if((t-=4)<0)break;i.push(r>>18|240,r>>12&63|128,r>>6&63|128,63&r|128)}}return i}function g(e,t){return e instanceof t||null!=e&&null!=e.constructor&&null!=e.constructor.name&&e.constructor.name===t.name}function v(e){return e!==e}var m="function"==typeof Symbol&&"symbol"==typeof Symbol.iterator?function(e){return typeof e}:function(e){return e&&"function"==typeof Symbol&&e.constructor===Symbol&&e!==Symbol.prototype?"symbol":typeof e};t.Buffer=o;var b=2147483647;t.kMaxLength=b,o.TYPED_ARRAY_SUPPORT=function(){try{var e=new Uint8Array(1);return e.__proto__={__proto__:Uint8Array.prototype,foo:function(){return 42}},42===e.foo()}catch(e){return!1}}(),o.TYPED_ARRAY_SUPPORT||"undefined"==typeof console||"function"!=typeof console.error||console.error("This browser lacks typed array (Uint8Array) support which is required by `buffer` v5.x. Use `buffer` v4.x if you require old browser support."),"undefined"!=typeof Symbol&&null!=Symbol.species&&o[Symbol.species]===o&&Object.defineProperty(o,Symbol.species,{value:null,configurable:!0,enumerable:!1,writable:!1}),o.from=function(e,t,r){return i(e,t,r)},o.prototype.__proto__=Uint8Array.prototype,o.__proto__=Uint8Array,o.alloc=function(e,t,r){return u(e,t,r)},o.allocUnsafe=function(e){return s(e)},o.isBuffer=function(e){return null!=e&&!0===e._isBuffer&&e!==o.prototype},o.isEncoding=function(e){switch(String(e).toLowerCase()){case"hex":case"utf8":case"utf-8":case"ascii":case"latin1":case"binary":case"base64":case"ucs2":case"ucs-2":case"utf16le":case"utf-16le":return!0;default:return!1}},o.concat=function(e,t){if(!Array.isArray(e))throw new TypeError('"list" argument must be an Array of Buffers');if(0===e.length)return o.alloc(0);var r;if(void 0===t)for(t=0,r=0;r<e.length;++r)t+=e[r].length;var n=o.allocUnsafe(t),i=0;for(r=0;r<e.length;++r){var a=e[r];if(g(a,Uint8Array)&&(a=o.from(a)),!o.isBuffer(a))throw new TypeError('"list" argument must be an Array of Buffers');a.copy(n,i),i+=a.length}return n},o.byteLength=d,o.prototype._isBuffer=!0,o.prototype.copy=function(e,t,r,n){if(!o.isBuffer(e))throw new TypeError("argument should be a Buffer");if(r||(r=0),n||0===n||(n=this.length),t>=e.length&&(t=e.length),t||(t=0),n>0&&n<r&&(n=r),n===r)return 0;if(0===e.length||0===this.length)return 0;if(t<0)throw new RangeError("targetStart out of bounds");if(r<0||r>=this.length)throw new RangeError("Index out of range");if(n<0)throw new RangeError("sourceEnd out of bounds");n>this.length&&(n=this.length),e.length-t<n-r&&(n=e.length-t+r);var i=n-r;if(this===e&&"function"==typeof Uint8Array.prototype.copyWithin)this.copyWithin(t,r,n);else if(this===e&&r<t&&t<n)for(var a=i-1;a>=0;--a)e[a+t]=this[a+r];else Uint8Array.prototype.set.call(e,this.subarray(r,n),t);return i}},function(e,t,r){"use strict";function n(e){return e&&e.__esModule?e:{default:e}}function o(e){return function(){var t=e.apply(this,arguments);return new Promise(function(e,r){function n(o,i){try{var a=t[o](i),u=a.value}catch(e){return void r(e)}if(!a.done)return Promise.resolve(u).then(function(e){n("next",e)},function(e){n("throw",e)});e(u)}return n("next")})}}function i(e,t){if(!(e instanceof t))throw new TypeError("Cannot call a class as a function")}Object.defineProperty(t,"__esModule",{value:!0});var a=r(0),u=n(a),s=function(){function e(e,t){for(var r=0;r<t.length;r++){var n=t[r];n.enumerable=n.enumerable||!1,n.configurable=!0,"value"in n&&(n.writable=!0),Object.defineProperty(e,n.key,n)}}return function(t,r,n){return r&&e(t.prototype,r),n&&e(t,n),t}}(),f=r(6),c=r(8),l=n(c),h=r(9),p=n(h),d=r(11),y=n(d),g=r(13),v=r(2).Buffer,m=["m3u8"],b=function(){function e(){var t=arguments.length>0&&void 0!==arguments[0]?arguments[0]:{};i(this,e);var r=Object.assign({},f.defaultPloxyConfig,t);this.config=r,this.hlsMediaFiles=this.config.hlsMediaFiles,this.mediaFileLoadTimeout=this.config.mediaFileLoadTimeout,this.client=null,this.msgClient=new l.default;var n=new p.default(r.logLevel);r.logger=this.logger=n}return s(e,[{key:"onActivate",value:function(){function e(e){return t.apply(this,arguments)}var t=o(u.default.mark(function e(t){return u.default.wrap(function(e){for(;;)switch(e.prev=e.next){case 0:case"end":return e.stop()}},e,this)}));return e}()},{key:"onFetch",value:function(){function e(e){return t.apply(this,arguments)}var t=o(u.default.mark(function e(t){var r,n,o,i;return u.default.wrap(function(e){for(;;)switch(e.prev=e.next){case 0:if(r=this.logger,n=t.request,"GET"===n.method){e.next=4;break}return e.abrupt("return");case 4:if(o=n.url,i=(0,g.getUrlSuffix)(o),!m.includes(i)){e.next=9;break}return r.info(t.request.url),e.abrupt("return",t.respondWith(this.handlePlaylistRequest(n)));case 9:if(!this.hlsMediaFiles.includes(i)){e.next=12;break}return r.info(t.request.url),e.abrupt("return",t.respondWith(this.handleMediaRequest(n)));case 12:case"end":return e.stop()}},e,this)}));return e}()},{key:"handlePlaylistRequest",value:function(e){var t=this,r=this.logger;return fetch(new Request(e.url,{mode:"cors"})).then(function(){var n=o(u.default.mark(function n(i){return u.default.wrap(function(n){for(;;)switch(n.prev=n.next){case 0:if(!i.ok){n.next=13;break}return n.t0=t.msgClient,n.t1=y.default.SW_PLAYLIST,n.t2=e.url,n.next=6,i.clone().text();case 6:n.t3=n.sent,n.t4={url:n.t2,text:n.t3},n.t5={action:n.t1,data:n.t4},n.t6=300,n.t7=function(){var e=o(u.default.mark(function e(r){var n,o;return u.default.wrap(function(e){for(;;)switch(e.prev=e.next){case 0:return n=r.client,o=r.data,e.next=3,t.msgClient.isClientAlive(n);case 3:if(!e.sent){e.next=5;break}t.client=n;case 5:o.debug?t.logger.enableDebug():t.logger.resetLogger();case 6:case"end":return e.stop()}},e,t)}));return function(t){return e.apply(this,arguments)}}(),n.t8=function(e){r.warn(e),t.client=null},n.t0.sendMessageToAllClients.call(n.t0,n.t5,n.t6).then(n.t7).catch(n.t8);case 13:return n.abrupt("return",i);case 14:case"end":return n.stop()}},n,t)}));return function(e){return n.apply(this,arguments)}}())}},{key:"handleMediaRequest",value:function(){function e(e){return t.apply(this,arguments)}var t=o(u.default.mark(function e(t){var r,n,i,a,s,f,c,l,h=this;return u.default.wrap(function(e){for(;;)switch(e.prev=e.next){case 0:if(r=this.logger,n=t.headers,i=t.url,a=n.get("range")||void 0,s=(0,g.parseRangeHeader)(a),f=s.start,c=s.end,!f||c!==f){e.next=6;break}return e.abrupt("return");case 6:if(l=function(){r.info("request "+t.url+" from network");var e=(0,g.makeHeadersWithRange)(a);return fetch(new Request(t.url,{headers:e,mode:"cors"})).then(function(){var e=o(u.default.mark(function e(t){return u.default.wrap(function(e){for(;;)switch(e.prev=e.next){case 0:if(!t.ok||!h.client){e.next=14;break}return e.t0=h.msgClient,e.t1=h.client,e.t2=y.default.SW_MEDIA,e.t3=i,e.next=7,t.clone().arrayBuffer();case 7:e.t4=e.sent,e.t5=a,e.t6={url:e.t3,buffer:e.t4,range:e.t5},e.t7={action:e.t2,data:e.t6},e.t8=1e3,e.t9=function(e){r.warn(e)},e.t0.sendMessageToClient.call(e.t0,e.t1,e.t7,e.t8).catch(e.t9);case 14:return e.abrupt("return",t);case 15:case"end":return e.stop()}},e,h)}));return function(t){return e.apply(this,arguments)}}())},!this.client){e.next=11;break}return e.abrupt("return",this.msgClient.sendMessageToClient(this.client,{action:y.default.SW_GET_MEDIA,data:{url:i,range:a}},this.mediaFileLoadTimeout).then(function(){var e=o(u.default.mark(function e(t){var n,o,a,s,p;return u.default.wrap(function(e){for(;;)switch(e.prev=e.next){case 0:if(!(n=t.data)||!n.buffer){e.next=14;break}if(o=n.buffer,a=n.incomplete,r.info("hit cache "+i),s=void 0,a){e.next=9;break}s=n.buffer,e.next=12;break;case 9:return e.next=11,h.loadRemainBufferByHttp(i,o,f,c);case 11:s=e.sent;case 12:return p=f?{status:206,statusText:"Partial Content",headers:[["Content-Range","bytes "+f+"-"+c+"/"+s.byteLength]]}:{status:200,statusText:"ok"},e.abrupt("return",new Response(s,p));case 14:return e.abrupt("return",l());case 15:case"end":return e.stop()}},e,h)}));return function(t){return e.apply(this,arguments)}}()).catch(function(e){return r.warn(e),l()}));case 11:r.warn("client not exist when get media");case 12:return e.abrupt("return",l());case 13:case"end":return e.stop()}},e,this)}));return e}()},{key:"onMessage",value:function(){function e(e){return t.apply(this,arguments)}var t=o(u.default.mark(function e(t){var r,n,o;return u.default.wrap(function(e){for(;;)switch(e.prev=e.next){case 0:if(!t.ports[0]){e.next=2;break}return e.abrupt("return");case 2:r=t.data,this.logger.info("SW Received Message: "+JSON.stringify(r)),n=r.action,o={},t.source.postMessage(o);case 8:case"end":return e.stop()}},e,this)}));return e}()},{key:"register",value:function(){self.addEventListener("install",function(e){}),self.addEventListener("activate",this.onActivate.bind(this)),self.addEventListener("fetch",this.onFetch.bind(this)),self.addEventListener("message",this.onMessage.bind(this))}},{key:"loadRemainBufferByHttp",value:function(e,t,r,n){var o=this,i=this.logger,a=this.msgClient,u="bytes=";return r?(i.info("rangeStart "+r+" rangeEnd "+n),u=""+u+(r+t.byteLength)+"-"+n):u=""+u+t.byteLength+"-",i.info("continue download from "+e+" range: "+u),fetch(e,{headers:{Range:u},mode:"cors"}).then(function(e){return e.arrayBuffer()}).then(function(u){var s=void 0;r&&(s="bytes="+r+"-"+n);var f=v.from(u),c=v.concat([t,f]),l=new Uint8Array(c).buffer;return a.sendMessageToClient(o.client,{action:y.default.SW_MEDIA,data:{url:e,buffer:l,range:s}},1e3).catch(function(e){i.warn(e)}),l}).catch(function(e){o.logger.error("http partial download error "+e)})}}]),e}();t.default=b,b.version="0.1.1",e.exports=t.default},function(e,t,r){"use strict";var n=function(){return this}()||Function("return this")(),o=n.regeneratorRuntime&&Object.getOwnPropertyNames(n).indexOf("regeneratorRuntime")>=0,i=o&&n.regeneratorRuntime;if(n.regeneratorRuntime=void 0,e.exports=r(5),o)n.regeneratorRuntime=i;else try{delete n.regeneratorRuntime}catch(e){n.regeneratorRuntime=void 0}},function(e,t,r){"use strict";(function(e){var t="function"==typeof Symbol&&"symbol"==typeof Symbol.iterator?function(e){return typeof e}:function(e){return e&&"function"==typeof Symbol&&e.constructor===Symbol&&e!==Symbol.prototype?"symbol":typeof e};!function(r){function n(e,t,r,n){var o=t&&t.prototype instanceof i?t:i,a=Object.create(o.prototype),u=new d(n||[]);return a._invoke=c(e,r,u),a}function o(e,t,r){try{return{type:"normal",arg:e.call(t,r)}}catch(e){return{type:"throw",arg:e}}}function i(){}function a(){}function u(){}function s(e){["next","throw","return"].forEach(function(t){e[t]=function(e){return this._invoke(t,e)}})}function f(e){function r(n,i,a,u){var s=o(e[n],e,i);if("throw"!==s.type){var f=s.arg,c=f.value;return c&&"object"===(void 0===c?"undefined":t(c))&&b.call(c,"__await")?Promise.resolve(c.__await).then(function(e){r("next",e,a,u)},function(e){r("throw",e,a,u)}):Promise.resolve(c).then(function(e){f.value=e,a(f)},u)}u(s.arg)}function n(e,t){function n(){return new Promise(function(n,o){r(e,t,n,o)})}return i=i?i.then(n,n):n()}var i;this._invoke=n}function c(e,t,r){var n=S;return function(i,a){if(n===T)throw new Error("Generator is already running");if(n===x){if("throw"===i)throw a;return g()}for(r.method=i,r.arg=a;;){var u=r.delegate;if(u){var s=l(u,r);if(s){if(s===P)continue;return s}}if("next"===r.method)r.sent=r._sent=r.arg;else if("throw"===r.method){if(n===S)throw n=x,r.arg;r.dispatchException(r.arg)}else"return"===r.method&&r.abrupt("return",r.arg);n=T;var f=o(e,t,r);if("normal"===f.type){if(n=r.done?x:A,f.arg===P)continue;return{value:f.arg,done:r.done}}"throw"===f.type&&(n=x,r.method="throw",r.arg=f.arg)}}}function l(e,t){var r=e.iterator[t.method];if(r===v){if(t.delegate=null,"throw"===t.method){if(e.iterator.return&&(t.method="return",t.arg=v,l(e,t),"throw"===t.method))return P;t.method="throw",t.arg=new TypeError("The iterator does not provide a 'throw' method")}return P}var n=o(r,e.iterator,t.arg);if("throw"===n.type)return t.method="throw",t.arg=n.arg,t.delegate=null,P;var i=n.arg;return i?i.done?(t[e.resultName]=i.value,t.next=e.nextLoc,"return"!==t.method&&(t.method="next",t.arg=v),t.delegate=null,P):i:(t.method="throw",t.arg=new TypeError("iterator result is not an object"),t.delegate=null,P)}function h(e){var t={tryLoc:e[0]};1 in e&&(t.catchLoc=e[1]),2 in e&&(t.finallyLoc=e[2],t.afterLoc=e[3]),this.tryEntries.push(t)}function p(e){var t=e.completion||{};t.type="normal",delete t.arg,e.completion=t}function d(e){this.tryEntries=[{tryLoc:"root"}],e.forEach(h,this),this.reset(!0)}function y(e){if(e){var t=e[E];if(t)return t.call(e);if("function"==typeof e.next)return e;if(!isNaN(e.length)){var r=-1,n=function t(){for(;++r<e.length;)if(b.call(e,r))return t.value=e[r],t.done=!1,t;return t.value=v,t.done=!0,t};return n.next=n}}return{next:g}}function g(){return{value:v,done:!0}}var v,m=Object.prototype,b=m.hasOwnProperty,w="function"==typeof Symbol?Symbol:{},E=w.iterator||"@@iterator",_=w.asyncIterator||"@@asyncIterator",R=w.toStringTag||"@@toStringTag",L="object"===t(e),C=r.regeneratorRuntime;if(C)return void(L&&(e.exports=C));C=r.regeneratorRuntime=L?e.exports:{},C.wrap=n;var S="suspendedStart",A="suspendedYield",T="executing",x="completed",P={},D={};D[E]=function(){return this};var O=Object.getPrototypeOf,k=O&&O(O(y([])));k&&k!==m&&b.call(k,E)&&(D=k);var I=u.prototype=i.prototype=Object.create(D);a.prototype=I.constructor=u,u.constructor=a,u[R]=a.displayName="GeneratorFunction",C.isGeneratorFunction=function(e){var t="function"==typeof e&&e.constructor;return!!t&&(t===a||"GeneratorFunction"===(t.displayName||t.name))},C.mark=function(e){return Object.setPrototypeOf?Object.setPrototypeOf(e,u):(e.__proto__=u,R in e||(e[R]="GeneratorFunction")),e.prototype=Object.create(I),e},C.awrap=function(e){return{__await:e}},s(f.prototype),f.prototype[_]=function(){return this},C.AsyncIterator=f,C.async=function(e,t,r,o){var i=new f(n(e,t,r,o));return C.isGeneratorFunction(t)?i:i.next().then(function(e){return e.done?e.value:i.next()})},s(I),I[R]="Generator",I[E]=function(){return this},I.toString=function(){return"[object Generator]"},C.keys=function(e){var t=[];for(var r in e)t.push(r);return t.reverse(),function r(){for(;t.length;){var n=t.pop();if(n in e)return r.value=n,r.done=!1,r}return r.done=!0,r}},C.values=y,d.prototype={constructor:d,reset:function(e){if(this.prev=0,this.next=0,this.sent=this._sent=v,this.done=!1,this.delegate=null,this.method="next",this.arg=v,this.tryEntries.forEach(p),!e)for(var t in this)"t"===t.charAt(0)&&b.call(this,t)&&!isNaN(+t.slice(1))&&(this[t]=v)},stop:function(){this.done=!0;var e=this.tryEntries[0],t=e.completion;if("throw"===t.type)throw t.arg;return this.rval},dispatchException:function(e){function t(t,n){return i.type="throw",i.arg=e,r.next=t,n&&(r.method="next",r.arg=v),!!n}if(this.done)throw e;for(var r=this,n=this.tryEntries.length-1;n>=0;--n){var o=this.tryEntries[n],i=o.completion;if("root"===o.tryLoc)return t("end");if(o.tryLoc<=this.prev){var a=b.call(o,"catchLoc"),u=b.call(o,"finallyLoc");if(a&&u){if(this.prev<o.catchLoc)return t(o.catchLoc,!0);if(this.prev<o.finallyLoc)return t(o.finallyLoc)}else if(a){if(this.prev<o.catchLoc)return t(o.catchLoc,!0)}else{if(!u)throw new Error("try statement without catch or finally");if(this.prev<o.finallyLoc)return t(o.finallyLoc)}}}},abrupt:function(e,t){for(var r=this.tryEntries.length-1;r>=0;--r){var n=this.tryEntries[r];if(n.tryLoc<=this.prev&&b.call(n,"finallyLoc")&&this.prev<n.finallyLoc){var o=n;break}}o&&("break"===e||"continue"===e)&&o.tryLoc<=t&&t<=o.finallyLoc&&(o=null);var i=o?o.completion:{};return i.type=e,i.arg=t,o?(this.method="next",this.next=o.finallyLoc,P):this.complete(i)},complete:function(e,t){if("throw"===e.type)throw e.arg;return"break"===e.type||"continue"===e.type?this.next=e.arg:"return"===e.type?(this.rval=this.arg=e.arg,this.method="return",this.next="end"):"normal"===e.type&&t&&(this.next=t),P},finish:function(e){for(var t=this.tryEntries.length-1;t>=0;--t){var r=this.tryEntries[t];if(r.finallyLoc===e)return this.complete(r.completion,r.afterLoc),p(r),P}},catch:function(e){for(var t=this.tryEntries.length-1;t>=0;--t){var r=this.tryEntries[t];if(r.tryLoc===e){var n=r.completion;if("throw"===n.type){var o=n.arg;p(r)}return o}}throw new Error("illegal catch attempt")},delegateYield:function(e,t,r){return this.delegate={iterator:y(e),resultName:t,nextLoc:r},"next"===this.method&&(this.arg=v),P}}}(function(){return this}()||Function("return this")())}).call(t,r(1)(e))},function(e,t,r){"use strict";Object.defineProperty(t,"__esModule",{value:!0}),t.defaultPloxyConfig=t.defaultP2PConfig=void 0;var n=Object.assign||function(e){for(var t=1;t<arguments.length;t++){var r=arguments[t];for(var n in r)Object.prototype.hasOwnProperty.call(r,n)&&(e[n]=r[n])}return e},o=r(7),i=function(e){return e&&e.__esModule?e:{default:e}}(o),a=n({},i.default,{swFile:"sw.js",swScope:"./",httpLoadTime:2,nativePlaybackOnly:!1});a.segmentId=function(e,t,r,n){var o=r.split("?")[0];return o.startsWith("http")&&(o=o.split("://")[1]),n?o+"|"+n:""+o};var u={mediaFileLoadTimeout:4500,logLevel:"error",hlsMediaFiles:["ts","mp4","m4s"]};t.defaultP2PConfig=a,t.defaultPloxyConfig=u},function(e,t,r){"use strict";Object.defineProperty(t,"__esModule",{value:!0});var n={wsMaxRetries:10,p2pEnabled:!0,wifiOnly:!1,memoryCacheLimit:{pc:1073741824,mobile:536870912},dcDownloadTimeout:25,logLevel:"error",tag:"",webRTCConfig:{},token:void 0,appName:void 0,appId:void 0,prefetchNum:8,showSlogan:!0,trickleICE:!1,simultaneousTargetPeers:2,announceLocation:"cn",scheduleLevel:void 0};n.validateSegment=function(e,t){return!0},n.getStats=function(e,t,r){},n.getPeerId=function(e){},n.getPeersInfo=function(e){},t.default=n,e.exports=t.default},function(e,t,r){"use strict";function n(e){return function(){var t=e.apply(this,arguments);return new Promise(function(e,r){function n(o,i){try{var a=t[o](i),u=a.value}catch(e){return void r(e)}if(!a.done)return Promise.resolve(u).then(function(e){n("next",e)},function(e){n("throw",e)});e(u)}return n("next")})}}function o(e,t){if(!(e instanceof t))throw new TypeError("Cannot call a class as a function")}Object.defineProperty(t,"__esModule",{value:!0});var i=r(0),a=function(e){return e&&e.__esModule?e:{default:e}}(i),u=function(){function e(e,t){for(var r=0;r<t.length;r++){var n=t[r];n.enumerable=n.enumerable||!1,n.configurable=!0,"value"in n&&(n.writable=!0),Object.defineProperty(e,n.key,n)}}return function(t,r,n){return r&&e(t.prototype,r),n&&e(t,n),t}}(),s=function(){function e(){o(this,e),this.sendMessageToClient=this.sendMessageToClient.bind(this),this.sendMessageToAllClients=this.sendMessageToAllClients.bind(this)}return u(e,[{key:"sendMessageToClient",value:function(){function e(e,r,n){return t.apply(this,arguments)}var t=n(a.default.mark(function e(t,r,n){return a.default.wrap(function(e){for(;;)switch(e.prev=e.next){case 0:return e.abrupt("return",new Promise(function(e,o){if(!t)return void o("client is null");var i=new MessageChannel;i.port1.onmessage=function(r){e({client:t,data:r.data.data})},i.port1.onmessageerror=function(e){o(e)},t.postMessage(r,[i.port2]),setTimeout(function(){i.port1.close(),i.port2.close(),o("MessageChannel "+r.action+" timed out after "+n+" ms")},n)}));case 1:case"end":return e.stop()}},e,this)}));return e}()},{key:"sendMessageToAllClients",value:function(){function e(e,r){return t.apply(this,arguments)}var t=n(a.default.mark(function e(t,r){var n,o=this;return a.default.wrap(function(e){for(;;)switch(e.prev=e.next){case 0:return e.next=2,clients.matchAll();case 2:return n=e.sent,e.abrupt("return",Promise.race(n.map(function(e){return o.sendMessageToClient(e,t,r)})));case 4:case"end":return e.stop()}},e,this)}));return e}()},{key:"isClientAlive",value:function(){function e(e){return t.apply(this,arguments)}var t=n(a.default.mark(function e(t){return a.default.wrap(function(e){for(;;)switch(e.prev=e.next){case 0:if(t){e.next=2;break}return e.abrupt("return",!1);case 2:return e.abrupt("return",clients.matchAll().then(function(e){return e.some(function(e){return e.id===t.id})}));case 3:case"end":return e.stop()}},e,this)}));return e}()}]),e}();t.default=s,e.exports=t.default},function(e,t,r){"use strict";function n(e,t){if(!(e instanceof t))throw new TypeError("Cannot call a class as a function")}Object.defineProperty(t,"__esModule",{value:!0});var o=function(){function e(e,t){for(var r=0;r<t.length;r++){var n=t[r];n.enumerable=n.enumerable||!1,n.configurable=!0,"value"in n&&(n.writable=!0),Object.defineProperty(e,n.key,n)}}return function(t,r,n){return r&&e(t.prototype,r),n&&e(t,n),t}}(),i=r(10),a={debug:0,info:1,warn:2,error:3,none:4},u=function(){function e(t){n(this,e),this.logLevel=t,this.onlineDebug=!1,console.debug=console.log,"debug"!==t&&"info"!==t||(this.logLevel="debug"),!0===t?this.logLevel="warn":!1===t?this.logLevel="none":t in a||(this.logLevel="error"),this.resetLogger()}return o(e,[{key:"enableDebug",value:function(){this.onlineDebug=!0;for(var e in a)this[e]=console[e]}},{key:"resetLogger",value:function(){this.onlineDebug=!1;for(var e in a)a[e]<a[this.logLevel]?this[e]=i.noop:this[e]=console[e]}},{key:"isDebugLevel",get:function(){return a[this.logLevel]<=1||this.onlineDebug}}]),e}();t.default=u,e.exports=t.default},function(e,t,r){"use strict";function n(){return!0}function o(e){var t=new RegExp("(^|&)"+e+"=([^&]*)(&|$)"),r=window.location.search.substr(1).match(t);return null!=r&&""!==r[2]?r[2].toString():""}function i(e,t,r){var n=new RegExp("([?&])"+t+"=.*?(&|$)","i"),o=-1!==e.indexOf("?")?"&":"?";return e.match(n)?e.replace(n,"$1"+t+"="+r+"$2"):e+o+t+"="+r}function a(){return Date.parse(new Date)/1e3}function u(e,t){return parseInt(Math.random()*(t-e+1)+e,10)}function s(e){return 0===e?v:.33*e+.67}function f(e){var t=new XMLHttpRequest;return new Promise(function(r,n){t.open("GET",e,!0),t.responseType="arraybuffer",t.timeout=3e3,t.onload=function(e){206===t.status?r():n()},t.onerror=function(e){n()},t.ontimeout=function(e){n()},t.setRequestHeader("Range","bytes=0-0"),t.send()})}function c(){var e=navigator.language||navigator.userLanguage;return e=e.substr(0,2),"zh"===e?"cn":"en"}function l(e){e.then(function(){})}function h(e){return new Promise(function(t){return setTimeout(t,e)})}function p(){if("undefined"==typeof window)return null;var e={RTCPeerConnection:window.RTCPeerConnection||window.mozRTCPeerConnection||window.webkitRTCPeerConnection,RTCSessionDescription:window.RTCSessionDescription||window.mozRTCSessionDescription||window.webkitRTCSessionDescription,RTCIceCandidate:window.RTCIceCandidate||window.mozRTCIceCandidate||window.webkitRTCIceCandidate};return e.RTCPeerConnection?e:null}function d(e){var t=g.from(e),r=new g(e.byteLength);return t.copy(r),r}function y(e){var t=e.split("\n"),r=0,n=0,o=!0,i=!1,a=void 0;try{for(var u,s=t[Symbol.iterator]();!(o=(u=s.next()).done);o=!0){var f=u.value,c=/^#EXT-X-MEDIA-SEQUENCE:?(\-?[0-9.]*)?/.exec(f);if(c&&c[1]){r=parseInt(c[1],10);break}}}catch(e){i=!0,a=e}finally{try{!o&&s.return&&s.return()}finally{if(i)throw a}}var l=!0,h=!1,p=void 0;try{for(var d,y=t[Symbol.iterator]();!(l=(d=y.next()).done);l=!0){d.value.startsWith("#EXTINF")&&n++}}catch(e){h=!0,p=e}finally{try{!l&&y.return&&y.return()}finally{if(h)throw p}}return r+n-1}Object.defineProperty(t,"__esModule",{value:!0}),t.noop=n,t.getQueryParam=o,t.updateQueryStringParam=i,t.getCurrentTs=a,t.randomNum=u,t.calCheckPeersDelay=s,t.performRangeRequest=f,t.navLang=c,t.dontWaitFor=l,t.timeout=h,t.getBrowserRTC=p,t.copyBuffer=d,t.getMaxSequence=y;var g=r(2).Buffer,v=3},function(e,t,r){"use strict";Object.defineProperty(t,"__esModule",{value:!0});var n=Object.assign||function(e){for(var t=1;t<arguments.length;t++){var r=arguments[t];for(var n in r)Object.prototype.hasOwnProperty.call(r,n)&&(e[n]=r[n])}return e},o=r(12),i=function(e){return e&&e.__esModule?e:{default:e}}(o);t.default=n({},i.default,{METADATA:"metadata",ERROR:"error",SW_PLAYLIST:"SW_PLAYLIST",SW_MEDIA:"SW_MEDIA",SW_GET_MEDIA:"SW_GET_MEDIA",SW_VERSION:"SW_VERSION",LEVEL_LOADED:"LEVEL_LOADED",MANIFEST_PARSED:"MANIFEST_PARSED",FRAG_LOADED:"FRAG_LOADED"}),e.exports=t.default},function(e,t,r){"use strict";Object.defineProperty(t,"__esModule",{value:!0}),t.default={DC_SIGNAL:"SIGNAL",DC_OPEN:"OPEN",DC_REQUEST:"REQUEST",DC_PIECE_NOT_FOUND:"PIECE_NOT_FOUND",DC_PIECE_ABORT:"PIECE_ABORT",DC_CLOSE:"CLOSE",DC_RESPONSE:"RESPONSE",DC_ERROR:"ERROR",DC_PIECE:"PIECE",DC_TIMEOUT:"TIMEOUT",DC_PIECE_ACK:"PIECE_ACK",DC_METADATA:"METADATA",DC_PLAT_ANDROID:"ANDROID",DC_PLAT_IOS:"IOS",DC_PLAT_WEB:"WEB",DC_CHOKE:"CHOKE",DC_UNCHOKE:"UNCHOKE",DC_HAVE:"HAVE",DC_LOST:"LOST",DC_GET_PEERS:"GET_PEERS",DC_PEERS:"PEERS",DC_STATS:"STATS",DC_SUBSCRIBE:"SUBSCRIBE",DC_UNSUBSCRIBE:"UNSUBSCRIBE",DC_SUBSCRIBE_ACCEPT:"SUBSCRIBE_ACCEPT",DC_SUBSCRIBE_REJECT:"SUBSCRIBE_REJECT",DC_SUBSCRIBE_LEVEL:"SUBSCRIBE_LEVEL",DC_PEER_SIGNAL:"PEER_SIGNAL",DC_PLAYLIST:"PLAYLIST",BM_LOST:"lost",BM_ADDED_SEG_:"BM_ADDED_SEG_",BM_ADDED_SN_:"BM_ADDED_SN_",BM_SEG_ADDED:"BM_SEG_ADDED",FRAG_CHANGED:"FRAG_CHANGED",FRAG_LOADED:"FRAG_LOADED",FRAG_LOADING:"FRAG_LOADING",RESTART_P2P:"RESTART_P2P",EXCEPTION:"exception"},e.exports=t.default},function(e,t,r){"use strict";function n(e){if(!e)return{};var t=e.trim().toLowerCase();if(!t.startsWith("bytes="))throw new Error("unit-must-be-bytes",{normalizedRangeHeader:t});if(t.includes(","))throw new Error("single-range-only",{normalizedRangeHeader:t});var r=/(\d*)-(\d*)/.exec(t);if(!r||!r[1]&&!r[2])throw new Error("invalid-range-values",{normalizedRangeHeader:t});return{start:""===r[1]?void 0:Number(r[1]),end:""===r[2]?void 0:Number(r[2])}}function o(e){var t=u.parseURL(e);return t.path.substring(t.path.lastIndexOf(".")+1)}function i(e){var t=new Headers;return e&&t.set("range",e),t}Object.defineProperty(t,"__esModule",{value:!0}),t.parseRangeHeader=n,t.getUrlSuffix=o,t.makeHeadersWithRange=i;var a=r(14),u=function(e){if(e&&e.__esModule)return e;var t={};if(null!=e)for(var r in e)Object.prototype.hasOwnProperty.call(e,r)&&(t[r]=e[r]);return t.default=e,t}(a)},function(e,t,r){"use strict";(function(e){var r,n,o="function"==typeof Symbol&&"symbol"==typeof Symbol.iterator?function(e){return typeof e}:function(e){return e&&"function"==typeof Symbol&&e.constructor===Symbol&&e!==Symbol.prototype?"symbol":typeof e};!function(i){var a=/^((?:[a-zA-Z0-9+\-.]+:)?)(\/\/[^\/?#]*)?((?:[^\/?#]*\/)*[^;?#]*)?(;[^?#]*)?(\?[^#]*)?(#.*)?$/,u=/^([^\/?#]*)(.*)$/,s=/(?:\/|^)\.(?=\/)/g,f=/(?:\/|^)\.\.\/(?!\.\.\/)[^\/]*(?=\/)/g,c={buildAbsoluteURL:function(e,t,r){if(r=r||{},e=e.trim(),!(t=t.trim())){if(!r.alwaysNormalize)return e;var n=c.parseURL(e);if(!n)throw new Error("Error trying to parse base URL.");return n.path=c.normalizePath(n.path),c.buildURLFromParts(n)}var o=c.parseURL(t);if(!o)throw new Error("Error trying to parse relative URL.");if(o.scheme)return r.alwaysNormalize?(o.path=c.normalizePath(o.path),c.buildURLFromParts(o)):t;var i=c.parseURL(e);if(!i)throw new Error("Error trying to parse base URL.");if(!i.netLoc&&i.path&&"/"!==i.path[0]){var a=u.exec(i.path);i.netLoc=a[1],i.path=a[2]}i.netLoc&&!i.path&&(i.path="/");var s={scheme:i.scheme,netLoc:o.netLoc,path:null,params:o.params,query:o.query,fragment:o.fragment};if(!o.netLoc&&(s.netLoc=i.netLoc,"/"!==o.path[0]))if(o.path){var f=i.path,l=f.substring(0,f.lastIndexOf("/")+1)+o.path;s.path=c.normalizePath(l)}else s.path=i.path,o.params||(s.params=i.params,o.query||(s.query=i.query));return null===s.path&&(s.path=r.alwaysNormalize?c.normalizePath(o.path):o.path),c.buildURLFromParts(s)},parseURL:function(e){var t=a.exec(e);return t?{scheme:t[1]||"",netLoc:t[2]||"",path:t[3]||"",params:t[4]||"",query:t[5]||"",fragment:t[6]||""}:null},normalizePath:function(e){for(e=e.split("").reverse().join("").replace(s,"");e.length!==(e=e.replace(f,"")).length;);return e.split("").reverse().join("")},buildURLFromParts:function(e){return e.scheme+e.netLoc+e.path+e.params+e.query+e.fragment}};"object"===o(t)&&"object"===o(e)?e.exports=c:(r=[],void 0!==(n=function(){return c}.apply(t,r))&&(e.exports=n))}()}).call(t,r(1)(e))}])});
+(function webpackUniversalModuleDefinition(root, factory) {
+	if(typeof exports === 'object' && typeof module === 'object')
+		module.exports = factory();
+	else if(typeof define === 'function' && define.amd)
+		define([], factory);
+	else if(typeof exports === 'object')
+		exports["HlsProxy"] = factory();
+	else
+		root["HlsProxy"] = factory();
+})(typeof self !== 'undefined' ? self : this, function() {
+return /******/ (function(modules) { // webpackBootstrap
+/******/ 	// The module cache
+/******/ 	var installedModules = {};
+/******/
+/******/ 	// The require function
+/******/ 	function __webpack_require__(moduleId) {
+/******/
+/******/ 		// Check if module is in cache
+/******/ 		if(installedModules[moduleId]) {
+/******/ 			return installedModules[moduleId].exports;
+/******/ 		}
+/******/ 		// Create a new module (and put it into the cache)
+/******/ 		var module = installedModules[moduleId] = {
+/******/ 			i: moduleId,
+/******/ 			l: false,
+/******/ 			exports: {}
+/******/ 		};
+/******/
+/******/ 		// Execute the module function
+/******/ 		modules[moduleId].call(module.exports, module, module.exports, __webpack_require__);
+/******/
+/******/ 		// Flag the module as loaded
+/******/ 		module.l = true;
+/******/
+/******/ 		// Return the exports of the module
+/******/ 		return module.exports;
+/******/ 	}
+/******/
+/******/
+/******/ 	// expose the modules object (__webpack_modules__)
+/******/ 	__webpack_require__.m = modules;
+/******/
+/******/ 	// expose the module cache
+/******/ 	__webpack_require__.c = installedModules;
+/******/
+/******/ 	// define getter function for harmony exports
+/******/ 	__webpack_require__.d = function(exports, name, getter) {
+/******/ 		if(!__webpack_require__.o(exports, name)) {
+/******/ 			Object.defineProperty(exports, name, {
+/******/ 				configurable: false,
+/******/ 				enumerable: true,
+/******/ 				get: getter
+/******/ 			});
+/******/ 		}
+/******/ 	};
+/******/
+/******/ 	// getDefaultExport function for compatibility with non-harmony modules
+/******/ 	__webpack_require__.n = function(module) {
+/******/ 		var getter = module && module.__esModule ?
+/******/ 			function getDefault() { return module['default']; } :
+/******/ 			function getModuleExports() { return module; };
+/******/ 		__webpack_require__.d(getter, 'a', getter);
+/******/ 		return getter;
+/******/ 	};
+/******/
+/******/ 	// Object.prototype.hasOwnProperty.call
+/******/ 	__webpack_require__.o = function(object, property) { return Object.prototype.hasOwnProperty.call(object, property); };
+/******/
+/******/ 	// __webpack_public_path__
+/******/ 	__webpack_require__.p = "/src/";
+/******/
+/******/ 	// Load entry module and return exports
+/******/ 	return __webpack_require__(__webpack_require__.s = 3);
+/******/ })
+/************************************************************************/
+/******/ ([
+/* 0 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+module.exports = __webpack_require__(4);
+
+/***/ }),
+/* 1 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+module.exports = function (module) {
+	if (!module.webpackPolyfill) {
+		module.deprecate = function () {};
+		module.paths = [];
+		// module.parent = undefined by default
+		if (!module.children) module.children = [];
+		Object.defineProperty(module, "loaded", {
+			enumerable: true,
+			get: function get() {
+				return module.l;
+			}
+		});
+		Object.defineProperty(module, "id", {
+			enumerable: true,
+			get: function get() {
+				return module.i;
+			}
+		});
+		module.webpackPolyfill = 1;
+	}
+	return module;
+};
+
+/***/ }),
+/* 2 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+/*
+    method: concat
+ */
+
+/*
+ method: from
+ */
+
+/*
+ method: copy
+ */
+
+/*!
+ * The buffer module from node.js, for the browser.
+ *
+ * @author   Feross Aboukhadijeh <https://feross.org>
+ * @license  MIT
+ */
+/* eslint-disable no-proto */
+
+
+
+var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol" ? function (obj) { return typeof obj; } : function (obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; };
+
+exports.Buffer = Buffer;
+
+var K_MAX_LENGTH = 0x7fffffff;
+exports.kMaxLength = K_MAX_LENGTH;
+
+/**
+ * If `Buffer.TYPED_ARRAY_SUPPORT`:
+ *   === true    Use Uint8Array implementation (fastest)
+ *   === false   Print warning and recommend using `buffer` v4.x which has an Object
+ *               implementation (most compatible, even IE6)
+ *
+ * Browsers that support typed arrays are IE 10+, Firefox 4+, Chrome 7+, Safari 5.1+,
+ * Opera 11.6+, iOS 4.2+.
+ *
+ * We report that the browser does not support typed arrays if the are not subclassable
+ * using __proto__. Firefox 4-29 lacks support for adding new properties to `Uint8Array`
+ * (See: https://bugzilla.mozilla.org/show_bug.cgi?id=695438). IE 10 lacks support
+ * for __proto__ and has a buggy typed array implementation.
+ */
+Buffer.TYPED_ARRAY_SUPPORT = typedArraySupport();
+
+if (!Buffer.TYPED_ARRAY_SUPPORT && typeof console !== 'undefined' && typeof console.error === 'function') {
+    console.error('This browser lacks typed array (Uint8Array) support which is required by ' + '`buffer` v5.x. Use `buffer` v4.x if you require old browser support.');
+}
+
+function typedArraySupport() {
+    // Can typed array instances can be augmented?
+    try {
+        var arr = new Uint8Array(1);
+        arr.__proto__ = { __proto__: Uint8Array.prototype, foo: function foo() {
+                return 42;
+            } };
+        return arr.foo() === 42;
+    } catch (e) {
+        return false;
+    }
+}
+
+function createBuffer(length) {
+    if (length > K_MAX_LENGTH) {
+        throw new RangeError('The value "' + length + '" is invalid for option "size"');
+    }
+    // Return an augmented `Uint8Array` instance
+    var buf = new Uint8Array(length);
+    buf.__proto__ = Buffer.prototype;
+    return buf;
+}
+
+/**
+ * The Buffer constructor returns instances of `Uint8Array` that have their
+ * prototype changed to `Buffer.prototype`. Furthermore, `Buffer` is a subclass of
+ * `Uint8Array`, so the returned instances will have all the node `Buffer` methods
+ * and the `Uint8Array` methods. Square bracket notation works as expected -- it
+ * returns a single octet.
+ *
+ * The `Uint8Array` prototype remains unmodified.
+ */
+
+function Buffer(arg, encodingOrOffset, length) {
+    // Common case.
+    if (typeof arg === 'number') {
+        if (typeof encodingOrOffset === 'string') {
+            throw new TypeError('The "string" argument must be of type string. Received type number');
+        }
+        return allocUnsafe(arg);
+    }
+    return from(arg, encodingOrOffset, length);
+}
+
+// Fix subarray() in ES2016. See: https://github.com/feross/buffer/pull/97
+if (typeof Symbol !== 'undefined' && Symbol.species != null && Buffer[Symbol.species] === Buffer) {
+    Object.defineProperty(Buffer, Symbol.species, {
+        value: null,
+        configurable: true,
+        enumerable: false,
+        writable: false
+    });
+}
+
+// Buffer.poolSize = 8192 // not used by this implementation
+
+function from(value, encodingOrOffset, length) {
+    if (typeof value === 'string') {
+        return fromString(value, encodingOrOffset);
+    }
+
+    if (ArrayBuffer.isView(value)) {
+        return fromArrayLike(value);
+    }
+
+    if (value == null) {
+        throw TypeError('The first argument must be one of type string, Buffer, ArrayBuffer, Array, ' + 'or Array-like Object. Received type ' + (typeof value === 'undefined' ? 'undefined' : _typeof(value)));
+    }
+
+    if (isInstance(value, ArrayBuffer) || value && isInstance(value.buffer, ArrayBuffer)) {
+        return fromArrayBuffer(value, encodingOrOffset, length);
+    }
+
+    if (typeof value === 'number') {
+        throw new TypeError('The "value" argument must not be of type number. Received type number');
+    }
+
+    var valueOf = value.valueOf && value.valueOf();
+    if (valueOf != null && valueOf !== value) {
+        return Buffer.from(valueOf, encodingOrOffset, length);
+    }
+
+    var b = fromObject(value);
+    if (b) return b;
+
+    if (typeof Symbol !== 'undefined' && Symbol.toPrimitive != null && typeof value[Symbol.toPrimitive] === 'function') {
+        return Buffer.from(value[Symbol.toPrimitive]('string'), encodingOrOffset, length);
+    }
+
+    throw new TypeError('The first argument must be one of type string, Buffer, ArrayBuffer, Array, ' + 'or Array-like Object. Received type ' + (typeof value === 'undefined' ? 'undefined' : _typeof(value)));
+}
+
+/**
+ * Functionally equivalent to Buffer(arg, encoding) but throws a TypeError
+ * if value is a number.
+ * Buffer.from(str[, encoding])
+ * Buffer.from(array)
+ * Buffer.from(buffer)
+ * Buffer.from(arrayBuffer[, byteOffset[, length]])
+ **/
+Buffer.from = function (value, encodingOrOffset, length) {
+    return from(value, encodingOrOffset, length);
+};
+
+// Note: Change prototype *after* Buffer.from is defined to workaround Chrome bug:
+// https://github.com/feross/buffer/pull/148
+Buffer.prototype.__proto__ = Uint8Array.prototype;
+Buffer.__proto__ = Uint8Array;
+
+function assertSize(size) {
+    if (typeof size !== 'number') {
+        throw new TypeError('"size" argument must be of type number');
+    } else if (size < 0) {
+        throw new RangeError('The value "' + size + '" is invalid for option "size"');
+    }
+}
+
+function alloc(size, fill, encoding) {
+    assertSize(size);
+    if (size <= 0) {
+        return createBuffer(size);
+    }
+    if (fill !== undefined) {
+        // Only pay attention to encoding if it's a string. This
+        // prevents accidentally sending in a number that would
+        // be interpretted as a start offset.
+        return typeof encoding === 'string' ? createBuffer(size).fill(fill, encoding) : createBuffer(size).fill(fill);
+    }
+    return createBuffer(size);
+}
+
+/**
+ * Creates a new filled Buffer instance.
+ * alloc(size[, fill[, encoding]])
+ **/
+Buffer.alloc = function (size, fill, encoding) {
+    return alloc(size, fill, encoding);
+};
+
+function allocUnsafe(size) {
+    assertSize(size);
+    return createBuffer(size < 0 ? 0 : checked(size) | 0);
+}
+
+/**
+ * Equivalent to Buffer(num), by default creates a non-zero-filled Buffer instance.
+ * */
+Buffer.allocUnsafe = function (size) {
+    return allocUnsafe(size);
+};
+/**
+ * Equivalent to SlowBuffer(num), by default creates a non-zero-filled Buffer instance.
+ */
+// Buffer.allocUnsafeSlow = function (size) {
+//     return allocUnsafe(size)
+// }
+
+function fromString(string, encoding) {
+    if (typeof encoding !== 'string' || encoding === '') {
+        encoding = 'utf8';
+    }
+
+    if (!Buffer.isEncoding(encoding)) {
+        throw new TypeError('Unknown encoding: ' + encoding);
+    }
+
+    var length = byteLength(string, encoding) | 0;
+    var buf = createBuffer(length);
+
+    var actual = buf.write(string, encoding);
+
+    if (actual !== length) {
+        // Writing a hex string, for example, that contains invalid characters will
+        // cause everything after the first invalid character to be ignored. (e.g.
+        // 'abxxcd' will be treated as 'ab')
+        buf = buf.slice(0, actual);
+    }
+
+    return buf;
+}
+
+function fromArrayLike(array) {
+    var length = array.length < 0 ? 0 : checked(array.length) | 0;
+    var buf = createBuffer(length);
+    for (var i = 0; i < length; i += 1) {
+        buf[i] = array[i] & 255;
+    }
+    return buf;
+}
+
+function fromArrayBuffer(array, byteOffset, length) {
+    if (byteOffset < 0 || array.byteLength < byteOffset) {
+        throw new RangeError('"offset" is outside of buffer bounds');
+    }
+
+    if (array.byteLength < byteOffset + (length || 0)) {
+        throw new RangeError('"length" is outside of buffer bounds');
+    }
+
+    var buf;
+    if (byteOffset === undefined && length === undefined) {
+        buf = new Uint8Array(array);
+    } else if (length === undefined) {
+        buf = new Uint8Array(array, byteOffset);
+    } else {
+        buf = new Uint8Array(array, byteOffset, length);
+    }
+
+    // Return an augmented `Uint8Array` instance
+    buf.__proto__ = Buffer.prototype;
+    return buf;
+}
+
+function fromObject(obj) {
+    if (Buffer.isBuffer(obj)) {
+        var len = checked(obj.length) | 0;
+        var buf = createBuffer(len);
+
+        if (buf.length === 0) {
+            return buf;
+        }
+
+        obj.copy(buf, 0, 0, len);
+        return buf;
+    }
+
+    if (obj.length !== undefined) {
+        if (typeof obj.length !== 'number' || numberIsNaN(obj.length)) {
+            return createBuffer(0);
+        }
+        return fromArrayLike(obj);
+    }
+
+    if (obj.type === 'Buffer' && Array.isArray(obj.data)) {
+        return fromArrayLike(obj.data);
+    }
+}
+
+function checked(length) {
+    // Note: cannot use `length < K_MAX_LENGTH` here because that fails when
+    // length is NaN (which is otherwise coerced to zero.)
+    if (length >= K_MAX_LENGTH) {
+        throw new RangeError('Attempt to allocate Buffer larger than maximum ' + 'size: 0x' + K_MAX_LENGTH.toString(16) + ' bytes');
+    }
+    return length | 0;
+}
+
+Buffer.isBuffer = function isBuffer(b) {
+    return b != null && b._isBuffer === true && b !== Buffer.prototype; // so Buffer.isBuffer(Buffer.prototype) will be false
+};
+
+Buffer.isEncoding = function isEncoding(encoding) {
+    switch (String(encoding).toLowerCase()) {
+        case 'hex':
+        case 'utf8':
+        case 'utf-8':
+        case 'ascii':
+        case 'latin1':
+        case 'binary':
+        case 'base64':
+        case 'ucs2':
+        case 'ucs-2':
+        case 'utf16le':
+        case 'utf-16le':
+            return true;
+        default:
+            return false;
+    }
+};
+
+Buffer.concat = function concat(list, length) {
+    if (!Array.isArray(list)) {
+        throw new TypeError('"list" argument must be an Array of Buffers');
+    }
+
+    if (list.length === 0) {
+        return Buffer.alloc(0);
+    }
+
+    var i;
+    if (length === undefined) {
+        length = 0;
+        for (i = 0; i < list.length; ++i) {
+            length += list[i].length;
+        }
+    }
+
+    var buffer = Buffer.allocUnsafe(length);
+    var pos = 0;
+    for (i = 0; i < list.length; ++i) {
+        var buf = list[i];
+        if (isInstance(buf, Uint8Array)) {
+            buf = Buffer.from(buf);
+        }
+        if (!Buffer.isBuffer(buf)) {
+            throw new TypeError('"list" argument must be an Array of Buffers');
+        }
+        buf.copy(buffer, pos);
+        pos += buf.length;
+    }
+    return buffer;
+};
+
+function byteLength(string, encoding) {
+    if (Buffer.isBuffer(string)) {
+        return string.length;
+    }
+    if (ArrayBuffer.isView(string) || isInstance(string, ArrayBuffer)) {
+        return string.byteLength;
+    }
+    if (typeof string !== 'string') {
+        throw new TypeError('The "string" argument must be one of type string, Buffer, or ArrayBuffer. ' + 'Received type ' + (typeof string === 'undefined' ? 'undefined' : _typeof(string)));
+    }
+
+    var len = string.length;
+    var mustMatch = arguments.length > 2 && arguments[2] === true;
+    if (!mustMatch && len === 0) return 0;
+
+    // Use a for loop to avoid recursion
+    var loweredCase = false;
+    for (;;) {
+        switch (encoding) {
+            case 'ascii':
+            case 'latin1':
+            case 'binary':
+                return len;
+            case 'utf8':
+            case 'utf-8':
+                return utf8ToBytes(string).length;
+            case 'ucs2':
+            case 'ucs-2':
+            case 'utf16le':
+            case 'utf-16le':
+                return len * 2;
+            case 'hex':
+                return len >>> 1;
+            default:
+                if (loweredCase) {
+                    return mustMatch ? -1 : utf8ToBytes(string).length; // assume utf8
+                }
+                encoding = ('' + encoding).toLowerCase();
+                loweredCase = true;
+        }
+    }
+}
+Buffer.byteLength = byteLength;
+
+// This property is used by `Buffer.isBuffer` (and the `is-buffer` npm package)
+// to detect a Buffer instance. It's not possible to use `instanceof Buffer`
+// reliably in a browserify context because there could be multiple different
+// copies of the 'buffer' package in use. This method works even for Buffer
+// instances that were created from another copy of the `buffer` package.
+// See: https://github.com/feross/buffer/issues/154
+Buffer.prototype._isBuffer = true;
+
+Buffer.prototype.copy = function copy(target, targetStart, start, end) {
+    if (!Buffer.isBuffer(target)) throw new TypeError('argument should be a Buffer');
+    if (!start) start = 0;
+    if (!end && end !== 0) end = this.length;
+    if (targetStart >= target.length) targetStart = target.length;
+    if (!targetStart) targetStart = 0;
+    if (end > 0 && end < start) end = start;
+
+    // Copy 0 bytes; we're done
+    if (end === start) return 0;
+    if (target.length === 0 || this.length === 0) return 0;
+
+    // Fatal error conditions
+    if (targetStart < 0) {
+        throw new RangeError('targetStart out of bounds');
+    }
+    if (start < 0 || start >= this.length) throw new RangeError('Index out of range');
+    if (end < 0) throw new RangeError('sourceEnd out of bounds');
+
+    // Are we oob?
+    if (end > this.length) end = this.length;
+    if (target.length - targetStart < end - start) {
+        end = target.length - targetStart + start;
+    }
+
+    var len = end - start;
+
+    if (this === target && typeof Uint8Array.prototype.copyWithin === 'function') {
+        // Use built-in when available, missing from IE11
+        this.copyWithin(targetStart, start, end);
+    } else if (this === target && start < targetStart && targetStart < end) {
+        // descending copy from end
+        for (var i = len - 1; i >= 0; --i) {
+            target[i + targetStart] = this[i + start];
+        }
+    } else {
+        Uint8Array.prototype.set.call(target, this.subarray(start, end), targetStart);
+    }
+
+    return len;
+};
+
+function utf8ToBytes(string, units) {
+    units = units || Infinity;
+    var codePoint;
+    var length = string.length;
+    var leadSurrogate = null;
+    var bytes = [];
+
+    for (var i = 0; i < length; ++i) {
+        codePoint = string.charCodeAt(i);
+
+        // is surrogate component
+        if (codePoint > 0xD7FF && codePoint < 0xE000) {
+            // last char was a lead
+            if (!leadSurrogate) {
+                // no lead yet
+                if (codePoint > 0xDBFF) {
+                    // unexpected trail
+                    if ((units -= 3) > -1) bytes.push(0xEF, 0xBF, 0xBD);
+                    continue;
+                } else if (i + 1 === length) {
+                    // unpaired lead
+                    if ((units -= 3) > -1) bytes.push(0xEF, 0xBF, 0xBD);
+                    continue;
+                }
+
+                // valid lead
+                leadSurrogate = codePoint;
+
+                continue;
+            }
+
+            // 2 leads in a row
+            if (codePoint < 0xDC00) {
+                if ((units -= 3) > -1) bytes.push(0xEF, 0xBF, 0xBD);
+                leadSurrogate = codePoint;
+                continue;
+            }
+
+            // valid surrogate pair
+            codePoint = (leadSurrogate - 0xD800 << 10 | codePoint - 0xDC00) + 0x10000;
+        } else if (leadSurrogate) {
+            // valid bmp char, but last char was a lead
+            if ((units -= 3) > -1) bytes.push(0xEF, 0xBF, 0xBD);
+        }
+
+        leadSurrogate = null;
+
+        // encode utf8
+        if (codePoint < 0x80) {
+            if ((units -= 1) < 0) break;
+            bytes.push(codePoint);
+        } else if (codePoint < 0x800) {
+            if ((units -= 2) < 0) break;
+            bytes.push(codePoint >> 0x6 | 0xC0, codePoint & 0x3F | 0x80);
+        } else if (codePoint < 0x10000) {
+            if ((units -= 3) < 0) break;
+            bytes.push(codePoint >> 0xC | 0xE0, codePoint >> 0x6 & 0x3F | 0x80, codePoint & 0x3F | 0x80);
+        } else if (codePoint < 0x110000) {
+            if ((units -= 4) < 0) break;
+            bytes.push(codePoint >> 0x12 | 0xF0, codePoint >> 0xC & 0x3F | 0x80, codePoint >> 0x6 & 0x3F | 0x80, codePoint & 0x3F | 0x80);
+        } else {
+            throw new Error('Invalid code point');
+        }
+    }
+
+    return bytes;
+}
+
+// ArrayBuffer or Uint8Array objects from other contexts (i.e. iframes) do not pass
+// the `instanceof` check but they should be treated as of that type.
+// See: https://github.com/feross/buffer/issues/166
+function isInstance(obj, type) {
+    return obj instanceof type || obj != null && obj.constructor != null && obj.constructor.name != null && obj.constructor.name === type.name;
+}
+function numberIsNaN(obj) {
+    // For IE11 support
+    return obj !== obj; // eslint-disable-line no-self-compare
+}
+
+/***/ }),
+/* 3 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+    value: true
+});
+
+var _regenerator = __webpack_require__(0);
+
+var _regenerator2 = _interopRequireDefault(_regenerator);
+
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+var _messageClient = __webpack_require__(6);
+
+var _messageClient2 = _interopRequireDefault(_messageClient);
+
+var _events = __webpack_require__(7);
+
+var _events2 = _interopRequireDefault(_events);
+
+var _toolFunc = __webpack_require__(9);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function _asyncToGenerator(fn) { return function () { var gen = fn.apply(this, arguments); return new Promise(function (resolve, reject) { function step(key, arg) { try { var info = gen[key](arg); var value = info.value; } catch (error) { reject(error); return; } if (info.done) { resolve(value); } else { return Promise.resolve(value).then(function (value) { step("next", value); }, function (err) { step("throw", err); }); } } return step("next"); }); }; }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+var Buffer = __webpack_require__(2).Buffer;
+
+var PLAYLIST_SUFFIX = ['m3u8'];
+var PLAYLIST_SEND_TIMEOUT = 300;
+var MEDIA_SEND_TIMEOUT = 1000;
+var HLS_MEDIA_FILES = ['ts', 'mp4', 'm4s'];
+var MEDIA_FILE_LOAD_TIMEOUT = 6000;
+var debug = false;
+var windowClient = null;
+var msgClient = new _messageClient2.default();
+
+var HlsProxy = function () {
+    function HlsProxy() {
+        var config = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : {};
+
+        _classCallCheck(this, HlsProxy);
+    }
+
+    _createClass(HlsProxy, [{
+        key: "register",
+        value: function register() {}
+    }]);
+
+    return HlsProxy;
+}();
+
+exports.default = HlsProxy;
+
+
+self.addEventListener('install', function (event) {
+    // console.warn(`sw install`)
+    // event.waitUntil(self.skipWaiting());
+    // self.skipWaiting();
+});
+self.addEventListener('activate', function (event) {});
+self.addEventListener('fetch', onFetch);
+self.addEventListener('message', onMessage);
+
+function onFetch(event) {
+    // console.warn(`sw onFetch`)
+    var request = event.request;
+
+    if (request.method !== 'GET') {
+        return;
+    }
+    // console.warn(event.request.url);
+    var url = request.url;
+
+    var suffix = (0, _toolFunc.getUrlSuffix)(url);
+    if (PLAYLIST_SUFFIX.includes(suffix)) {
+        if (debug) console.info(event.request.url);
+        return event.respondWith(handlePlaylistRequest(request));
+    }
+    if (HLS_MEDIA_FILES.includes(suffix)) {
+        if (debug) console.info(event.request.url);
+        return event.respondWith(handleMediaRequest(request));
+    }
+}
+
+function handlePlaylistRequest(request) {
+    var _this = this;
+
+    if (!msgClient) {
+        msgClient = new _messageClient2.default();
+    }
+    // console.warn(request);
+    return fetch(new Request(request.url, { mode: "cors" })).then(function () {
+        var _ref = _asyncToGenerator( /*#__PURE__*/_regenerator2.default.mark(function _callee(resp) {
+            var text, msg, client, data;
+            return _regenerator2.default.wrap(function _callee$(_context) {
+                while (1) {
+                    switch (_context.prev = _context.next) {
+                        case 0:
+                            if (!resp.ok) {
+                                _context.next = 20;
+                                break;
+                            }
+
+                            _context.prev = 1;
+                            _context.next = 4;
+                            return resp.clone().text();
+
+                        case 4:
+                            text = _context.sent;
+                            _context.next = 7;
+                            return msgClient.sendMessageToAllClients({
+                                action: _events2.default.SW_PLAYLIST,
+                                data: {
+                                    url: request.url,
+                                    text: text
+                                }
+                            }, PLAYLIST_SEND_TIMEOUT);
+
+                        case 7:
+                            msg = _context.sent;
+                            client = msg.client, data = msg.data;
+                            // console.warn(`client resp ${JSON.stringify(data)}`);
+                            // console.warn(client);
+
+                            _context.next = 11;
+                            return msgClient.isClientAlive(client);
+
+                        case 11:
+                            if (!_context.sent) {
+                                _context.next = 13;
+                                break;
+                            }
+
+                            windowClient = client;
+
+                        case 13:
+                            debug = data.debug;
+                            _context.next = 20;
+                            break;
+
+                        case 16:
+                            _context.prev = 16;
+                            _context.t0 = _context["catch"](1);
+
+                            if (debug) console.warn(_context.t0);
+                            windowClient = null;
+
+                        case 20:
+                            return _context.abrupt("return", resp);
+
+                        case 21:
+                        case "end":
+                            return _context.stop();
+                    }
+                }
+            }, _callee, _this, [[1, 16]]);
+        }));
+
+        return function (_x2) {
+            return _ref.apply(this, arguments);
+        };
+    }());
+}
+
+function handleMediaRequest(request) {
+    var _this2 = this;
+
+    var headers = request.headers,
+        url = request.url;
+
+    var range = headers.get("range") || undefined;
+
+    var _parseRangeHeader = (0, _toolFunc.parseRangeHeader)(range),
+        rangeStart = _parseRangeHeader.start,
+        rangeEnd = _parseRangeHeader.end;
+    // console.warn(`handleMediaRequest range ${rangeStart}-${rangeEnd}`)
+
+
+    var requestFromNetwork = function requestFromNetwork() {
+        if (debug) console.info("request " + request.url + " from network");
+        var headers = (0, _toolFunc.makeHeadersWithRange)(range);
+        return fetch(new Request(request.url, { headers: headers, mode: "cors" })).then(function () {
+            var _ref2 = _asyncToGenerator( /*#__PURE__*/_regenerator2.default.mark(function _callee2(resp) {
+                return _regenerator2.default.wrap(function _callee2$(_context2) {
+                    while (1) {
+                        switch (_context2.prev = _context2.next) {
+                            case 0:
+                                if (!(resp.ok && windowClient)) {
+                                    _context2.next = 14;
+                                    break;
+                                }
+
+                                _context2.t0 = msgClient;
+                                _context2.t1 = windowClient;
+                                _context2.t2 = _events2.default.SW_MEDIA;
+                                _context2.t3 = url;
+                                _context2.next = 7;
+                                return resp.clone().arrayBuffer();
+
+                            case 7:
+                                _context2.t4 = _context2.sent;
+                                _context2.t5 = range;
+                                _context2.t6 = {
+                                    url: _context2.t3,
+                                    buffer: _context2.t4,
+                                    range: _context2.t5
+                                };
+                                _context2.t7 = {
+                                    action: _context2.t2,
+                                    data: _context2.t6
+                                };
+                                _context2.t8 = MEDIA_SEND_TIMEOUT;
+
+                                _context2.t9 = function (err) {
+                                    if (debug) console.warn(err);
+                                };
+
+                                _context2.t0.sendMessageToClient.call(_context2.t0, _context2.t1, _context2.t7, _context2.t8).catch(_context2.t9);
+
+                            case 14:
+                                return _context2.abrupt("return", resp);
+
+                            case 15:
+                            case "end":
+                                return _context2.stop();
+                        }
+                    }
+                }, _callee2, _this2);
+            }));
+
+            return function (_x3) {
+                return _ref2.apply(this, arguments);
+            };
+        }());
+    };
+    // 忽略 1 byte请求
+    if (rangeStart === 0 && rangeEnd === rangeStart) {
+        return requestFromNetwork();
+    }
+    if (windowClient) {
+        return msgClient.sendMessageToClient(windowClient, {
+            action: _events2.default.SW_GET_MEDIA,
+            data: {
+                url: url,
+                range: range
+            }
+        }, MEDIA_FILE_LOAD_TIMEOUT).then(function () {
+            var _ref3 = _asyncToGenerator( /*#__PURE__*/_regenerator2.default.mark(function _callee3(resp) {
+                var data, buffer, incomplete, body, respHeader;
+                return _regenerator2.default.wrap(function _callee3$(_context3) {
+                    while (1) {
+                        switch (_context3.prev = _context3.next) {
+                            case 0:
+                                data = resp.data;
+                                // console.warn(`windowClient resp`);
+                                // console.warn(data);
+
+                                if (!(data && data.buffer)) {
+                                    _context3.next = 15;
+                                    break;
+                                }
+
+                                buffer = data.buffer, incomplete = data.incomplete;
+
+                                if (debug) console.info("hit cache " + url);
+                                body = void 0;
+
+                                if (incomplete) {
+                                    _context3.next = 9;
+                                    break;
+                                }
+
+                                body = data.buffer;
+                                _context3.next = 12;
+                                break;
+
+                            case 9:
+                                _context3.next = 11;
+                                return loadRemainBufferByHttp(url, buffer, rangeStart, rangeEnd);
+
+                            case 11:
+                                body = _context3.sent;
+
+                            case 12:
+                                respHeader = {
+                                    status: rangeStart ? 206 : 200,
+                                    statusText: rangeStart ? 'Partial Content' : 'OK',
+                                    headers: {
+                                        'Accept-Ranges': 'bytes',
+                                        'Content-Length': body.byteLength
+                                    }
+                                };
+
+                                if (rangeStart) {
+                                    respHeader.headers['Content-Range'] = "bytes " + rangeStart + "-" + rangeEnd + "/" + body.byteLength;
+                                }
+                                // console.warn(`return new Response size ${body.byteLength} header ${JSON.stringify(respHeader)}`);
+                                return _context3.abrupt("return", new Response(body, respHeader));
+
+                            case 15:
+                                return _context3.abrupt("return", requestFromNetwork());
+
+                            case 16:
+                            case "end":
+                                return _context3.stop();
+                        }
+                    }
+                }, _callee3, _this2);
+            }));
+
+            return function (_x4) {
+                return _ref3.apply(this, arguments);
+            };
+        }()).catch(function (e) {
+            if (debug) console.warn(e);
+            return requestFromNetwork();
+        });
+    } else {
+        if (debug) console.warn("windowClient not exist when get media");
+    }
+    return requestFromNetwork();
+}
+
+function onMessage(event) {
+    // if (event.ports[0]) return;
+    // const { data } = event;
+    // this.logger.info("SW Received Message: " + JSON.stringify(data));
+    // const { action } = data;
+    // let resp = {};
+    // switch (action) {
+    //
+    // }
+    // console.warn(`sw postMessage ${JSON.stringify(resp)}`)
+    // event.source.postMessage(resp);
+}
+
+function loadRemainBufferByHttp(url, loadedBuf, start, end) {
+    // 发起http请求
+    var range = "bytes=";
+    if (start) {
+        if (debug) console.info("rangeStart " + start + " rangeEnd " + end);
+        range = "" + range + (start + loadedBuf.byteLength) + "-" + end;
+    } else {
+        range = "" + range + loadedBuf.byteLength + "-";
+    }
+
+    if (debug) console.info("continue download from " + url + " range: " + range);
+
+    return fetch(url, {
+        headers: {
+            Range: range
+        },
+        mode: "cors"
+    }).then(function (response) {
+        return response.arrayBuffer();
+    }).then(function (buffer) {
+        var respRange = void 0;
+        if (start) {
+            respRange = "bytes=" + start + "-" + end;
+        }
+        var httpPayload = Buffer.from(buffer);
+        var data = Buffer.concat([loadedBuf, httpPayload]);
+        var resp = new Uint8Array(data).buffer; // 将uint8array转为arraybuffer
+        msgClient.sendMessageToClient(windowClient, {
+            action: _events2.default.SW_MEDIA,
+            data: {
+                url: url,
+                buffer: resp,
+                range: respRange
+            }
+        }, MEDIA_SEND_TIMEOUT).catch(function (err) {
+            if (debug) console.warn(err);
+        });
+        return resp;
+    }).catch(function (err) {
+        console.error("http partial download error " + err);
+    });
+}
+
+HlsProxy.version = "0.4.0";
+module.exports = exports["default"];
+
+/***/ }),
+/* 4 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+/**
+ * Copyright (c) 2014-present, Facebook, Inc.
+ *
+ * This source code is licensed under the MIT license found in the
+ * LICENSE file in the root directory of this source tree.
+ */
+
+// This method of obtaining a reference to the global object needs to be
+// kept identical to the way it is obtained in runtime.js
+var g = function () {
+  return this;
+}() || Function("return this")();
+
+// Use `getOwnPropertyNames` because not all browsers support calling
+// `hasOwnProperty` on the global `self` object in a worker. See #183.
+var hadRuntime = g.regeneratorRuntime && Object.getOwnPropertyNames(g).indexOf("regeneratorRuntime") >= 0;
+
+// Save the old regeneratorRuntime in case it needs to be restored later.
+var oldRuntime = hadRuntime && g.regeneratorRuntime;
+
+// Force reevalutation of runtime.js.
+g.regeneratorRuntime = undefined;
+
+module.exports = __webpack_require__(5);
+
+if (hadRuntime) {
+  // Restore the original runtime.
+  g.regeneratorRuntime = oldRuntime;
+} else {
+  // Remove the global property added by runtime.js.
+  try {
+    delete g.regeneratorRuntime;
+  } catch (e) {
+    g.regeneratorRuntime = undefined;
+  }
+}
+
+/***/ }),
+/* 5 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+/* WEBPACK VAR INJECTION */(function(module) {
+
+var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol" ? function (obj) { return typeof obj; } : function (obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; };
+
+/**
+ * Copyright (c) 2014-present, Facebook, Inc.
+ *
+ * This source code is licensed under the MIT license found in the
+ * LICENSE file in the root directory of this source tree.
+ */
+
+!function (global) {
+  "use strict";
+
+  var Op = Object.prototype;
+  var hasOwn = Op.hasOwnProperty;
+  var undefined; // More compressible than void 0.
+  var $Symbol = typeof Symbol === "function" ? Symbol : {};
+  var iteratorSymbol = $Symbol.iterator || "@@iterator";
+  var asyncIteratorSymbol = $Symbol.asyncIterator || "@@asyncIterator";
+  var toStringTagSymbol = $Symbol.toStringTag || "@@toStringTag";
+
+  var inModule = ( false ? "undefined" : _typeof(module)) === "object";
+  var runtime = global.regeneratorRuntime;
+  if (runtime) {
+    if (inModule) {
+      // If regeneratorRuntime is defined globally and we're in a module,
+      // make the exports object identical to regeneratorRuntime.
+      module.exports = runtime;
+    }
+    // Don't bother evaluating the rest of this file if the runtime was
+    // already defined globally.
+    return;
+  }
+
+  // Define the runtime globally (as expected by generated code) as either
+  // module.exports (if we're in a module) or a new, empty object.
+  runtime = global.regeneratorRuntime = inModule ? module.exports : {};
+
+  function wrap(innerFn, outerFn, self, tryLocsList) {
+    // If outerFn provided and outerFn.prototype is a Generator, then outerFn.prototype instanceof Generator.
+    var protoGenerator = outerFn && outerFn.prototype instanceof Generator ? outerFn : Generator;
+    var generator = Object.create(protoGenerator.prototype);
+    var context = new Context(tryLocsList || []);
+
+    // The ._invoke method unifies the implementations of the .next,
+    // .throw, and .return methods.
+    generator._invoke = makeInvokeMethod(innerFn, self, context);
+
+    return generator;
+  }
+  runtime.wrap = wrap;
+
+  // Try/catch helper to minimize deoptimizations. Returns a completion
+  // record like context.tryEntries[i].completion. This interface could
+  // have been (and was previously) designed to take a closure to be
+  // invoked without arguments, but in all the cases we care about we
+  // already have an existing method we want to call, so there's no need
+  // to create a new function object. We can even get away with assuming
+  // the method takes exactly one argument, since that happens to be true
+  // in every case, so we don't have to touch the arguments object. The
+  // only additional allocation required is the completion record, which
+  // has a stable shape and so hopefully should be cheap to allocate.
+  function tryCatch(fn, obj, arg) {
+    try {
+      return { type: "normal", arg: fn.call(obj, arg) };
+    } catch (err) {
+      return { type: "throw", arg: err };
+    }
+  }
+
+  var GenStateSuspendedStart = "suspendedStart";
+  var GenStateSuspendedYield = "suspendedYield";
+  var GenStateExecuting = "executing";
+  var GenStateCompleted = "completed";
+
+  // Returning this object from the innerFn has the same effect as
+  // breaking out of the dispatch switch statement.
+  var ContinueSentinel = {};
+
+  // Dummy constructor functions that we use as the .constructor and
+  // .constructor.prototype properties for functions that return Generator
+  // objects. For full spec compliance, you may wish to configure your
+  // minifier not to mangle the names of these two functions.
+  function Generator() {}
+  function GeneratorFunction() {}
+  function GeneratorFunctionPrototype() {}
+
+  // This is a polyfill for %IteratorPrototype% for environments that
+  // don't natively support it.
+  var IteratorPrototype = {};
+  IteratorPrototype[iteratorSymbol] = function () {
+    return this;
+  };
+
+  var getProto = Object.getPrototypeOf;
+  var NativeIteratorPrototype = getProto && getProto(getProto(values([])));
+  if (NativeIteratorPrototype && NativeIteratorPrototype !== Op && hasOwn.call(NativeIteratorPrototype, iteratorSymbol)) {
+    // This environment has a native %IteratorPrototype%; use it instead
+    // of the polyfill.
+    IteratorPrototype = NativeIteratorPrototype;
+  }
+
+  var Gp = GeneratorFunctionPrototype.prototype = Generator.prototype = Object.create(IteratorPrototype);
+  GeneratorFunction.prototype = Gp.constructor = GeneratorFunctionPrototype;
+  GeneratorFunctionPrototype.constructor = GeneratorFunction;
+  GeneratorFunctionPrototype[toStringTagSymbol] = GeneratorFunction.displayName = "GeneratorFunction";
+
+  // Helper for defining the .next, .throw, and .return methods of the
+  // Iterator interface in terms of a single ._invoke method.
+  function defineIteratorMethods(prototype) {
+    ["next", "throw", "return"].forEach(function (method) {
+      prototype[method] = function (arg) {
+        return this._invoke(method, arg);
+      };
+    });
+  }
+
+  runtime.isGeneratorFunction = function (genFun) {
+    var ctor = typeof genFun === "function" && genFun.constructor;
+    return ctor ? ctor === GeneratorFunction ||
+    // For the native GeneratorFunction constructor, the best we can
+    // do is to check its .name property.
+    (ctor.displayName || ctor.name) === "GeneratorFunction" : false;
+  };
+
+  runtime.mark = function (genFun) {
+    if (Object.setPrototypeOf) {
+      Object.setPrototypeOf(genFun, GeneratorFunctionPrototype);
+    } else {
+      genFun.__proto__ = GeneratorFunctionPrototype;
+      if (!(toStringTagSymbol in genFun)) {
+        genFun[toStringTagSymbol] = "GeneratorFunction";
+      }
+    }
+    genFun.prototype = Object.create(Gp);
+    return genFun;
+  };
+
+  // Within the body of any async function, `await x` is transformed to
+  // `yield regeneratorRuntime.awrap(x)`, so that the runtime can test
+  // `hasOwn.call(value, "__await")` to determine if the yielded value is
+  // meant to be awaited.
+  runtime.awrap = function (arg) {
+    return { __await: arg };
+  };
+
+  function AsyncIterator(generator) {
+    function invoke(method, arg, resolve, reject) {
+      var record = tryCatch(generator[method], generator, arg);
+      if (record.type === "throw") {
+        reject(record.arg);
+      } else {
+        var result = record.arg;
+        var value = result.value;
+        if (value && (typeof value === "undefined" ? "undefined" : _typeof(value)) === "object" && hasOwn.call(value, "__await")) {
+          return Promise.resolve(value.__await).then(function (value) {
+            invoke("next", value, resolve, reject);
+          }, function (err) {
+            invoke("throw", err, resolve, reject);
+          });
+        }
+
+        return Promise.resolve(value).then(function (unwrapped) {
+          // When a yielded Promise is resolved, its final value becomes
+          // the .value of the Promise<{value,done}> result for the
+          // current iteration. If the Promise is rejected, however, the
+          // result for this iteration will be rejected with the same
+          // reason. Note that rejections of yielded Promises are not
+          // thrown back into the generator function, as is the case
+          // when an awaited Promise is rejected. This difference in
+          // behavior between yield and await is important, because it
+          // allows the consumer to decide what to do with the yielded
+          // rejection (swallow it and continue, manually .throw it back
+          // into the generator, abandon iteration, whatever). With
+          // await, by contrast, there is no opportunity to examine the
+          // rejection reason outside the generator function, so the
+          // only option is to throw it from the await expression, and
+          // let the generator function handle the exception.
+          result.value = unwrapped;
+          resolve(result);
+        }, reject);
+      }
+    }
+
+    var previousPromise;
+
+    function enqueue(method, arg) {
+      function callInvokeWithMethodAndArg() {
+        return new Promise(function (resolve, reject) {
+          invoke(method, arg, resolve, reject);
+        });
+      }
+
+      return previousPromise =
+      // If enqueue has been called before, then we want to wait until
+      // all previous Promises have been resolved before calling invoke,
+      // so that results are always delivered in the correct order. If
+      // enqueue has not been called before, then it is important to
+      // call invoke immediately, without waiting on a callback to fire,
+      // so that the async generator function has the opportunity to do
+      // any necessary setup in a predictable way. This predictability
+      // is why the Promise constructor synchronously invokes its
+      // executor callback, and why async functions synchronously
+      // execute code before the first await. Since we implement simple
+      // async functions in terms of async generators, it is especially
+      // important to get this right, even though it requires care.
+      previousPromise ? previousPromise.then(callInvokeWithMethodAndArg,
+      // Avoid propagating failures to Promises returned by later
+      // invocations of the iterator.
+      callInvokeWithMethodAndArg) : callInvokeWithMethodAndArg();
+    }
+
+    // Define the unified helper method that is used to implement .next,
+    // .throw, and .return (see defineIteratorMethods).
+    this._invoke = enqueue;
+  }
+
+  defineIteratorMethods(AsyncIterator.prototype);
+  AsyncIterator.prototype[asyncIteratorSymbol] = function () {
+    return this;
+  };
+  runtime.AsyncIterator = AsyncIterator;
+
+  // Note that simple async functions are implemented on top of
+  // AsyncIterator objects; they just return a Promise for the value of
+  // the final result produced by the iterator.
+  runtime.async = function (innerFn, outerFn, self, tryLocsList) {
+    var iter = new AsyncIterator(wrap(innerFn, outerFn, self, tryLocsList));
+
+    return runtime.isGeneratorFunction(outerFn) ? iter // If outerFn is a generator, return the full iterator.
+    : iter.next().then(function (result) {
+      return result.done ? result.value : iter.next();
+    });
+  };
+
+  function makeInvokeMethod(innerFn, self, context) {
+    var state = GenStateSuspendedStart;
+
+    return function invoke(method, arg) {
+      if (state === GenStateExecuting) {
+        throw new Error("Generator is already running");
+      }
+
+      if (state === GenStateCompleted) {
+        if (method === "throw") {
+          throw arg;
+        }
+
+        // Be forgiving, per 25.3.3.3.3 of the spec:
+        // https://people.mozilla.org/~jorendorff/es6-draft.html#sec-generatorresume
+        return doneResult();
+      }
+
+      context.method = method;
+      context.arg = arg;
+
+      while (true) {
+        var delegate = context.delegate;
+        if (delegate) {
+          var delegateResult = maybeInvokeDelegate(delegate, context);
+          if (delegateResult) {
+            if (delegateResult === ContinueSentinel) continue;
+            return delegateResult;
+          }
+        }
+
+        if (context.method === "next") {
+          // Setting context._sent for legacy support of Babel's
+          // function.sent implementation.
+          context.sent = context._sent = context.arg;
+        } else if (context.method === "throw") {
+          if (state === GenStateSuspendedStart) {
+            state = GenStateCompleted;
+            throw context.arg;
+          }
+
+          context.dispatchException(context.arg);
+        } else if (context.method === "return") {
+          context.abrupt("return", context.arg);
+        }
+
+        state = GenStateExecuting;
+
+        var record = tryCatch(innerFn, self, context);
+        if (record.type === "normal") {
+          // If an exception is thrown from innerFn, we leave state ===
+          // GenStateExecuting and loop back for another invocation.
+          state = context.done ? GenStateCompleted : GenStateSuspendedYield;
+
+          if (record.arg === ContinueSentinel) {
+            continue;
+          }
+
+          return {
+            value: record.arg,
+            done: context.done
+          };
+        } else if (record.type === "throw") {
+          state = GenStateCompleted;
+          // Dispatch the exception by looping back around to the
+          // context.dispatchException(context.arg) call above.
+          context.method = "throw";
+          context.arg = record.arg;
+        }
+      }
+    };
+  }
+
+  // Call delegate.iterator[context.method](context.arg) and handle the
+  // result, either by returning a { value, done } result from the
+  // delegate iterator, or by modifying context.method and context.arg,
+  // setting context.delegate to null, and returning the ContinueSentinel.
+  function maybeInvokeDelegate(delegate, context) {
+    var method = delegate.iterator[context.method];
+    if (method === undefined) {
+      // A .throw or .return when the delegate iterator has no .throw
+      // method always terminates the yield* loop.
+      context.delegate = null;
+
+      if (context.method === "throw") {
+        if (delegate.iterator.return) {
+          // If the delegate iterator has a return method, give it a
+          // chance to clean up.
+          context.method = "return";
+          context.arg = undefined;
+          maybeInvokeDelegate(delegate, context);
+
+          if (context.method === "throw") {
+            // If maybeInvokeDelegate(context) changed context.method from
+            // "return" to "throw", let that override the TypeError below.
+            return ContinueSentinel;
+          }
+        }
+
+        context.method = "throw";
+        context.arg = new TypeError("The iterator does not provide a 'throw' method");
+      }
+
+      return ContinueSentinel;
+    }
+
+    var record = tryCatch(method, delegate.iterator, context.arg);
+
+    if (record.type === "throw") {
+      context.method = "throw";
+      context.arg = record.arg;
+      context.delegate = null;
+      return ContinueSentinel;
+    }
+
+    var info = record.arg;
+
+    if (!info) {
+      context.method = "throw";
+      context.arg = new TypeError("iterator result is not an object");
+      context.delegate = null;
+      return ContinueSentinel;
+    }
+
+    if (info.done) {
+      // Assign the result of the finished delegate to the temporary
+      // variable specified by delegate.resultName (see delegateYield).
+      context[delegate.resultName] = info.value;
+
+      // Resume execution at the desired location (see delegateYield).
+      context.next = delegate.nextLoc;
+
+      // If context.method was "throw" but the delegate handled the
+      // exception, let the outer generator proceed normally. If
+      // context.method was "next", forget context.arg since it has been
+      // "consumed" by the delegate iterator. If context.method was
+      // "return", allow the original .return call to continue in the
+      // outer generator.
+      if (context.method !== "return") {
+        context.method = "next";
+        context.arg = undefined;
+      }
+    } else {
+      // Re-yield the result returned by the delegate method.
+      return info;
+    }
+
+    // The delegate iterator is finished, so forget it and continue with
+    // the outer generator.
+    context.delegate = null;
+    return ContinueSentinel;
+  }
+
+  // Define Generator.prototype.{next,throw,return} in terms of the
+  // unified ._invoke helper method.
+  defineIteratorMethods(Gp);
+
+  Gp[toStringTagSymbol] = "Generator";
+
+  // A Generator should always return itself as the iterator object when the
+  // @@iterator function is called on it. Some browsers' implementations of the
+  // iterator prototype chain incorrectly implement this, causing the Generator
+  // object to not be returned from this call. This ensures that doesn't happen.
+  // See https://github.com/facebook/regenerator/issues/274 for more details.
+  Gp[iteratorSymbol] = function () {
+    return this;
+  };
+
+  Gp.toString = function () {
+    return "[object Generator]";
+  };
+
+  function pushTryEntry(locs) {
+    var entry = { tryLoc: locs[0] };
+
+    if (1 in locs) {
+      entry.catchLoc = locs[1];
+    }
+
+    if (2 in locs) {
+      entry.finallyLoc = locs[2];
+      entry.afterLoc = locs[3];
+    }
+
+    this.tryEntries.push(entry);
+  }
+
+  function resetTryEntry(entry) {
+    var record = entry.completion || {};
+    record.type = "normal";
+    delete record.arg;
+    entry.completion = record;
+  }
+
+  function Context(tryLocsList) {
+    // The root entry object (effectively a try statement without a catch
+    // or a finally block) gives us a place to store values thrown from
+    // locations where there is no enclosing try statement.
+    this.tryEntries = [{ tryLoc: "root" }];
+    tryLocsList.forEach(pushTryEntry, this);
+    this.reset(true);
+  }
+
+  runtime.keys = function (object) {
+    var keys = [];
+    for (var key in object) {
+      keys.push(key);
+    }
+    keys.reverse();
+
+    // Rather than returning an object with a next method, we keep
+    // things simple and return the next function itself.
+    return function next() {
+      while (keys.length) {
+        var key = keys.pop();
+        if (key in object) {
+          next.value = key;
+          next.done = false;
+          return next;
+        }
+      }
+
+      // To avoid creating an additional object, we just hang the .value
+      // and .done properties off the next function object itself. This
+      // also ensures that the minifier will not anonymize the function.
+      next.done = true;
+      return next;
+    };
+  };
+
+  function values(iterable) {
+    if (iterable) {
+      var iteratorMethod = iterable[iteratorSymbol];
+      if (iteratorMethod) {
+        return iteratorMethod.call(iterable);
+      }
+
+      if (typeof iterable.next === "function") {
+        return iterable;
+      }
+
+      if (!isNaN(iterable.length)) {
+        var i = -1,
+            next = function next() {
+          while (++i < iterable.length) {
+            if (hasOwn.call(iterable, i)) {
+              next.value = iterable[i];
+              next.done = false;
+              return next;
+            }
+          }
+
+          next.value = undefined;
+          next.done = true;
+
+          return next;
+        };
+
+        return next.next = next;
+      }
+    }
+
+    // Return an iterator with no values.
+    return { next: doneResult };
+  }
+  runtime.values = values;
+
+  function doneResult() {
+    return { value: undefined, done: true };
+  }
+
+  Context.prototype = {
+    constructor: Context,
+
+    reset: function reset(skipTempReset) {
+      this.prev = 0;
+      this.next = 0;
+      // Resetting context._sent for legacy support of Babel's
+      // function.sent implementation.
+      this.sent = this._sent = undefined;
+      this.done = false;
+      this.delegate = null;
+
+      this.method = "next";
+      this.arg = undefined;
+
+      this.tryEntries.forEach(resetTryEntry);
+
+      if (!skipTempReset) {
+        for (var name in this) {
+          // Not sure about the optimal order of these conditions:
+          if (name.charAt(0) === "t" && hasOwn.call(this, name) && !isNaN(+name.slice(1))) {
+            this[name] = undefined;
+          }
+        }
+      }
+    },
+
+    stop: function stop() {
+      this.done = true;
+
+      var rootEntry = this.tryEntries[0];
+      var rootRecord = rootEntry.completion;
+      if (rootRecord.type === "throw") {
+        throw rootRecord.arg;
+      }
+
+      return this.rval;
+    },
+
+    dispatchException: function dispatchException(exception) {
+      if (this.done) {
+        throw exception;
+      }
+
+      var context = this;
+      function handle(loc, caught) {
+        record.type = "throw";
+        record.arg = exception;
+        context.next = loc;
+
+        if (caught) {
+          // If the dispatched exception was caught by a catch block,
+          // then let that catch block handle the exception normally.
+          context.method = "next";
+          context.arg = undefined;
+        }
+
+        return !!caught;
+      }
+
+      for (var i = this.tryEntries.length - 1; i >= 0; --i) {
+        var entry = this.tryEntries[i];
+        var record = entry.completion;
+
+        if (entry.tryLoc === "root") {
+          // Exception thrown outside of any try block that could handle
+          // it, so set the completion value of the entire function to
+          // throw the exception.
+          return handle("end");
+        }
+
+        if (entry.tryLoc <= this.prev) {
+          var hasCatch = hasOwn.call(entry, "catchLoc");
+          var hasFinally = hasOwn.call(entry, "finallyLoc");
+
+          if (hasCatch && hasFinally) {
+            if (this.prev < entry.catchLoc) {
+              return handle(entry.catchLoc, true);
+            } else if (this.prev < entry.finallyLoc) {
+              return handle(entry.finallyLoc);
+            }
+          } else if (hasCatch) {
+            if (this.prev < entry.catchLoc) {
+              return handle(entry.catchLoc, true);
+            }
+          } else if (hasFinally) {
+            if (this.prev < entry.finallyLoc) {
+              return handle(entry.finallyLoc);
+            }
+          } else {
+            throw new Error("try statement without catch or finally");
+          }
+        }
+      }
+    },
+
+    abrupt: function abrupt(type, arg) {
+      for (var i = this.tryEntries.length - 1; i >= 0; --i) {
+        var entry = this.tryEntries[i];
+        if (entry.tryLoc <= this.prev && hasOwn.call(entry, "finallyLoc") && this.prev < entry.finallyLoc) {
+          var finallyEntry = entry;
+          break;
+        }
+      }
+
+      if (finallyEntry && (type === "break" || type === "continue") && finallyEntry.tryLoc <= arg && arg <= finallyEntry.finallyLoc) {
+        // Ignore the finally entry if control is not jumping to a
+        // location outside the try/catch block.
+        finallyEntry = null;
+      }
+
+      var record = finallyEntry ? finallyEntry.completion : {};
+      record.type = type;
+      record.arg = arg;
+
+      if (finallyEntry) {
+        this.method = "next";
+        this.next = finallyEntry.finallyLoc;
+        return ContinueSentinel;
+      }
+
+      return this.complete(record);
+    },
+
+    complete: function complete(record, afterLoc) {
+      if (record.type === "throw") {
+        throw record.arg;
+      }
+
+      if (record.type === "break" || record.type === "continue") {
+        this.next = record.arg;
+      } else if (record.type === "return") {
+        this.rval = this.arg = record.arg;
+        this.method = "return";
+        this.next = "end";
+      } else if (record.type === "normal" && afterLoc) {
+        this.next = afterLoc;
+      }
+
+      return ContinueSentinel;
+    },
+
+    finish: function finish(finallyLoc) {
+      for (var i = this.tryEntries.length - 1; i >= 0; --i) {
+        var entry = this.tryEntries[i];
+        if (entry.finallyLoc === finallyLoc) {
+          this.complete(entry.completion, entry.afterLoc);
+          resetTryEntry(entry);
+          return ContinueSentinel;
+        }
+      }
+    },
+
+    "catch": function _catch(tryLoc) {
+      for (var i = this.tryEntries.length - 1; i >= 0; --i) {
+        var entry = this.tryEntries[i];
+        if (entry.tryLoc === tryLoc) {
+          var record = entry.completion;
+          if (record.type === "throw") {
+            var thrown = record.arg;
+            resetTryEntry(entry);
+          }
+          return thrown;
+        }
+      }
+
+      // The context.catch method must only be called with a location
+      // argument that corresponds to a known catch block.
+      throw new Error("illegal catch attempt");
+    },
+
+    delegateYield: function delegateYield(iterable, resultName, nextLoc) {
+      this.delegate = {
+        iterator: values(iterable),
+        resultName: resultName,
+        nextLoc: nextLoc
+      };
+
+      if (this.method === "next") {
+        // Deliberately forget the last sent value so that we don't
+        // accidentally pass it on to the delegate.
+        this.arg = undefined;
+      }
+
+      return ContinueSentinel;
+    }
+  };
+}(
+// In sloppy mode, unbound `this` refers to the global object, fallback to
+// Function constructor if we're in global strict mode. That is sadly a form
+// of indirect eval which violates Content Security Policy.
+function () {
+  return this;
+}() || Function("return this")());
+/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(1)(module)))
+
+/***/ }),
+/* 6 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+    value: true
+});
+
+var _regenerator = __webpack_require__(0);
+
+var _regenerator2 = _interopRequireDefault(_regenerator);
+
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function _asyncToGenerator(fn) { return function () { var gen = fn.apply(this, arguments); return new Promise(function (resolve, reject) { function step(key, arg) { try { var info = gen[key](arg); var value = info.value; } catch (error) { reject(error); return; } if (info.done) { resolve(value); } else { return Promise.resolve(value).then(function (value) { step("next", value); }, function (err) { step("throw", err); }); } } return step("next"); }); }; }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+var MessageClient = function () {
+    function MessageClient() {
+        _classCallCheck(this, MessageClient);
+
+        this.sendMessageToClient = this.sendMessageToClient.bind(this);
+        this.sendMessageToAllClients = this.sendMessageToAllClients.bind(this);
+    }
+
+    _createClass(MessageClient, [{
+        key: 'sendMessageToClient',
+        value: function () {
+            var _ref = _asyncToGenerator( /*#__PURE__*/_regenerator2.default.mark(function _callee(client, message, timeout) {
+                return _regenerator2.default.wrap(function _callee$(_context) {
+                    while (1) {
+                        switch (_context.prev = _context.next) {
+                            case 0:
+                                return _context.abrupt('return', new Promise(function (resolve, reject) {
+                                    if (!client) {
+                                        reject('client is null');
+                                        return;
+                                    }
+                                    // const isLive = await this.isClientAlive(client);
+                                    // if (!isLive) {
+                                    //     reject('client is not alive');
+                                    //     return
+                                    // }
+                                    var messageChannel = new MessageChannel();
+                                    messageChannel.port1.onmessage = function (event) {
+                                        // console.warn(event.data.data)
+                                        resolve({
+                                            client: client,
+                                            data: event.data.data
+                                        });
+                                    };
+                                    messageChannel.port1.onmessageerror = function (event) {
+                                        reject(event);
+                                    };
+
+                                    // console.warn(`postMessage to client ${client.id} ${JSON.stringify(message)}`);
+                                    client.postMessage(message, [messageChannel.port2]);
+
+                                    // Set up the timeout
+                                    setTimeout(function () {
+                                        messageChannel.port1.close();
+                                        messageChannel.port2.close();
+
+                                        reject('MessageChannel ' + message.action + ' timed out after ' + timeout + ' ms');
+                                    }, timeout);
+                                }));
+
+                            case 1:
+                            case 'end':
+                                return _context.stop();
+                        }
+                    }
+                }, _callee, this);
+            }));
+
+            function sendMessageToClient(_x, _x2, _x3) {
+                return _ref.apply(this, arguments);
+            }
+
+            return sendMessageToClient;
+        }()
+    }, {
+        key: 'sendMessageToAllClients',
+        value: function () {
+            var _ref2 = _asyncToGenerator( /*#__PURE__*/_regenerator2.default.mark(function _callee2(message, timeout) {
+                var _this = this;
+
+                var cs;
+                return _regenerator2.default.wrap(function _callee2$(_context2) {
+                    while (1) {
+                        switch (_context2.prev = _context2.next) {
+                            case 0:
+                                _context2.next = 2;
+                                return clients.matchAll();
+
+                            case 2:
+                                cs = _context2.sent;
+                                return _context2.abrupt('return', Promise.race(cs.map(function (client) {
+                                    // console.warn(`sendMessageToClient client ${client}`);
+                                    return _this.sendMessageToClient(client, message, timeout);
+                                })));
+
+                            case 4:
+                            case 'end':
+                                return _context2.stop();
+                        }
+                    }
+                }, _callee2, this);
+            }));
+
+            function sendMessageToAllClients(_x4, _x5) {
+                return _ref2.apply(this, arguments);
+            }
+
+            return sendMessageToAllClients;
+        }()
+    }, {
+        key: 'isClientAlive',
+        value: function () {
+            var _ref3 = _asyncToGenerator( /*#__PURE__*/_regenerator2.default.mark(function _callee3(client) {
+                return _regenerator2.default.wrap(function _callee3$(_context3) {
+                    while (1) {
+                        switch (_context3.prev = _context3.next) {
+                            case 0:
+                                if (client) {
+                                    _context3.next = 2;
+                                    break;
+                                }
+
+                                return _context3.abrupt('return', false);
+
+                            case 2:
+                                return _context3.abrupt('return', clients.matchAll().then(function (cs) {
+                                    return cs.some(function (c) {
+                                        return c.id === client.id;
+                                    });
+                                }));
+
+                            case 3:
+                            case 'end':
+                                return _context3.stop();
+                        }
+                    }
+                }, _callee3, this);
+            }));
+
+            function isClientAlive(_x6) {
+                return _ref3.apply(this, arguments);
+            }
+
+            return isClientAlive;
+        }()
+    }]);
+
+    return MessageClient;
+}();
+
+exports.default = MessageClient;
+module.exports = exports['default'];
+
+/***/ }),
+/* 7 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+    value: true
+});
+
+var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
+
+var _events = __webpack_require__(8);
+
+var _events2 = _interopRequireDefault(_events);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+exports.default = _extends({}, _events2.default, {
+
+    ERROR: 'error',
+
+    SW_PLAYLIST: 'SW_PLAYLIST',
+    SW_MEDIA: 'SW_MEDIA',
+    SW_GET_MEDIA: 'SW_GET_MEDIA',
+
+    LEVEL_LOADED: 'LEVEL_LOADED',
+    MANIFEST_PARSED: 'MANIFEST_PARSED',
+    FRAG_LOADED: 'FRAG_LOADED'
+});
+module.exports = exports['default'];
+
+/***/ }),
+/* 8 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+    value: true
+});
+/**
+ * Created by xieting on 2018/4/3.
+ */
+
+exports.default = {
+    //data-channel
+    // DC_PING: 'PING',
+    // DC_PONG: 'PONG',
+    DC_SIGNAL: 'SIGNAL',
+    DC_OPEN: 'OPEN',
+    DC_REQUEST: 'REQUEST',
+    DC_PIECE_NOT_FOUND: 'PIECE_NOT_FOUND', // 当请求的数据找不到时触发
+    DC_PIECE_ABORT: 'PIECE_ABORT',
+    DC_CLOSE: 'CLOSE',
+    DC_RESPONSE: 'RESPONSE',
+    DC_ERROR: 'ERROR',
+    DC_PIECE: "PIECE",
+    DC_TIMEOUT: "TIMEOUT",
+    DC_PIECE_ACK: "PIECE_ACK",
+    DC_METADATA: "METADATA",
+    DC_PLAT_ANDROID: "ANDROID",
+    DC_PLAT_IOS: "IOS",
+    DC_PLAT_WEB: "WEB",
+    DC_CHOKE: "CHOKE",
+    DC_UNCHOKE: "UNCHOKE",
+    // DC_INTERESTED: "INTERESTED",
+    // DC_NOTINTERESTED: "NOT_INTERESTED",
+    DC_HAVE: "HAVE",
+    DC_LOST: "LOST",
+    DC_GET_PEERS: "GET_PEERS",
+    DC_PEERS: "PEERS",
+    DC_STATS: "STATS",
+    DC_SUBSCRIBE: "SUBSCRIBE",
+    DC_UNSUBSCRIBE: "UNSUBSCRIBE",
+    DC_SUBSCRIBE_ACCEPT: "SUBSCRIBE_ACCEPT",
+    DC_SUBSCRIBE_REJECT: "SUBSCRIBE_REJECT",
+    DC_SUBSCRIBE_LEVEL: "SUBSCRIBE_LEVEL",
+    DC_PEER_SIGNAL: "PEER_SIGNAL",
+    DC_PLAYLIST: "PLAYLIST",
+
+    //buffer-manager
+    BM_LOST: 'lost',
+    BM_ADDED_SEG_: 'BM_ADDED_SEG_',
+    BM_ADDED_SN_: 'BM_ADDED_SN_',
+    BM_SEG_ADDED: 'BM_SEG_ADDED',
+
+    // engine
+    FRAG_CHANGED: 'FRAG_CHANGED',
+    FRAG_LOADED: 'FRAG_LOADED',
+    FRAG_LOADING: 'FRAG_LOADING',
+    RESTART_P2P: 'RESTART_P2P',
+
+    EXCEPTION: "exception"
+};
+module.exports = exports['default'];
+
+/***/ }),
+/* 9 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+    value: true
+});
+exports.parseRangeHeader = parseRangeHeader;
+exports.getUrlSuffix = getUrlSuffix;
+exports.makeHeadersWithRange = makeHeadersWithRange;
+exports.tryGetVideoElement = tryGetVideoElement;
+
+var _urlToolkit = __webpack_require__(10);
+
+var URLToolkit = _interopRequireWildcard(_urlToolkit);
+
+var _toolFuns = __webpack_require__(11);
+
+function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } else { var newObj = {}; if (obj != null) { for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) newObj[key] = obj[key]; } } newObj.default = obj; return newObj; } }
+
+function parseRangeHeader(rangeHeader) {
+    if (!rangeHeader) return {};
+    var normalizedRangeHeader = rangeHeader.trim().toLowerCase();
+    if (!normalizedRangeHeader.startsWith('bytes=')) {
+        throw new Error('unit-must-be-bytes', { normalizedRangeHeader: normalizedRangeHeader });
+    }
+
+    // Specifying multiple ranges separate by commas is valid syntax, but this
+    // library only attempts to handle a single, contiguous sequence of bytes.
+    // https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Range#Syntax
+    if (normalizedRangeHeader.includes(',')) {
+        throw new Error('single-range-only', { normalizedRangeHeader: normalizedRangeHeader });
+    }
+
+    var rangeParts = /(\d*)-(\d*)/.exec(normalizedRangeHeader);
+    // We need either at least one of the start or end values.
+    if (!rangeParts || !(rangeParts[1] || rangeParts[2])) {
+        throw new Error('invalid-range-values', { normalizedRangeHeader: normalizedRangeHeader });
+    }
+
+    return {
+        start: rangeParts[1] === '' ? undefined : Number(rangeParts[1]),
+        end: rangeParts[2] === '' ? undefined : Number(rangeParts[2])
+    };
+}
+
+function getUrlSuffix(url) {
+    var urlObj = URLToolkit.parseURL(url);
+    return urlObj.path.substring(urlObj.path.lastIndexOf('.') + 1);
+}
+
+function makeHeadersWithRange(range) {
+    var headers = new Headers();
+    if (range) {
+        headers.set('range', range);
+    }
+    return headers;
+}
+
+function tryGetVideoElement() {
+    return document.getElementsByTagName('video')[0];
+}
+
+/***/ }),
+/* 10 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+/* WEBPACK VAR INJECTION */(function(module) {var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;
+
+var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol" ? function (obj) { return typeof obj; } : function (obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; };
+
+// see https://tools.ietf.org/html/rfc1808
+
+(function (root) {
+  var URL_REGEX = /^((?:[a-zA-Z0-9+\-.]+:)?)(\/\/[^\/?#]*)?((?:[^\/?#]*\/)*[^;?#]*)?(;[^?#]*)?(\?[^#]*)?(#.*)?$/;
+  var FIRST_SEGMENT_REGEX = /^([^\/?#]*)(.*)$/;
+  var SLASH_DOT_REGEX = /(?:\/|^)\.(?=\/)/g;
+  var SLASH_DOT_DOT_REGEX = /(?:\/|^)\.\.\/(?!\.\.\/)[^\/]*(?=\/)/g;
+
+  var URLToolkit = {
+    // If opts.alwaysNormalize is true then the path will always be normalized even when it starts with / or //
+    // E.g
+    // With opts.alwaysNormalize = false (default, spec compliant)
+    // http://a.com/b/cd + /e/f/../g => http://a.com/e/f/../g
+    // With opts.alwaysNormalize = true (not spec compliant)
+    // http://a.com/b/cd + /e/f/../g => http://a.com/e/g
+    buildAbsoluteURL: function buildAbsoluteURL(baseURL, relativeURL, opts) {
+      opts = opts || {};
+      // remove any remaining space and CRLF
+      baseURL = baseURL.trim();
+      relativeURL = relativeURL.trim();
+      if (!relativeURL) {
+        // 2a) If the embedded URL is entirely empty, it inherits the
+        // entire base URL (i.e., is set equal to the base URL)
+        // and we are done.
+        if (!opts.alwaysNormalize) {
+          return baseURL;
+        }
+        var basePartsForNormalise = URLToolkit.parseURL(baseURL);
+        if (!basePartsForNormalise) {
+          throw new Error('Error trying to parse base URL.');
+        }
+        basePartsForNormalise.path = URLToolkit.normalizePath(basePartsForNormalise.path);
+        return URLToolkit.buildURLFromParts(basePartsForNormalise);
+      }
+      var relativeParts = URLToolkit.parseURL(relativeURL);
+      if (!relativeParts) {
+        throw new Error('Error trying to parse relative URL.');
+      }
+      if (relativeParts.scheme) {
+        // 2b) If the embedded URL starts with a scheme name, it is
+        // interpreted as an absolute URL and we are done.
+        if (!opts.alwaysNormalize) {
+          return relativeURL;
+        }
+        relativeParts.path = URLToolkit.normalizePath(relativeParts.path);
+        return URLToolkit.buildURLFromParts(relativeParts);
+      }
+      var baseParts = URLToolkit.parseURL(baseURL);
+      if (!baseParts) {
+        throw new Error('Error trying to parse base URL.');
+      }
+      if (!baseParts.netLoc && baseParts.path && baseParts.path[0] !== '/') {
+        // If netLoc missing and path doesn't start with '/', assume everthing before the first '/' is the netLoc
+        // This causes 'example.com/a' to be handled as '//example.com/a' instead of '/example.com/a'
+        var pathParts = FIRST_SEGMENT_REGEX.exec(baseParts.path);
+        baseParts.netLoc = pathParts[1];
+        baseParts.path = pathParts[2];
+      }
+      if (baseParts.netLoc && !baseParts.path) {
+        baseParts.path = '/';
+      }
+      var builtParts = {
+        // 2c) Otherwise, the embedded URL inherits the scheme of
+        // the base URL.
+        scheme: baseParts.scheme,
+        netLoc: relativeParts.netLoc,
+        path: null,
+        params: relativeParts.params,
+        query: relativeParts.query,
+        fragment: relativeParts.fragment
+      };
+      if (!relativeParts.netLoc) {
+        // 3) If the embedded URL's <net_loc> is non-empty, we skip to
+        // Step 7.  Otherwise, the embedded URL inherits the <net_loc>
+        // (if any) of the base URL.
+        builtParts.netLoc = baseParts.netLoc;
+        // 4) If the embedded URL path is preceded by a slash "/", the
+        // path is not relative and we skip to Step 7.
+        if (relativeParts.path[0] !== '/') {
+          if (!relativeParts.path) {
+            // 5) If the embedded URL path is empty (and not preceded by a
+            // slash), then the embedded URL inherits the base URL path
+            builtParts.path = baseParts.path;
+            // 5a) if the embedded URL's <params> is non-empty, we skip to
+            // step 7; otherwise, it inherits the <params> of the base
+            // URL (if any) and
+            if (!relativeParts.params) {
+              builtParts.params = baseParts.params;
+              // 5b) if the embedded URL's <query> is non-empty, we skip to
+              // step 7; otherwise, it inherits the <query> of the base
+              // URL (if any) and we skip to step 7.
+              if (!relativeParts.query) {
+                builtParts.query = baseParts.query;
+              }
+            }
+          } else {
+            // 6) The last segment of the base URL's path (anything
+            // following the rightmost slash "/", or the entire path if no
+            // slash is present) is removed and the embedded URL's path is
+            // appended in its place.
+            var baseURLPath = baseParts.path;
+            var newPath = baseURLPath.substring(0, baseURLPath.lastIndexOf('/') + 1) + relativeParts.path;
+            builtParts.path = URLToolkit.normalizePath(newPath);
+          }
+        }
+      }
+      if (builtParts.path === null) {
+        builtParts.path = opts.alwaysNormalize ? URLToolkit.normalizePath(relativeParts.path) : relativeParts.path;
+      }
+      return URLToolkit.buildURLFromParts(builtParts);
+    },
+    parseURL: function parseURL(url) {
+      var parts = URL_REGEX.exec(url);
+      if (!parts) {
+        return null;
+      }
+      return {
+        scheme: parts[1] || '',
+        netLoc: parts[2] || '',
+        path: parts[3] || '',
+        params: parts[4] || '',
+        query: parts[5] || '',
+        fragment: parts[6] || ''
+      };
+    },
+    normalizePath: function normalizePath(path) {
+      // The following operations are
+      // then applied, in order, to the new path:
+      // 6a) All occurrences of "./", where "." is a complete path
+      // segment, are removed.
+      // 6b) If the path ends with "." as a complete path segment,
+      // that "." is removed.
+      path = path.split('').reverse().join('').replace(SLASH_DOT_REGEX, '');
+      // 6c) All occurrences of "<segment>/../", where <segment> is a
+      // complete path segment not equal to "..", are removed.
+      // Removal of these path segments is performed iteratively,
+      // removing the leftmost matching pattern on each iteration,
+      // until no matching pattern remains.
+      // 6d) If the path ends with "<segment>/..", where <segment> is a
+      // complete path segment not equal to "..", that
+      // "<segment>/.." is removed.
+      while (path.length !== (path = path.replace(SLASH_DOT_DOT_REGEX, '')).length) {}
+      return path.split('').reverse().join('');
+    },
+    buildURLFromParts: function buildURLFromParts(parts) {
+      return parts.scheme + parts.netLoc + parts.path + parts.params + parts.query + parts.fragment;
+    }
+  };
+
+  if (( false ? 'undefined' : _typeof(exports)) === 'object' && ( false ? 'undefined' : _typeof(module)) === 'object') module.exports = URLToolkit;else if (true) !(__WEBPACK_AMD_DEFINE_ARRAY__ = [], __WEBPACK_AMD_DEFINE_RESULT__ = (function () {
+    return URLToolkit;
+  }).apply(exports, __WEBPACK_AMD_DEFINE_ARRAY__),
+				__WEBPACK_AMD_DEFINE_RESULT__ !== undefined && (module.exports = __WEBPACK_AMD_DEFINE_RESULT__));else if ((typeof exports === 'undefined' ? 'undefined' : _typeof(exports)) === 'object') exports['URLToolkit'] = URLToolkit;else root['URLToolkit'] = URLToolkit;
+})(undefined);
+/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(1)(module)))
+
+/***/ }),
+/* 11 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+    value: true
+});
+exports.noop = noop;
+exports.getQueryParam = getQueryParam;
+exports.updateQueryStringParam = updateQueryStringParam;
+exports.getCurrentTs = getCurrentTs;
+exports.randomNum = randomNum;
+exports.calCheckPeersDelay = calCheckPeersDelay;
+exports.performRangeRequest = performRangeRequest;
+exports.navLang = navLang;
+exports.dontWaitFor = dontWaitFor;
+exports.timeout = timeout;
+exports.getBrowserRTC = getBrowserRTC;
+exports.copyBuffer = copyBuffer;
+exports.getMaxSequence = getMaxSequence;
+var Buffer = __webpack_require__(2).Buffer;
+
+var CHECK_PEERS_INTERVAL = 3; // 定时p2p下载的时间间隔 单位秒
+
+function noop() {
+    return true;
+}
+
+function getQueryParam(name) {
+    var reg = new RegExp("(^|&)" + name + "=([^&]*)(&|$)");
+    var r = window.location.search.substr(1).match(reg);
+    if (r != null && r[2] !== '') return r[2].toString();
+    return '';
+}
+
+// 向url追加参数
+function updateQueryStringParam(uri, key, value) {
+    // if(!value) {
+    //     return uri;
+    // }
+    var re = new RegExp("([?&])" + key + "=.*?(&|$)", "i");
+    var separator = uri.indexOf('?') !== -1 ? "&" : "?";
+    if (uri.match(re)) {
+        return uri.replace(re, '$1' + key + "=" + value + '$2');
+    } else {
+        return uri + separator + key + "=" + value;
+    }
+}
+
+// 获取当前时间戳 秒
+function getCurrentTs() {
+
+    return Date.parse(new Date()) / 1000;
+}
+
+// 生成从minNum到maxNum的随机数
+function randomNum(minNum, maxNum) {
+    return parseInt(Math.random() * (maxNum - minNum + 1) + minNum, 10);
+}
+
+// 计算check peers的delay
+function calCheckPeersDelay(peerNum) {
+    if (peerNum === 0) return CHECK_PEERS_INTERVAL;
+    return 0.33 * peerNum + 0.67; // 假设最高下载peer数为10
+}
+
+// range探测
+function performRangeRequest(uri) {
+    var xhr = new XMLHttpRequest();
+    return new Promise(function (resolve, reject) {
+        xhr.open('GET', uri, true);
+        xhr.responseType = 'arraybuffer';
+        xhr.timeout = 3000;
+        xhr.onload = function (event) {
+            if (xhr.status === 206) {
+                resolve();
+            } else {
+                reject();
+            }
+        };
+        xhr.onerror = function (event) {
+            reject();
+        };
+        xhr.ontimeout = function (event) {
+            reject();
+        };
+        xhr.setRequestHeader('Range', 'bytes=0-0');
+        xhr.send();
+    });
+}
+
+// export function fetchRangeRequest(uri) {
+//     return new Promise((resolve, reject) => {
+//         fetch(uri, {
+//             headers: {
+//                 Range: 'bytes=0-0',
+//             },
+//         }).then(response => {
+//             if (response.status === 206) {
+//                 // CDN支持Range请求
+//                 resolve();
+//             } else {
+//                 reject();
+//             }
+//         }).catch(err => {
+//             reject();
+//         })
+//     })
+// }
+
+function navLang() {
+    var lang = navigator.language || navigator.userLanguage; //常规浏览器语言和IE浏览器
+    lang = lang.substr(0, 2); //截取lang前2位字符
+    return lang === 'zh' ? 'cn' : 'en';
+}
+
+function dontWaitFor(promise) {
+    // Effective no-op.
+    promise.then(function () {});
+}
+
+function timeout(ms) {
+    return new Promise(function (resolve) {
+        return setTimeout(resolve, ms);
+    });
+}
+
+function getBrowserRTC() {
+    if (typeof window === 'undefined') return null;
+    var wrtc = {
+        RTCPeerConnection: window.RTCPeerConnection || window.mozRTCPeerConnection || window.webkitRTCPeerConnection,
+        RTCSessionDescription: window.RTCSessionDescription || window.mozRTCSessionDescription || window.webkitRTCSessionDescription,
+        RTCIceCandidate: window.RTCIceCandidate || window.mozRTCIceCandidate || window.webkitRTCIceCandidate
+    };
+    if (!wrtc.RTCPeerConnection) return null;
+    return wrtc;
+}
+
+function copyBuffer(source) {
+    var payloadBuf = Buffer.from(source);
+    var targetBuffer = new Buffer(source.byteLength);
+    payloadBuf.copy(targetBuffer);
+    return targetBuffer;
+}
+
+function getMaxSequence(m3u8) {
+    var lines = m3u8.split('\n');
+    var start = 0;
+    var tsTag = '#EXTINF';
+    var count = 0;
+    var _iteratorNormalCompletion = true;
+    var _didIteratorError = false;
+    var _iteratorError = undefined;
+
+    try {
+        for (var _iterator = lines[Symbol.iterator](), _step; !(_iteratorNormalCompletion = (_step = _iterator.next()).done); _iteratorNormalCompletion = true) {
+            var line = _step.value;
+
+            var match = /^#EXT-X-MEDIA-SEQUENCE:?(\-?[0-9.]*)?/.exec(line);
+            if (match) {
+                if (match[1]) {
+                    start = parseInt(match[1], 10);
+                    break;
+                }
+            }
+        }
+    } catch (err) {
+        _didIteratorError = true;
+        _iteratorError = err;
+    } finally {
+        try {
+            if (!_iteratorNormalCompletion && _iterator.return) {
+                _iterator.return();
+            }
+        } finally {
+            if (_didIteratorError) {
+                throw _iteratorError;
+            }
+        }
+    }
+
+    var _iteratorNormalCompletion2 = true;
+    var _didIteratorError2 = false;
+    var _iteratorError2 = undefined;
+
+    try {
+        for (var _iterator2 = lines[Symbol.iterator](), _step2; !(_iteratorNormalCompletion2 = (_step2 = _iterator2.next()).done); _iteratorNormalCompletion2 = true) {
+            var _line = _step2.value;
+
+            if (_line.startsWith(tsTag)) {
+                count++;
+            }
+        }
+    } catch (err) {
+        _didIteratorError2 = true;
+        _iteratorError2 = err;
+    } finally {
+        try {
+            if (!_iteratorNormalCompletion2 && _iterator2.return) {
+                _iterator2.return();
+            }
+        } finally {
+            if (_didIteratorError2) {
+                throw _iteratorError2;
+            }
+        }
+    }
+
+    return start + count - 1;
+}
+
+/***/ })
+/******/ ]);
+});
