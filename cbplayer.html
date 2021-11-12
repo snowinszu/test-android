@@ -8,6 +8,7 @@
 <div id="dplayer"></div>
 
 <div id="stats"></div>
+<script src="//cdn.jsdelivr.net/npm/vconsole@latest"></script>
 <script src="https://cdn.jsdelivr.net/npm/cdnbye@latest/dist/hlsjs-p2p-engine.min.js"></script>
 <!--<script src="./hlsjs-p2p-engine.js"></script>-->
 <script src="https://cdn.jsdelivr.net/npm/hls.js@latest"></script>
@@ -15,6 +16,7 @@
 <script src="https://cdn.jsdelivr.net/npm/cbplayer2@0.11.0"></script>
 <script src="https://cdn.jsdelivr.net/npm/swarmcloud-hls-sw@latest"></script>
 <script>
+    var vConsole = new VConsole();
     var _peerId = '', _peerNum = 0, _totalP2PDownloaded = 0, _totalP2PUploaded = 0;
     // var url = 'https://wowza.peer5.com/live/smil:bbb_abr.smil/playlist.m3u8'
     var url = 'https://wowza.peer5.com/live/smil:bbb_abr.smil/chunklist_b591000.m3u8'
@@ -40,7 +42,7 @@
                 }
             },
             ios: {
-                // logLevel: 'debug',
+                logLevel: 'debug',
                 nativePlaybackOnly: true,    // key step: only enabled when MSE is not supported
             }
         },
