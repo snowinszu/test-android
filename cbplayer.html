@@ -12,7 +12,8 @@
 <!--<script src="./hlsjs-p2p-engine.js"></script>-->
 <script src="https://cdn.jsdelivr.net/npm/hls.js@latest"></script>
 <!--<script src="https://cdn.jsdelivr.net/npm/cbplayer2@latest"></script>-->
-<script src="./dist/CBPlayer.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/cbplayer2@0.11.0"></script>
+<script src="https://cdn.jsdelivr.net/npm/swarmcloud-hls-sw@latest"></script>
 <script>
     var _peerId = '', _peerNum = 0, _totalP2PDownloaded = 0, _totalP2PUploaded = 0;
     // var url = 'https://wowza.peer5.com/live/smil:bbb_abr.smil/playlist.m3u8'
@@ -37,6 +38,10 @@
                     // Other p2pConfig options provided by CDNBye
                     // https://docs.cdnbye.com/#/API
                 }
+            },
+            ios: {
+                // logLevel: 'debug',
+                nativePlaybackOnly: true,    // key step: only enabled when MSE is not supported
             }
         },
     }
