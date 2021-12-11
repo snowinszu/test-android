@@ -1,0 +1,87 @@
+<Head>
+    <title>mp4-sw</title>
+</Head>
+<script src="./dist/mp4-p2p-engine.min.js"></script>
+<!--<script src="../../opensource/mp4-sw/dist/mp4-p2p-engine.min.js"></script>-->
+<video id="video" controls width="600"></video>
+<p id="version"></p>
+<h3>download info:</h3>
+<p id="info"></p>
+<table id="table-body">
+    <tbody ></tbody>
+</table>
+<script>
+    var video = document.getElementById('video');
+    video.src = 'https://scdn.common.00cdn.com/p2p/cloud-1080p.mp4'
+    // video.src = 'https://d2zihajmogu5jn.cloudfront.net/elephantsdream/ed_hd.mp4'
+    // video.src = 'https://storage.googleapis.com/cdn.peer5.com/videos/bbb_720p.mp4'
+    // video.src = 'https://huya-w20.huya.com/2027/357649831/1300/e0a4cd303b58bab74f809be7f2d09113.mp4'
+    // video.src = 'https://webtorrent.io/torrents/Sintel/Sintel.mp4'
+    // video.src = 'https://sf1-cdn-tos.huoshanstatic.com/obj/media-fe/xgplayer_doc_video/mp4/xgplayer-demo-360p.mp4'
+    video.play()
+
+    // setTimeout(() => {
+    //     video.src = 'https://scdn.common.00cdn.com/p2p/cloud-1080p.mp4'
+    // }, 15000)
+
+    document.querySelector('#version').innerText = `p2p version: ${P2PEngineMP4.version} protocol: ${P2PEngineMP4.protocolVersion}`;
+    init()
+    function init() {
+        var mp4 = new P2PEngineMP4({
+            pieceLength: 256*1024,
+            // minBufferLength: 3,        // 最小缓冲时长 单位：秒
+            // maxBufferLength: 90,        // 最大缓冲时长 单位：秒
+            // announce: "http://127.0.0.1/v1",
+            // 测试环境
+            // announce: "http://tracker.p2pengine.net:7066/v1",
+            wsSignalerAddr: 'ws://localhost:80',
+            logLevel: 'debug',
+            // p2pEnabled: false,
+            trickleICE: true,
+            // memoryCacheLimit: {
+            //     pc: '10*1024*1024',
+            //     mobile: '10*1024*1024',
+            // },
+            swFile: './sw.js',
+            // httpLoadTime: '10.0'
+            // token: 'ZMuO5qHZg',
+            // channelId: function (url) {
+            //     var videoId = '123';
+            //     return videoId;
+            // },
+            // segmentId: function (url, sn, start, end) {
+            //     return `${start}-${end}`;
+            // },
+        })
+
+        mp4.registerServiceWorker().then(function (registration) {
+            console.info('ServiceWorker registration successful with scope: ', registration.scope);
+        }).catch((err) => {
+            console.info('ServiceWorker registration failed ', err)
+        })
+
+        mp4.on('FRAG_LOADED', (url, start, end, sn, segId, fromPeerId) => {
+            // console.warn(`FRAG_LOADED ${url}`)
+            var source = 'HTTP';
+            if (fromPeerId) {
+                source = 'P2P';
+            }
+            addToTable(url, start, end, source, fromPeerId);
+        });
+        mp4.on('stats', function ({totalHTTPDownloaded=0, totalP2PDownloaded=0, totalP2PUploaded=0}) {
+            var total = totalHTTPDownloaded + totalP2PDownloaded;
+            document.querySelector('#info').innerText = `p2p ratio: ${Math.round(totalP2PDownloaded/total*100)}%, saved traffic: ${totalP2PDownloaded}KB, uploaded data: ${totalP2PUploaded}KB`;
+        });
+    }
+
+    document.querySelector('#version').innerText = `P2PEngineMP4 version: ${P2PEngineMP4.version} webRTC & SW: ${P2PEngineMP4.isSupported()}`;
+    function addToTable(url, start, end, source, fromPeerId) {
+        var fromPeer = fromPeerId ? `from ${fromPeerId}` : ``;
+        var infoStr = `download ${url}(range:${start}-${end}) by ${source} ${fromPeer}`;
+        document.querySelector('#table-body tbody').innerHTML +=
+            `<tr style="text-align: center">
+                    <td>${infoStr}</td>
+                </tr>`
+    }
+
+</script>
