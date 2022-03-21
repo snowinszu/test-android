@@ -1,7 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="83abb475-70c7-47dc-8d11-f848b500cd28" name="Default Changelist" comment="" />
+    <list default="true" id="83abb475-70c7-47dc-8d11-f848b500cd28" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -116,7 +118,7 @@
   <component name="PropertiesComponent">
     <property name="DefaultHtmlFileTemplate" value="HTML File" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/dist" />
     <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
     <property name="nodejs_npm_path_reset_for_default_project" value="true" />
     <property name="nodejs_package_manager_path" value="npm" />
@@ -124,8 +126,8 @@
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
-      <recent name="$PROJECT_DIR$" />
       <recent name="$PROJECT_DIR$/dist" />
+      <recent name="$PROJECT_DIR$" />
       <recent name="$PROJECT_DIR$/ckplayer" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
@@ -201,7 +203,7 @@
       <workItem from="1639290458705" duration="598000" />
       <workItem from="1639379511109" duration="1198000" />
       <workItem from="1639654219266" duration="784000" />
-      <workItem from="1647858707021" duration="1479000" />
+      <workItem from="1647858707021" duration="2181000" />
     </task>
     <servers />
   </component>
