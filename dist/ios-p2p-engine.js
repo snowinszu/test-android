@@ -2346,7 +2346,7 @@ var Peer = function (_EventEmitter) {
                 platform: _events4.default.DC_PLAT_WEB,
                 mobile: !!_platform2.default.isMobile(),
                 channel: this.channel, // 频道ID
-                version: "0.7.7", // SDK版本号
+                version: "0.7.8", // SDK版本号
                 sequential: sequential,
                 peers: peers
             });
@@ -3604,7 +3604,7 @@ var IosScheduler = function (_BtScheduler) {
             var _ref = _asyncToGenerator( /*#__PURE__*/_regenerator2.default.mark(function _callee2(data, sender) {
                 var _this2 = this;
 
-                var logger, config, url, range, frag, sn, baseurl, segId, seg, loaded, bufferedDuration, waitFor, _loaded, onPeerHave;
+                var logger, config, url, range, frag, sn, baseurl, segId, seg, bufferedDuration, loaded, waitFor, _loaded, onPeerHave;
 
                 return _regenerator2.default.wrap(function _callee2$(_context2) {
                     while (1) {
@@ -3660,15 +3660,17 @@ var IosScheduler = function (_BtScheduler) {
                                 }));
 
                             case 19:
-                                if (!this.hasAndSetTargetPeer(this.sequential ? sn : segId)) {
-                                    _context2.next = 26;
+                                bufferedDuration = this.bufferedDuration;
+
+                                if (!this.hasAndSetTargetPeer(this.sequential ? sn : segId, bufferedDuration)) {
+                                    _context2.next = 27;
                                     break;
                                 }
 
-                                _context2.next = 22;
+                                _context2.next = 23;
                                 return this._loadFragByP2p(frag, sender, sn, segId, data.url);
 
-                            case 22:
+                            case 23:
                                 loaded = _context2.sent;
 
                                 if (!loaded) {
@@ -3681,9 +3683,7 @@ var IosScheduler = function (_BtScheduler) {
                                 _context2.next = 29;
                                 break;
 
-                            case 26:
-                                bufferedDuration = this.mBufferedDuration;
-
+                            case 27:
                                 if (bufferedDuration === 0) {
                                     this.initialMediaCount++;
                                 } else {
@@ -3710,7 +3710,7 @@ var IosScheduler = function (_BtScheduler) {
                                                             _this2.off(_events2.default.SCH_DCHAVE, onPeerHave); // 防止重复触发
                                                             clearTimeout(_this2.waitTimer);
 
-                                                            if (!_this2.hasAndSetTargetPeer(_this2.sequential ? sn : segId)) {
+                                                            if (!_this2.hasAndSetTargetPeer(_this2.sequential ? sn : segId, bufferedDuration)) {
                                                                 _context.next = 7;
                                                                 break;
                                                             }
@@ -3930,12 +3930,12 @@ var IosScheduler = function (_BtScheduler) {
         }
     }, {
         key: 'hasAndSetTargetPeer',
-        value: function hasAndSetTargetPeer(id) {
+        value: function hasAndSetTargetPeer(id, bufferedDuration) {
             var logger = this.logger;
 
             // 如果buffer time小于allowP2pLimit，则用http请求
 
-            if (this.bufferedDuration <= this.allowP2pLimit) {
+            if (bufferedDuration <= this.allowP2pLimit) {
                 return false;
             }
 
@@ -6375,7 +6375,7 @@ var TrackerClient = function (_EventEmitter) {
         value: function _initSignalerWs(mainAddr, backupAddr, token, token2) {
             var _this4 = this;
 
-            var query = '?id=' + this.peerId + '&p=web&d=' + location.hostname + '&v=' + "0.7.7";
+            var query = '?id=' + this.peerId + '&p=web&d=' + location.hostname + '&v=' + "0.7.8";
             var websocket = void 0;
             var signalUrl = '' + mainAddr + query;
             if (token) {
@@ -9055,12 +9055,12 @@ var Server = function () {
         // vcode
         this.announce = netLoc.replace(/\/\//, "");
         // this.announce = 'tracker.cdnbye.com'     // test
-        var vcode = generateVCode(this.timestamp, "0.7.7", this.announce, this.channelId, info.type);
+        var vcode = generateVCode(this.timestamp, "0.7.8", this.announce, this.channelId, info.type);
 
         this.announceInfo = _extends({}, info, {
             channel: this.channelId,
             ts: this.timestamp,
-            version: "0.7.7",
+            version: "0.7.8",
             v: vcode,
             announce: this.announce,
             token: (0, _platform.isLocalHost)() ? undefined : this.key // localhost不能设置token
@@ -9673,7 +9673,7 @@ var Server = function () {
 
             // stats.device = this.announceInfo.device;
 
-            if (this.exptMsg) stats.exptMsg = "0.7.7" + ' ' + this.exptMsg;
+            if (this.exptMsg) stats.exptMsg = "0.7.8" + ' ' + this.exptMsg;
 
             return stats;
         }
@@ -10683,7 +10683,7 @@ var EngineBase = function (_EventEmitter) {
     return EngineBase;
 }(_events2.default);
 
-EngineBase.version = "0.7.7";
+EngineBase.version = "0.7.8";
 
 EngineBase.protocolVersion = _peer2.default.VERSION;
 
