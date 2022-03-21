@@ -5817,6 +5817,7 @@ var defaultP2PConfig = _extends({}, _config2.default, {
 
     swFile: './sw.js', // service worker文件路径
     swScope: './', // service worker作用范围
+    dcDownloadTimeout: 10,
     httpLoadTime: 2.0, // 需要保留给http下载的时间
     nativePlaybackOnly: false,
     useHttpRange: true,
