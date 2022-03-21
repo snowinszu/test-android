@@ -4305,7 +4305,7 @@ var IosScheduler = function (_BtScheduler) {
                 }
                 this.engine.media = media;
             }
-            var duration = 0;
+            var duration = 5.0;
             var currentTime = media.currentTime;
             var buffered = media.buffered;
             for (var i = buffered.length - 1; i >= 0; i--) {
@@ -10724,7 +10724,7 @@ var Logger = function () {
         console.debug = console.log;
 
         if ((logLevel === 'debug' || logLevel === 'info') && false) {
-            this.logLevel = "warn";
+            this.logLevel = "debug";
         }
 
         if (logLevel === true) {
