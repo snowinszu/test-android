@@ -3684,7 +3684,11 @@ var IosScheduler = function (_BtScheduler) {
                             case 26:
                                 bufferedDuration = this.mBufferedDuration;
 
-                                if (bufferedDuration === 0) this.initialMediaCount++;
+                                if (bufferedDuration === 0) {
+                                    this.initialMediaCount++;
+                                } else {
+                                    this.initialMediaCount = 0;
+                                }
                                 // console.warn(`live ${config.live} this.hasIdlePeers ${this.hasIdlePeers} bufferedDuration ${bufferedDuration}`)
                                 if (config.live && (bufferedDuration > MIN_TIME_FOR_LOAD && this.shouldWaitForNextSeg() || bufferedDuration === 0 && this.initialMediaCount > 4)) {
                                     waitFor = bufferedDuration === 0 ? MAX_TIME_FOR_WAIT : bufferedDuration - MIN_TIME_FOR_LOAD;
