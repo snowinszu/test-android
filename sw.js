@@ -218,7 +218,7 @@ var handlePlaylistRequest = function () {
                                         switch (_context.prev = _context.next) {
                                             case 0:
                                                 if (!(resp.ok && client)) {
-                                                    _context.next = 25;
+                                                    _context.next = 26;
                                                     break;
                                                 }
 
@@ -266,41 +266,41 @@ var handlePlaylistRequest = function () {
                                                 sharePlaylist = !!_data.sharePlaylist;
 
                                                 if (!(insertTimeOffsetTag && !_text.endsWith(END_LIST))) {
-                                                    _context.next = 19;
+                                                    _context.next = 20;
                                                     break;
                                                 }
 
                                                 // insertTimeOffsetTag
                                                 insertedText = _m3u8Rewriter2.default.insertTimeOffsetTag(_text, PLAYLIST_OFFSET);
-                                                // console.warn(`insertedText ${insertedText}`);
 
+                                                console.warn("insertedText " + insertedText);
                                                 return _context.abrupt("return", new Response(insertedText, {
                                                     status: 200,
                                                     statusText: 'OK',
                                                     headers: resp.headers
                                                 }));
 
-                                            case 19:
-                                                _context.next = 25;
+                                            case 20:
+                                                _context.next = 26;
                                                 break;
 
-                                            case 21:
-                                                _context.prev = 21;
+                                            case 22:
+                                                _context.prev = 22;
                                                 _context.t0 = _context["catch"](1);
 
                                                 if (debug) console.warn(_context.t0);
                                                 // console.warn(err);
                                                 windowClients.delete(clientId);
 
-                                            case 25:
+                                            case 26:
                                                 return _context.abrupt("return", resp);
 
-                                            case 26:
+                                            case 27:
                                             case "end":
                                                 return _context.stop();
                                         }
                                     }
-                                }, _callee, _this, [[1, 21]]);
+                                }, _callee, _this, [[1, 22]]);
                             }));
 
                             return function (_x4) {
@@ -1534,8 +1534,8 @@ var M3U8Rewriter = function () {
             var lines = m3u8.split('\n');
             for (var i = 0; i < lines.length; i++) {
                 if (lines[i].startsWith('#EXT-X-VERSION')) {
-                    // lines[i] = `#EXT-X-VERSION:6\n#EXT-X-START:TIME-OFFSET=-${offset}`
-                    lines[i] = lines[i] + '\n#EXT-X-START:TIME-OFFSET=' + offset;
+                    lines[i] = '#EXT-X-VERSION:6\n#EXT-X-START:TIME-OFFSET=' + offset;
+                    // lines[i] = `${lines[i]}\n#EXT-X-START:TIME-OFFSET=${offset}`
                     break;
                 }
             }
