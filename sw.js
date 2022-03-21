@@ -233,7 +233,7 @@ var handlePlaylistRequest = function () {
                                                     action: _events2.default.SW_PLAYLIST,
                                                     data: {
                                                         url: url,
-                                                        ver: "0.7.7",
+                                                        ver: "0.7.8",
                                                         text: _text
                                                     }
                                                 }, PLAYLIST_SEND_TIMEOUT);
@@ -350,7 +350,7 @@ var MEDIA_SEND_TIMEOUT = 1500;
 var HLS_MEDIA_FILES = ['ts', 'mp4', 'm4s'];
 var END_LIST = '#EXT-X-ENDLIST\n';
 var PLAYLIST_OFFSET = 0.01;
-var mediaLoadTimeout = 9000;
+var mediaLoadTimeout = 10000;
 var debug = false;
 // let debug = true;
 var sharePlaylist = false;
@@ -648,7 +648,7 @@ function loadRemainBufferByHttp(client, url, headers, loadedBuf, start, end) {
     });
 }
 
-HlsProxy.version = "0.7.7";
+HlsProxy.version = "0.7.8";
 module.exports = exports["default"];
 
 /***/ }),
@@ -1534,8 +1534,8 @@ var M3U8Rewriter = function () {
             var lines = m3u8.split('\n');
             for (var i = 0; i < lines.length; i++) {
                 if (lines[i].startsWith('#EXT-X-VERSION')) {
-                    lines[i] = '#EXT-X-VERSION:6\n#EXT-X-START:TIME-OFFSET=' + offset;
-                    // lines[i] = `${lines[i]}\n#EXT-X-START:TIME-OFFSET=${offset}`
+                    // lines[i] = `#EXT-X-VERSION:6\n#EXT-X-START:TIME-OFFSET=${offset}`
+                    lines[i] = lines[i] + '\n#EXT-X-START:TIME-OFFSET=' + offset;
                     break;
                 }
             }
