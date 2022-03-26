@@ -177,7 +177,7 @@ var handlePlaylistRequest = function () {
 
                         text = data.text;
 
-                        if (insertTimeOffsetTag && !text.endsWith(END_LIST)) {
+                        if (insertTimeOffsetTag && !text.endsWith(TAG_END_LIST)) {
                             // insertTimeOffsetTag
                             text = _m3u8Rewriter2.default.insertTimeOffsetTag(text, PLAYLIST_OFFSET);
                             // console.warn(`insertedText ${insertedText}`);
@@ -218,7 +218,7 @@ var handlePlaylistRequest = function () {
                                         switch (_context.prev = _context.next) {
                                             case 0:
                                                 if (!(resp.ok && client)) {
-                                                    _context.next = 26;
+                                                    _context.next = 25;
                                                     break;
                                                 }
 
@@ -233,7 +233,7 @@ var handlePlaylistRequest = function () {
                                                     action: _events2.default.SW_PLAYLIST,
                                                     data: {
                                                         url: url,
-                                                        ver: "0.7.8",
+                                                        ver: "0.7.9",
                                                         text: _text
                                                     }
                                                 }, PLAYLIST_SEND_TIMEOUT);
@@ -265,42 +265,42 @@ var handlePlaylistRequest = function () {
 
                                                 sharePlaylist = !!_data.sharePlaylist;
 
-                                                if (!(insertTimeOffsetTag && !_text.endsWith(END_LIST))) {
-                                                    _context.next = 20;
+                                                if (!(insertTimeOffsetTag && !_text.endsWith(TAG_END_LIST))) {
+                                                    _context.next = 19;
                                                     break;
                                                 }
 
                                                 // insertTimeOffsetTag
                                                 insertedText = _m3u8Rewriter2.default.insertTimeOffsetTag(_text, PLAYLIST_OFFSET);
+                                                // console.warn(`insertedText ${insertedText}`);
 
-                                                console.warn("insertedText " + insertedText);
                                                 return _context.abrupt("return", new Response(insertedText, {
                                                     status: 200,
                                                     statusText: 'OK',
                                                     headers: resp.headers
                                                 }));
 
-                                            case 20:
-                                                _context.next = 26;
+                                            case 19:
+                                                _context.next = 25;
                                                 break;
 
-                                            case 22:
-                                                _context.prev = 22;
+                                            case 21:
+                                                _context.prev = 21;
                                                 _context.t0 = _context["catch"](1);
 
                                                 if (debug) console.warn(_context.t0);
                                                 // console.warn(err);
                                                 windowClients.delete(clientId);
 
-                                            case 26:
+                                            case 25:
                                                 return _context.abrupt("return", resp);
 
-                                            case 27:
+                                            case 26:
                                             case "end":
                                                 return _context.stop();
                                         }
                                     }
-                                }, _callee, _this, [[1, 22]]);
+                                }, _callee, _this, [[1, 21]]);
                             }));
 
                             return function (_x4) {
@@ -346,11 +346,11 @@ var Buffer = __webpack_require__(11).Buffer;
 var PLAYLIST_SUFFIX = ['m3u8'];
 var PLAYLIST_SEND_TIMEOUT = 200;
 var PLAYLIST_RECEIVE_TIMEOUT = 200;
-var MEDIA_SEND_TIMEOUT = 1500;
+var MEDIA_SEND_TIMEOUT = 1000;
 var HLS_MEDIA_FILES = ['ts', 'mp4', 'm4s'];
-var END_LIST = '#EXT-X-ENDLIST\n';
+var TAG_END_LIST = '#EXT-X-ENDLIST\n';
 var PLAYLIST_OFFSET = 0.01;
-var mediaLoadTimeout = 10000;
+var mediaLoadTimeout = 7000;
 var debug = false;
 // let debug = true;
 var sharePlaylist = false;
@@ -376,7 +376,9 @@ var HlsProxy = function HlsProxy() {
     } else {
         httpHeadersForMediaFile = null;
     }
-    insertTimeOffsetTag = !!config.insertTimeOffsetTag;
+    if (config.insertTimeOffsetTag === false) {
+        insertTimeOffsetTag = false;
+    } else {}
 };
 
 exports.default = HlsProxy;
@@ -401,17 +403,16 @@ function onFetch(event) {
     // console.warn(`sw onFetch ${request.url}`)
     var url = request.url;
 
-    if (debug) console.info("sw onFetch " + url);
     var suffix = (0, _swTool.getUrlSuffix)(url);
     if (PLAYLIST_SUFFIX.includes(suffix)) {
-        if (debug) console.info(event.request.url);
+        if (debug) console.info("sw onFetch playlist " + url);
         return event.respondWith(handlePlaylistRequest(request, clientId));
     }
     if (HLS_MEDIA_FILES.includes(suffix)) {
-        if (debug) console.info(event.request.url);
+        if (debug) console.info("sw onFetch media " + url);
         if (loading) {
-            if (debug) console.warn("sw is loading, skip ts request");
-            return;
+            if (debug) console.warn("sw is loading");
+            // return
         }
         if (windowClients.has(clientId)) {
             var headers = request.headers,
@@ -509,7 +510,7 @@ function handleMediaRequest(url, headers, client, range, rangeStart, rangeEnd) {
             };
         }()).catch(function (err) {
             loading = false;
-            if (debug) console.warn(err);
+            console.error(err);
             return new Response(null, {
                 status: 502,
                 statusText: 'Hls Proxy Error'
@@ -598,7 +599,10 @@ function handleMediaRequest(url, headers, client, range, rangeStart, rangeEnd) {
         };
     }()).catch(function (e) {
         loading = false;
-        if (debug) console.warn(e);
+        if (debug) {
+            console.warn(e);
+            console.warn("while requesting " + url);
+        }
         return requestFromNetwork();
     });
 }
@@ -613,7 +617,7 @@ function loadRemainBufferByHttp(client, url, headers, loadedBuf, start, end) {
         range = "" + range + loadedBuf.byteLength + "-";
     }
     // console.warn(`continue download from ${url} range: ${range}`);
-    if (debug) console.info("continue download from " + url + " range: " + range);
+    if (debug) console.warn("continue download from " + url + " range: " + range);
     var newHeaders = (0, _swTool.makeHeadersWithRangeOnly)(range);
     if (httpHeadersForMediaFile) {
         if (debug) console.info("set additional header for " + url);
@@ -648,7 +652,7 @@ function loadRemainBufferByHttp(client, url, headers, loadedBuf, start, end) {
     });
 }
 
-HlsProxy.version = "0.7.8";
+HlsProxy.version = "0.7.9";
 module.exports = exports["default"];
 
 /***/ }),
