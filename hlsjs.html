@@ -19,7 +19,7 @@
                 // https://docs.cdnbye.com/#/API
             }
         });
-        hls.loadSource('http://opentracker.cdnbye.com:2100/20190513/Hm8R9WIB/index.m3u8');
+        hls.loadSource('https://video.cdnbye.com/0cf6732evodtransgzp1257070836/e0d4b12e5285890803440736872/v.f100220.m3u8');
         hls.attachMedia(video);
         hls.on(Hls.Events.MANIFEST_PARSED,function() {
             video.play();
@@ -31,7 +31,7 @@
     // Note: it would be more normal to wait on the 'canplay' event below however on Safari (where you are most likely to find built-in HLS support) the video.src URL must be on the user-driven
     // white-list before a 'canplay' event will be emitted; the last video event that can be reliably listened-for when the URL is not on the white-list is 'loadedmetadata'.
     else if (video.canPlayType('application/vnd.apple.mpegurl')) {
-        video.src = 'https://video-dev.github.io/streams/x36xhzz/url_2/193039199_mp4_h264_aac_ld_7.m3u8';
+        video.src = 'https://video.cdnbye.com/0cf6732evodtransgzp1257070836/e0d4b12e5285890803440736872/v.f100220.m3u8';
         video.addEventListener('loadedmetadata',function() {
             video.play();
         });
