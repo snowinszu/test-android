@@ -1,5 +1,6 @@
-<script src="//cdn.jsdelivr.net/npm/hls.js@0.9.0"></script>
-<script src="//cdn.jsdelivr.net/npm/cdnbye@latest/dist/hlsjs-p2p-engine.min.js"></script>
+<!--<script src="//cdn.jsdelivr.net/npm/hls.js@0.9.0"></script>-->
+<script src="https://cdn.jsdelivr.net/npm/hls.js@canary"></script>
+<script src="https://cdn.jsdelivr.net/npm/swarmcloud-hls@latest/dist/p2p-engine.min.js"></script>
 <video id="video" controls></video>
 <p id="version"></p>
 <h3>download info:</h3>
@@ -8,41 +9,33 @@
     <tbody ></tbody>
 </table>
 <script>
-    var source = 'http://cn.123fanyi.cc:88/%E8%BF%9E%E8%BD%BD/%E7%B2%A4%E8%AF%AD%E5%8A%A8%E7%94%BB/%E7%81%AB%E4%B9%8B%E4%B8%B8%E7%9B%B8%E6%89%9101%EF%BC%88KTKKT.COM%EF%BD%9C%E5%9B%BD%E8%AF%AD%E5%8A%A8%E7%94%BB%EF%BC%89/index.m3u8';
+    var source = 'http://v.live.hndt.com/video/20200317/9411f6c1f11b44888294d47d73107641/cloudv-transfer/555555555po0q1sn5556526553738q1r_73ac26e878d047498fa906ef9e913036_0_4.m3u8';
     var video = document.getElementById('video');
     if(Hls.isSupported()) {
-        var hls = new Hls({
-            maxBufferSize: 0,       // Highly recommended setting
-            maxBufferLength: 5,     // Highly recommended setting
-            liveSyncDuration: 30,   // Highly recommended setting
-        });
-        if (P2PEngine.isSupported()) {
-            var engine = new P2PEngine(hls, {
-                logLevel: true,
-                live: false,        // set to true in live mode
-                // Other p2pConfig options provided by CDNBye
-            });
-            engine.on('stats', function ({totalHTTPDownloaded=0, totalP2PDownloaded=0, totalP2PUploaded=0}) {
-                var total = totalHTTPDownloaded + totalP2PDownloaded;
-                document.querySelector('#info').innerText = `p2p ratio: ${Math.round(totalP2PDownloaded/total*100)}%, saved traffic: ${totalP2PDownloaded}KB`;
-            })
+        alert(`MMS is Supported`);
+        var hlsjsConfig = {
+            maxBufferSize: 0,       // Highly recommended setting in live mode
+            maxBufferLength: 10,     // Highly recommended setting in live mode
+            liveSyncDurationCount: 10,   // Highly recommended setting in live mode
+        };
+        var hls = new Hls(hlsjsConfig);
+        var p2pConfig = {
+            // Other p2pConfig options if applicable
         }
+        p2pConfig.hlsjsInstance = hls;        // set hlsjs instance to SDK
+        engine = new P2pEngineHls(p2pConfig);
+        // Use hls just like your usual hls.js…
         hls.loadSource(source);
         hls.attachMedia(video);
-        hls.on(Hls.Events.MANIFEST_PARSED,function(event, data) {
-            video.play();
-        });
-        hls.on(Hls.Events.FRAG_LOADED, (id, data) => {
-            var frag = data.frag;
-            var source = undefined;
-            if (frag.loadByHTTP === true || frag.loadByHTTP === undefined) {
-                source = 'HTTP';
-            } else if (frag.loadByP2P === true) {
+        engine.on('FRAG_LOADED', ({url, sn, segId, loaded, duration, byP2p, fromPeerId}) => {
+            // console.warn(`FRAG_LOADED ${url}`)
+            var source = 'HTTP';
+            if (byP2p) {
                 source = 'P2P';
             }
-            addToTable(frag.relurl, frag.loaded, source);
+            addToTable(url, loaded, source);
         });
-        document.querySelector('#version').innerText = `hls.js version: ${Hls.version}  cdnbye version: ${P2PEngine.version}`;
+        document.querySelector('#version').innerText = `hls.js version: ${Hls.version}  cdnbye version: ${P2pEngineHls.version}`;
         function addToTable(url, downloaded, source) {
             var infoStr = `download ${url}(size:${downloaded}B) by ${source}`;
             document.querySelector('#table-body tbody').innerHTML +=
