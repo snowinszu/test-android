@@ -45,7 +45,10 @@
     const isSamsungBrowser = navigator.userAgent.indexOf('SamsungBrowser') > - 1;
     if (!isSamsungBrowser && !Hls.P2pEngine.isMSESupported() || Hls.P2pEngine.getBrowser() === 'Mac-Safari') {
         // use ServiceWorker based p2p engine, need additional file sw.js
+        alert('sw.js')
         new Hls.P2pEngine.ServiceWorkerEngine(p2pConfig)
+    } else {
+        alert('not sw.js')
     }
     var player = jwplayer("player");
     Hls.P2pEngine.tryRegisterServiceWorker(p2pConfig).then(() => {
