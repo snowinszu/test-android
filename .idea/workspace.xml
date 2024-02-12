@@ -3,7 +3,8 @@
   <component name="ChangeListManager">
     <list default="true" id="83abb475-70c7-47dc-8d11-f848b500cd28" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/dist/hls.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/dist/p2p-engine.min.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/radiant.html" beforeDir="false" afterPath="$PROJECT_DIR$/radiant.html" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -214,7 +215,7 @@
       <workItem from="1699952399061" duration="11151000" />
       <workItem from="1700471957164" duration="1826000" />
       <workItem from="1704193342919" duration="3633000" />
-      <workItem from="1707582909403" duration="1168000" />
+      <workItem from="1707582909403" duration="4526000" />
     </task>
     <servers />
   </component>
