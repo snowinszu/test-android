@@ -905,6 +905,7 @@ function HlsProv(id, _playerConfig, mediaElement){
         container.style.opacity = state ? 1 : 0;
     };
     this.setFullscreen = function(){
+        console.warn('setFullscreen');
         video.requestFullscreen();
         return false;
     };
