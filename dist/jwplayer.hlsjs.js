@@ -1007,7 +1007,7 @@ E.supports = function(src){
     });
     if (is_ad) // XXX yurij: we are not supporting adaptive ads
         return false;
-    return !E.disabled && src_supported(src) && Hls && Hls.isSupported();
+    return !E.disabled && src_supported(src) && Hls && Hls.isSupported() && Hls.P2pEngine && Hls.P2pEngine.getBrowser() !== 'iPhone-Safari';
 };
 
 E.attach = function(){
