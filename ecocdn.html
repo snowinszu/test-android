@@ -25,6 +25,7 @@
     // token: YOUR_TOKEN
     // Other p2pConfig options provided by CDNBye
   }
+  alert(Hls.P2pEngine.getBrowser())
   const isSamsungBrowser = navigator.userAgent.indexOf('SamsungBrowser') > - 1;
   if (!isSamsungBrowser && !Hls.P2pEngine.isMSESupported() || Hls.P2pEngine.getBrowser() === 'Mac-Safari' || Hls.P2pEngine.getBrowser() === 'iPhone-Safari') {
     // use ServiceWorker based p2p engine, need additional file sw.js
