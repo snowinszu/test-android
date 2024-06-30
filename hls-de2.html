@@ -31,9 +31,14 @@
     hls.on(Hls.Events.MANIFEST_PARSED,function(event, data) {
       video.play();
     });
+    var airPlaySrc = document.createElement("source");
+    airPlaySrc.src = source;
+    video.appendChild(airPlaySrc);
+    video.disableRemotePlayback = false;
   }
   // This is using the built-in support of the plain video element, without using hls.js.
   else if (video.canPlayType('application/vnd.apple.mpegurl')) {
+    alert('sw engine')
     video.src = source;
     video.addEventListener('loadedmetadata',function() {
       video.play();
