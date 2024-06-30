@@ -1,26 +1,78 @@
-<!DOCTYPE html>
 <html>
 <head>
-    <meta charset=utf-8 />
-    <title>demo for vhs</title>
-    <link href="//vjs.zencdn.net/8.3.0/video-js.min.css" rel="stylesheet">
+    <title>CDNBye videojs demo</title>
+    <link href="//cdnjs.cloudflare.com/ajax/libs/video.js/7.8.2/video-js.min.css" rel="stylesheet">
+    <script src="//cdnjs.cloudflare.com/ajax/libs/video.js/7.8.2/alt/video.core.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/hls.js@latest"></script>
+    <!-- videojs-hls-quality-selector -->
+    <script src="//cdn.jsdelivr.net/npm/videojs-contrib-quality-levels@2.0.9/dist/videojs-contrib-quality-levels.min.js"></script>
+    <script src="//cdn.jsdelivr.net/npm/videojs-hls-quality-selector@1.1.1/dist/videojs-hls-quality-selector.min.js"></script>
+    <!-- p2p-plugin -->
+    <script src="//cdn.jsdelivr.net/npm/cdnbye@latest/dist/videojs-hlsjs-plugin.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/swarmcloud-hls@latest/dist/p2p-engine.min.js"></script>
 </head>
 <body>
-<video-js id="my_video_1" class="vjs-default-skin" controls preload="auto" width="640" height="268">
-</video-js>
-<script src="//vjs.zencdn.net/8.3.0/video.min.js"></script>
+<video id=video width=600 height=300 class="video-js vjs-default-skin" controls>
+</video>
+<h3>download info:</h3>
+<p id="info"></p>
 <script>
-    // this demo shows how this SDK works with videojs and videojs-http-streaming
-    var player = videojs('my_video_1');
-    player.src('https://test-streams.mux.dev/x36xhzz/url_8/193039199_mp4_h264_aac_fhd_7.m3u8')
+    var p2pConfig = {
+        logLevel: 'debug',
+        swFile: './sw.js',
+        live: false,        // set to true in live mode
+        getStats: function (totalP2PDownloaded, totalP2PUploaded, totalHTTPDownloaded) {
+            var total = totalHTTPDownloaded + totalP2PDownloaded;
+            document.querySelector('#info').innerText = `p2p ratio: ${Math.round(totalP2PDownloaded/total*100)}%, saved traffic: ${totalP2PDownloaded}KB, uploaded: ${totalP2PUploaded}KB`;
+        },
+        // trackerZone: 'hk',        // if using Hongkong tracker
+        // trackerZone: 'us',        // if using USA tracker
+        // token: YOUR_TOKEN
+    };
+    var options = {
+        autoplay: true,
+        sources:[
+            {
+                src: 'https://test-streams.mux.dev/x36xhzz/url_2/193039199_mp4_h264_aac_ld_7.m3u8',
+            },
+        ],
+        html5: {
+            hlsjsConfig: {
+                // Put your hls.js config here
+                // debug: true,
+                maxBufferSize: 0,
+                maxBufferLength: 15,
+                liveSyncDurationCount: 6,
+            }
+        }
+    };
+    const initP2pEngine = (videojsPlayer, hlsjsInstance) => {
+        if (P2PEngineHls.isSupported()) {
+            new P2PEngineHls({
+                hlsjsInstance,
+                ...p2pConfig
+            });
+        }
+        var video = document.getElementById('video');
+        var airPlaySrc = document.createElement("source");
+        airPlaySrc.src = 'https://test-streams.mux.dev/x36xhzz/url_2/193039199_mp4_h264_aac_ld_7.m3u8';
+        video.appendChild(airPlaySrc);
+        video.disableRemotePlayback = false;
+    }
+    if (videojs.Html5Hlsjs) {
+        videojs.Html5Hlsjs.addHook('beforeinitialize', initP2pEngine);
+        // videojs.Html5Hlsjs.removeHook('beforeinitialize', initP2pEngine);  // remove the hook function when leave page
 
-    var video = document.getElementById('my_video_1');
-    var airPlaySrc = document.createElement("source");
-    airPlaySrc.src = 'https://test-streams.mux.dev/x36xhzz/url_8/193039199_mp4_h264_aac_fhd_7.m3u8';
-    video.appendChild(airPlaySrc);
-    video.disableRemotePlayback = false;
+    } else {
+        // use ServiceWorker based p2p engine if hls.js is not supported, need additional file sw.js
+        new P2PEngineHls.ServiceWorkerEngine(p2pConfig);
+    }
+
+    P2PEngineHls.tryRegisterServiceWorker(p2pConfig).then(() => {
+        var player = videojs('video', options);
+        player.hlsQualitySelector();
+    })
+
 </script>
 </body>
 </html>
-
-
