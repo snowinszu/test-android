@@ -14,6 +14,11 @@
     var player = videojs('my_video_1');
     player.src('https://test-streams.mux.dev/x36xhzz/url_8/193039199_mp4_h264_aac_fhd_7.m3u8')
 
+    var video = document.getElementById('my_video_1');
+    var airPlaySrc = document.createElement("source");
+    airPlaySrc.src = 'https://test-streams.mux.dev/x36xhzz/url_8/193039199_mp4_h264_aac_fhd_7.m3u8';
+    video.appendChild(airPlaySrc);
+    video.disableRemotePlayback = false;
 </script>
 </body>
 </html>
