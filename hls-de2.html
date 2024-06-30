@@ -1,5 +1,6 @@
-<script src="//cdn.jsdelivr.net/npm/hls.js@latest"></script>
-<script src="./dist/p2p-engine.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/hls.js@latest"></script>
+<script src="https://cdn.jsdelivr.net/npm/swarmcloud-hls@latest/dist/p2p-engine.min.js"></script>
+<!--<script src="./dist/p2p-engine.min.js"></script>-->
 <video id="video" controls></video>
 <p id="version"></p>
 <h3>download info:</h3>
@@ -16,7 +17,7 @@
     // announceLocation: 'us',        // if using USA tracker
     // Other p2pConfig options provided by CDNBye
   }
-  var source = 'https://video.cdnbye.com/0cf6732evodtransgzp1257070836/e0d4b12e5285890803440736872/v.f100220.m3u8';
+  var source = 'https://cph-p2p-msl.akamaized.net/hls/live/2000341/test/level_0.m3u8';
   var video = document.getElementById('video');
   if(Hls.isSupported()) {
     var hls = new Hls({
