@@ -55,6 +55,7 @@
             });
         }
         var video = videojsPlayer.el_.firstChild
+        alert(video instanceof HTMLVideoElement)
         var airPlaySrc = document.createElement("source");
         airPlaySrc.src = source;
         video.appendChild(airPlaySrc);
